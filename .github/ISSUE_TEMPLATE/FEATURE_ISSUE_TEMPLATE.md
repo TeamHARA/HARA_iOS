@@ -1,5 +1,5 @@
 ---
-name: "\U0001F3A7 Feature Issue Template"
+name: "🍏 Feature Issue Template"
 about: Feature 이슈 템플릿입니다.
 title: "[Feat] 어쩌고-저쩌고"
 labels: ''

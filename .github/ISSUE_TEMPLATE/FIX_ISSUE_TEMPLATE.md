@@ -1,5 +1,5 @@
 ---
-name: "\U0001F3A7 Bug&Fix Issue Template"
+name: "⛑ Bug&Fix Issue Template"
 about: Bug&Fix 이슈 템플릿입니다.
 title: "[Fix] 어쩌고-저쩌고"
 labels: "bug & fix"

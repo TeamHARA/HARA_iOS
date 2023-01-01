@@ -1,5 +1,5 @@
 ---
-name: "\U0001F3A7 Chore Issue Template"
+name: "🤖 Chore Issue Template"
 about: Chore 이슈 템플릿입니다.
 title: "[Chore] 어쩌고-저쩌고"
 labels: ''
