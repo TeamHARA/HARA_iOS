@@ -13,7 +13,7 @@
 		E7C69BF5295AC8AA00848B72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7C69BF3295AC8AA00848B72 /* LaunchScreen.storyboard */; };
 		E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C02295AD64C00848B72 /* UIColor+.swift */; };
 		E7C69C05295AD66200848B72 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C04295AD66200848B72 /* BaseVC.swift */; };
-		E7C69C09295AD68100848B72 /* TempType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C08295AD68100848B72 /* TempType.swift */; };
+		E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C08295AD68100848B72 /* ToastMessageColorType.swift */; };
 		E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C0A295AD68E00848B72 /* UserInfo.swift */; };
 		E7C69C12295AD6E200848B72 /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C11295AD6E200848B72 /* BaseAPI.swift */; };
 		E7C69C14295AD6F000848B72 /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C13295AD6F000848B72 /* EventLogger.swift */; };
@@ -22,10 +22,9 @@
 		E7C69C1A295AD72F00848B72 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C19295AD72F00848B72 /* NetworkConstants.swift */; };
 		E7C69C1C295AD74C00848B72 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C1B295AD74C00848B72 /* TempService.swift */; };
 		E7C69C21295AD7CA00848B72 /* ColorSets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69C20295AD7CA00848B72 /* ColorSets.xcassets */; };
-		E7C69C26295AD81600848B72 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C25295AD81600848B72 /* TabBarController.swift */; };
+		E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C25295AD81600848B72 /* HaraTabBarController.swift */; };
 		E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C29295AD84300848B72 /* SomeTemplate.swift */; };
-		E7C69C2E295AD86F00848B72 /* TempMypage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C2D295AD86F00848B72 /* TempMypage.swift */; };
-		E7C69C32295ADCAE00848B72 /* TempHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C31295ADCAE00848B72 /* TempHomeVC.swift */; };
+		E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C31295ADCAE00848B72 /* TogetherVC.swift */; };
 		E7C69C8D2961392A00848B72 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E7C69C8C2961392A00848B72 /* SnapKit */; };
 		E7C69C902961393700848B72 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = E7C69C8F2961393700848B72 /* Then */; };
 		E7C69C932961396C00848B72 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = E7C69C922961396C00848B72 /* CombineMoya */; };
@@ -40,12 +39,17 @@
 		E7C69CA52961407500848B72 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CA42961407500848B72 /* String+.swift */; };
 		E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CA62961CD8F00848B72 /* UIImageView+.swift */; };
 		E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CA82961CDF400848B72 /* UITextField+.swift */; };
-		E7C69CAB2961E5EA00848B72 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CAA2961E5EA00848B72 /* ImageCacheManager.swift */; };
 		E7C69CB42961E80E00848B72 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB02961E80E00848B72 /* Pretendard-Bold.otf */; };
 		E7C69CB52961E80E00848B72 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */; };
 		E7C69CB62961E80E00848B72 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */; };
 		E7C69CB72961E80E00848B72 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */; };
 		E7C69CB92961E84600848B72 /* Cafe24Ssurround-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */; };
+		E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBA2962017F00848B72 /* BaseNC.swift */; };
+		E7C69CBD2962039700848B72 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBC2962039700848B72 /* StorageVC.swift */; };
+		E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBF296203CA00848B72 /* WriteVC.swift */; };
+		E7C69CC22962099600848B72 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CC12962099500848B72 /* UIViewController+.swift */; };
+		E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CC329620C5600848B72 /* CALayer+.swift */; };
+		E7C69CC6296213EB00848B72 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CC5296213EB00848B72 /* ImageCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +61,7 @@
 		E7C69BF6295AC8AA00848B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7C69C02295AD64C00848B72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		E7C69C04295AD66200848B72 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
-		E7C69C08295AD68100848B72 /* TempType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempType.swift; sourceTree = "<group>"; };
+		E7C69C08295AD68100848B72 /* ToastMessageColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageColorType.swift; sourceTree = "<group>"; };
 		E7C69C0A295AD68E00848B72 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		E7C69C11295AD6E200848B72 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
 		E7C69C13295AD6F000848B72 /* EventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
@@ -66,10 +70,9 @@
 		E7C69C19295AD72F00848B72 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		E7C69C1B295AD74C00848B72 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
 		E7C69C20295AD7CA00848B72 /* ColorSets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorSets.xcassets; sourceTree = "<group>"; };
-		E7C69C25295AD81600848B72 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		E7C69C25295AD81600848B72 /* HaraTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaraTabBarController.swift; sourceTree = "<group>"; };
 		E7C69C29295AD84300848B72 /* SomeTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeTemplate.swift; sourceTree = "<group>"; };
-		E7C69C2D295AD86F00848B72 /* TempMypage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMypage.swift; sourceTree = "<group>"; };
-		E7C69C31295ADCAE00848B72 /* TempHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHomeVC.swift; sourceTree = "<group>"; };
+		E7C69C31295ADCAE00848B72 /* TogetherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherVC.swift; sourceTree = "<group>"; };
 		E7C69C9629613A1400848B72 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		E7C69C9829613A4300848B72 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		E7C69C9A29613E2B00848B72 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -80,12 +83,17 @@
 		E7C69CA42961407500848B72 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		E7C69CA62961CD8F00848B72 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		E7C69CA82961CDF400848B72 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		E7C69CAA2961E5EA00848B72 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		E7C69CB02961E80E00848B72 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cafe24Ssurround-Bold.ttf"; sourceTree = "<group>"; };
+		E7C69CBA2962017F00848B72 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
+		E7C69CBC2962039700848B72 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
+		E7C69CBF296203CA00848B72 /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
+		E7C69CC12962099500848B72 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		E7C69CC329620C5600848B72 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
+		E7C69CC5296213EB00848B72 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +163,7 @@
 		E7C69BFE295AD5F500848B72 /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69C08295AD68100848B72 /* TempType.swift */,
+				E7C69C08295AD68100848B72 /* ToastMessageColorType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C69C04295AD66200848B72 /* BaseVC.swift */,
+				E7C69CBA2962017F00848B72 /* BaseNC.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -190,6 +199,8 @@
 				E7C69CA42961407500848B72 /* String+.swift */,
 				E7C69CA62961CD8F00848B72 /* UIImageView+.swift */,
 				E7C69CA82961CDF400848B72 /* UITextField+.swift */,
+				E7C69CC12962099500848B72 /* UIViewController+.swift */,
+				E7C69CC329620C5600848B72 /* CALayer+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -235,7 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C69C11295AD6E200848B72 /* BaseAPI.swift */,
-				E7C69CAA2961E5EA00848B72 /* ImageCacheManager.swift */,
+				E7C69CC5296213EB00848B72 /* ImageCacheManager.swift */,
 			);
 			path = APIManagers;
 			sourceTree = "<group>";
@@ -266,9 +277,9 @@
 			isa = PBXGroup;
 			children = (
 				E7C69BF3295AC8AA00848B72 /* LaunchScreen.storyboard */,
+				E7C69C25295AD81600848B72 /* HaraTabBarController.swift */,
 				E7C69C28295AD82F00848B72 /* Scenes */,
 				E7C69C27295AD82400848B72 /* Components */,
-				E7C69C25295AD81600848B72 /* TabBarController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -284,26 +295,35 @@
 		E7C69C28295AD82F00848B72 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69C2C295AD86000848B72 /* Mypage */,
-				E7C69C2B295AD85800848B72 /* Home */,
+				E7C69C2B295AD85800848B72 /* Together */,
+				E7C69CBE296203A900848B72 /* Write */,
+				E7C69C2C295AD86000848B72 /* Storage */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		E7C69C2B295AD85800848B72 /* Home */ = {
+		E7C69C2B295AD85800848B72 /* Together */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69C31295ADCAE00848B72 /* TempHomeVC.swift */,
+				E7C69C31295ADCAE00848B72 /* TogetherVC.swift */,
 			);
-			path = Home;
+			path = Together;
 			sourceTree = "<group>";
 		};
-		E7C69C2C295AD86000848B72 /* Mypage */ = {
+		E7C69C2C295AD86000848B72 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69C2D295AD86F00848B72 /* TempMypage.swift */,
+				E7C69CBC2962039700848B72 /* StorageVC.swift */,
 			);
-			path = Mypage;
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		E7C69CBE296203A900848B72 /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				E7C69CBF296203CA00848B72 /* WriteVC.swift */,
+			);
+			path = Write;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,27 +415,31 @@
 			files = (
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* NetworkConstants.swift in Sources */,
-				E7C69C09295AD68100848B72 /* TempType.swift in Sources */,
+				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
 				E7C69C14295AD6F000848B72 /* EventLogger.swift in Sources */,
+				E7C69CC6296213EB00848B72 /* ImageCacheManager.swift in Sources */,
 				E7C69C9B29613E2B00848B72 /* UIView+.swift in Sources */,
 				E7C69CA129613F8100848B72 /* NSObject+.swift in Sources */,
-				E7C69C2E295AD86F00848B72 /* TempMypage.swift in Sources */,
-				E7C69CAB2961E5EA00848B72 /* ImageCacheManager.swift in Sources */,
 				E7C69C18295AD71C00848B72 /* GenericResponse.swift in Sources */,
+				E7C69CBD2962039700848B72 /* StorageVC.swift in Sources */,
 				E7C69C9D29613F2700848B72 /* UIStackView+.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
 				E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */,
 				E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */,
 				E7C69CA52961407500848B72 /* String+.swift in Sources */,
-				E7C69C32295ADCAE00848B72 /* TempHomeVC.swift in Sources */,
-				E7C69C26295AD81600848B72 /* TabBarController.swift in Sources */,
+				E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */,
+				E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */,
 				E7C69C9729613A1400848B72 /* UIFont+.swift in Sources */,
+				E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */,
 				E7C69C1C295AD74C00848B72 /* TempService.swift in Sources */,
 				E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */,
+				E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */,
 				E7C69C16295AD70F00848B72 /* APIConstants.swift in Sources */,
 				E7C69CA329613FAA00848B72 /* UILabel+.swift in Sources */,
 				E7C69C12295AD6E200848B72 /* BaseAPI.swift in Sources */,
 				E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */,
+				E7C69CC22962099600848B72 /* UIViewController+.swift in Sources */,
+				E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */,
 				E7C69C9F29613F4800848B72 /* Adjusted+.swift in Sources */,
 				E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */,
 				E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */,
