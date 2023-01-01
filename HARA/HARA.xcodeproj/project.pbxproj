@@ -22,7 +22,6 @@
 		E7C69C1A295AD72F00848B72 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C19295AD72F00848B72 /* NetworkConstants.swift */; };
 		E7C69C1C295AD74C00848B72 /* TempService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C1B295AD74C00848B72 /* TempService.swift */; };
 		E7C69C21295AD7CA00848B72 /* ColorSets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69C20295AD7CA00848B72 /* ColorSets.xcassets */; };
-		E7C69C23295AD7DF00848B72 /* TempFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C22295AD7DF00848B72 /* TempFont.swift */; };
 		E7C69C26295AD81600848B72 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C25295AD81600848B72 /* TabBarController.swift */; };
 		E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C29295AD84300848B72 /* SomeTemplate.swift */; };
 		E7C69C2E295AD86F00848B72 /* TempMypage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C2D295AD86F00848B72 /* TempMypage.swift */; };
@@ -42,6 +41,11 @@
 		E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CA62961CD8F00848B72 /* UIImageView+.swift */; };
 		E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CA82961CDF400848B72 /* UITextField+.swift */; };
 		E7C69CAB2961E5EA00848B72 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CAA2961E5EA00848B72 /* ImageCacheManager.swift */; };
+		E7C69CB42961E80E00848B72 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB02961E80E00848B72 /* Pretendard-Bold.otf */; };
+		E7C69CB52961E80E00848B72 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */; };
+		E7C69CB62961E80E00848B72 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */; };
+		E7C69CB72961E80E00848B72 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */; };
+		E7C69CB92961E84600848B72 /* Cafe24Ssurround-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +66,6 @@
 		E7C69C19295AD72F00848B72 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		E7C69C1B295AD74C00848B72 /* TempService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempService.swift; sourceTree = "<group>"; };
 		E7C69C20295AD7CA00848B72 /* ColorSets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorSets.xcassets; sourceTree = "<group>"; };
-		E7C69C22295AD7DF00848B72 /* TempFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempFont.swift; sourceTree = "<group>"; };
 		E7C69C25295AD81600848B72 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E7C69C29295AD84300848B72 /* SomeTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeTemplate.swift; sourceTree = "<group>"; };
 		E7C69C2D295AD86F00848B72 /* TempMypage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempMypage.swift; sourceTree = "<group>"; };
@@ -78,6 +81,11 @@
 		E7C69CA62961CD8F00848B72 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 		E7C69CA82961CDF400848B72 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		E7C69CAA2961E5EA00848B72 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		E7C69CB02961E80E00848B72 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cafe24Ssurround-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,7 +253,11 @@
 		E7C69C1E295AD7A900848B72 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69C22295AD7DF00848B72 /* TempFont.swift */,
+				E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */,
+				E7C69CB02961E80E00848B72 /* Pretendard-Bold.otf */,
+				E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */,
+				E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */,
+				E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -363,7 +375,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7C69CB62961E80E00848B72 /* Pretendard-Medium.otf in Resources */,
 				E7C69C21295AD7CA00848B72 /* ColorSets.xcassets in Resources */,
+				E7C69CB52961E80E00848B72 /* Pretendard-Regular.otf in Resources */,
+				E7C69CB72961E80E00848B72 /* Pretendard-SemiBold.otf in Resources */,
+				E7C69CB92961E84600848B72 /* Cafe24Ssurround-Bold.ttf in Resources */,
+				E7C69CB42961E80E00848B72 /* Pretendard-Bold.otf in Resources */,
 				E7C69BF5295AC8AA00848B72 /* LaunchScreen.storyboard in Resources */,
 				E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */,
 			);
@@ -378,7 +395,6 @@
 			files = (
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* NetworkConstants.swift in Sources */,
-				E7C69C23295AD7DF00848B72 /* TempFont.swift in Sources */,
 				E7C69C09295AD68100848B72 /* TempType.swift in Sources */,
 				E7C69C14295AD6F000848B72 /* EventLogger.swift in Sources */,
 				E7C69C9B29613E2B00848B72 /* UIView+.swift in Sources */,
