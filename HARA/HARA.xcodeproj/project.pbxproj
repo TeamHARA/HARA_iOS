@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85E0A44929646E280007C3CA /* FirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstStepView.swift */; };
+		85E0A44B29646E300007C3CA /* SecondStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondStepView.swift */; };
+		85E0A44D29646E390007C3CA /* ThirdStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdStepView.swift */; };
+		85E0A44F29646E440007C3CA /* FourthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthStepView.swift */; };
+		85E0A45129646E4B0007C3CA /* FifthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthStepView.swift */; };
 		E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BE8295AC8A900848B72 /* AppDelegate.swift */; };
 		E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */; };
 		E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69BF1295AC8AA00848B72 /* Assets.xcassets */; };
@@ -65,6 +70,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		85E0A44829646E280007C3CA /* FirstStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStepView.swift; sourceTree = "<group>"; };
+		85E0A44A29646E300007C3CA /* SecondStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStepView.swift; sourceTree = "<group>"; };
+		85E0A44C29646E390007C3CA /* ThirdStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdStepView.swift; sourceTree = "<group>"; };
+		85E0A44E29646E440007C3CA /* FourthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStepView.swift; sourceTree = "<group>"; };
+		85E0A45029646E4B0007C3CA /* FifthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthStepView.swift; sourceTree = "<group>"; };
 		E7C69BE5295AC8A900848B72 /* HARA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C69BE8295AC8A900848B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +145,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85E0A44729646DB30007C3CA /* WriteStepView */ = {
+			isa = PBXGroup;
+			children = (
+				85E0A44829646E280007C3CA /* FirstStepView.swift */,
+				85E0A44A29646E300007C3CA /* SecondStepView.swift */,
+				85E0A44C29646E390007C3CA /* ThirdStepView.swift */,
+				85E0A44E29646E440007C3CA /* FourthStepView.swift */,
+				85E0A45029646E4B0007C3CA /* FifthStepView.swift */,
+			);
+			path = WriteStepView;
+			sourceTree = "<group>";
+		};
 		E7C69BDC295AC8A900848B72 = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C69CBF296203CA00848B72 /* WriteVC.swift */,
+				85E0A44729646DB30007C3CA /* WriteStepView */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -452,6 +475,9 @@
 				E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
+				E7C69C1A295AD72F00848B72 /* NetworkConstants.swift in Sources */,
+				85E0A45129646E4B0007C3CA /* FifthStepView.swift in Sources */,
+				85E0A44D29646E390007C3CA /* ThirdStepView.swift in Sources */,
 				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
 				E7C69CDE296555A600848B72 /* WriteService.swift in Sources */,
 				E7C69CD2296554D700848B72 /* NetworkConstant.swift in Sources */,
@@ -467,6 +493,7 @@
 				E7C69C18295AD71C00848B72 /* WriteAPI.swift in Sources */,
 				E7C69CCC29647C9700848B72 /* CategoryCVC.swift in Sources */,
 				E7C69CBD2962039700848B72 /* StorageVC.swift in Sources */,
+				85E0A44B29646E300007C3CA /* SecondStepView.swift in Sources */,
 				E7C69C9D29613F2700848B72 /* UIStackView+.swift in Sources */,
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
@@ -474,10 +501,12 @@
 				E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */,
 				E7C69CD6296554F800848B72 /* GeneralResponse.swift in Sources */,
 				E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */,
+				85E0A44929646E280007C3CA /* FirstStepView.swift in Sources */,
 				E7C69CA52961407500848B72 /* String+.swift in Sources */,
 				E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */,
 				E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */,
 				E7C69C9729613A1400848B72 /* UIFont+.swift in Sources */,
+				85E0A44F29646E440007C3CA /* FourthStepView.swift in Sources */,
 				E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */,
 				E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */,
 				E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */,
