@@ -29,8 +29,8 @@ class WriteVC: UIViewController {
         $0.font = .systemFont(ofSize: 16.adjustedW, weight: .semibold)
     }
     
-    lazy var navigationView = UIView().then{
-        $0.backgroundColor = .hBlue4
+    private let animateView = UIView().then{
+        $0.backgroundColor = .clear
     }
     
     lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -67,7 +67,7 @@ class WriteVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .clear
         enabledArrowBtn()
-        setlayout()
+        setLayout()
         setPress()
         setupDelegate()
         if let firstVC = viewList.first {
@@ -83,12 +83,13 @@ class WriteVC: UIViewController {
             }
             self.navigationController?.dismiss(animated: true)
         }
-        prevButton.press { [self] in
+        prevButton.press {
             let prevPage = self.currentPage - 1
             /// 화면 이동 (지금 페이지에서 -1 페이지로 setView 합니다.)
-            self.pageViewController.setViewControllers([viewList[prevPage]], direction: .reverse, animated: true)
+            self.pageViewController.setViewControllers([self.viewList[prevPage]], direction: .reverse, animated: true)
             /// 버튼눌렸을 때 페이지 변경 애니메이션 적용
             self.enabledArrowBtn()
+            self.progressBarAnimate()
         }
         nextButton.press {
             let nextPage = self.currentPage + 1
@@ -96,6 +97,7 @@ class WriteVC: UIViewController {
             self.pageViewController.setViewControllers([self.viewList[nextPage]], direction: .forward, animated: true)
             /// 버튼눌렸을 때 페이지 변경 애니메이션 적용
             self.enabledArrowBtn()
+            self.progressBarAnimate()
         }
     }
     
@@ -117,22 +119,33 @@ class WriteVC: UIViewController {
             prevButton.isEnabled = true
         }
     }
+    
+    private func progressBarAnimate() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.animateView.alpha = 1
+            self.animateView.backgroundColor = .hBlue4
+        })
+        UIView.animate(withDuration: 0.9, animations: {
+            self.animateView.alpha = 1
+            self.animateView.backgroundColor = .clear
+        })
+    }
 }
 
 // MARK: - Layout
 extension WriteVC{
     
-    private func setlayout(){
+    private func setLayout(){
         self.view.insertSubview(background, at: 0)
         
         background.snp.makeConstraints{
             $0.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
         
-        view.addSubViews([closeButton, titleLabel, navigationView])
+        view.addSubViews([closeButton, titleLabel])
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
-        pageViewController.view.addSubviews([prevButton, nextButton])
+        pageViewController.view.addSubviews([prevButton, nextButton, animateView])
         
         
         closeButton.snp.makeConstraints{
@@ -147,14 +160,14 @@ extension WriteVC{
             $0.centerX.equalTo(self.view.safeAreaLayoutGuide)
         }
         
-        navigationView.snp.makeConstraints{
+        animateView.snp.makeConstraints{
             $0.top.equalTo(titleLabel.snp.bottom).offset(16.adjustedH)
             $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
             $0.height.equalTo(4.adjustedH)
         }
         
         pageViewController.view.snp.makeConstraints{
-            $0.top.equalTo(navigationView.snp.bottom)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(16.adjustedH)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         pageViewController.didMove(toParent: self)
@@ -179,6 +192,7 @@ extension WriteVC{
 extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        progressBarAnimate()
         guard let index = viewList.firstIndex(of: viewController) else { return nil }
         let previousIndex = index - 1
         if previousIndex < 0 {
@@ -188,6 +202,7 @@ extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate 
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        progressBarAnimate()
         guard let index = viewList.firstIndex(of: viewController) else { return nil }
         let nextIndex = index + 1
         if nextIndex == viewList.count {
@@ -199,6 +214,7 @@ extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate 
     /// 버튼 클릭시에만 enable을 적용되는 것을 방지하기 위해, page를 스크롤해서 이동시킬 때에서 enable효과를 주기 위한 "didFinishAnimating"
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         enabledArrowBtn()
+        progressBarAnimate()
     }
 }
 
