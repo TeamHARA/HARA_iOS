@@ -64,9 +64,9 @@ class WriteVC: UIViewController {
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        enabledArrowBtn()
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .clear
+        enabledArrowBtn()
         setlayout()
         setPress()
         setupDelegate()
@@ -85,19 +85,16 @@ class WriteVC: UIViewController {
         }
         prevButton.press { [self] in
             let prevPage = self.currentPage - 1
-            //화면 이동 (지금 페이지에서 -1 페이지로 setView 합니다.)
+            /// 화면 이동 (지금 페이지에서 -1 페이지로 setView 합니다.)
             self.pageViewController.setViewControllers([viewList[prevPage]], direction: .reverse, animated: true)
-            
-            //현재 페이지 잡아주기
-            //self.currentPage = self.pageViewController.viewControllers!.first!.view.tag
+            /// 버튼눌렸을 때 페이지 변경 애니메이션 적용
             self.enabledArrowBtn()
         }
         nextButton.press {
             let nextPage = self.currentPage + 1
-            //화면 이동 (지금 페이지에서 -1 페이지로 setView 합니다.)
+            /// 화면 이동 (지금 페이지에서 +1 페이지로 setView 합니다.)
             self.pageViewController.setViewControllers([self.viewList[nextPage]], direction: .forward, animated: true)
-            
-            //현재 페이지 잡아주기
+            /// 버튼눌렸을 때 페이지 변경 애니메이션 적용
             self.enabledArrowBtn()
         }
     }
@@ -197,6 +194,11 @@ extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate 
             return nil
         }
         return viewList[nextIndex]
+    }
+    
+    /// 버튼 클릭시에만 enable을 적용되는 것을 방지하기 위해, page를 스크롤해서 이동시킬 때에서 enable효과를 주기 위한 "didFinishAnimating"
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        enabledArrowBtn()
     }
 }
 
