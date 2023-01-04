@@ -218,6 +218,17 @@ extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate 
     }
 }
 
+extension WriteVC: UITextFieldDelegate {
+    /// ✅ textField 에서 편집을 시작한 후
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        /// 키보드 업
+        textField.becomeFirstResponder()
+        /// 입력 시 textField 를 강조하기 위한 테두리 설정
+        textField.layer.borderWidth = 2
+        textField.layer.borderColor = UIColor.red.cgColor
+    }
+}
+
 
 
 

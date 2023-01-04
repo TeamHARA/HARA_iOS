@@ -19,6 +19,12 @@ class FirstWriteStepView: UIViewController{
         $0.backgroundColor = .hBlue1
     }
     
+    private let questionLabel = UILabel().then{
+        $0.numberOfLines = 3
+        $0.text = "Q.\n내 고민의\n제목이 무엇인가요?"
+        $0.font = .haraM1M24
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
@@ -152,13 +158,4 @@ extension FirstWriteStepView{
 //    }
 //}
 //
-//extension WriteVC: UITextFieldDelegate {
-//    /// ✅ textField 에서 편집을 시작한 후
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        /// 키보드 업
-//        textField.becomeFirstResponder()
-//        /// 입력 시 textField 를 강조하기 위한 테두리 설정
-//        textField.layer.borderWidth = 2
-//        textField.layer.borderColor = UIColor.red.cgColor
-//    }
-//}
+
