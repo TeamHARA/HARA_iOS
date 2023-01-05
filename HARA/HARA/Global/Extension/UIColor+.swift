@@ -68,7 +68,4 @@ extension UIColor {
     @nonobjc class var hGray5: UIColor {
         return UIColor(white: 230.0 / 255.0, alpha: 1.0)
     }
-    
-    
-    
 }

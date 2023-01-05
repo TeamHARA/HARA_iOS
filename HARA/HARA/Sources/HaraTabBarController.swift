@@ -16,6 +16,8 @@ final class HaraTabBarController: UITabBarController {
         $0.image = UIImage(named: "tab_background_img")
     }
     
+    private var tagNumber: Int = 0
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,7 @@ final class HaraTabBarController: UITabBarController {
     }
     
     // MARK: - Function
-    // TabBarItem 생성해 주는 메서드
+    /// TabBarItem 생성해 주는 메서드
     private func makeTabVC(vc: UIViewController, tabBarTitle: String, tabBarImg: String, tabBarSelectedImg: String) -> UIViewController {
 
         vc.tabBarItem = UITabBarItem(title: tabBarTitle,
@@ -101,21 +103,46 @@ final class HaraTabBarController: UITabBarController {
         self.tabBar.layoutIfNeeded()
         backgroundView.frame = tabBar.frame
     }
-
+    
+    @objc
+    private func pushToNewAccount(){
+        let na = WriteVC()
+        self.navigationController?.pushViewController(na, animated: true)
+    }
 }
 
 // MARK: - UITabBarControllerDelegate
+/// 선택된 탭바의 Index를 tagNumber 변수에 저장하여 +버튼을 누르더라도 rootViewController가 변함이 없게끔 해줌
 extension HaraTabBarController: UITabBarControllerDelegate {
     private func setDelegate() {
         self.delegate = self
     }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController.tabBarItem.tag == 1 {
+            let writeVC = WriteVC()
+            writeVC.modalPresentationStyle = .overFullScreen
+            self.present(writeVC, animated: true, completion:nil)
+            if tagNumber == 0 {
+                self.selectedIndex = 0
+            }
+            else if tagNumber == 2 {
+                self.selectedIndex = 2
+            }
+        }
+        else{
+            tagNumber = viewController.tabBarItem.tag
+        }
+    }
 }
 
 extension UITabBar {
-    // 기본 그림자 스타일을 초기화해야 커스텀 스타일을 적용할 수 있음
+    /// 기본 그림자 스타일을 초기화해야 커스텀 스타일을 적용할 수 있음
     static func clearShadow() {
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.white
     }
 }
+
+
