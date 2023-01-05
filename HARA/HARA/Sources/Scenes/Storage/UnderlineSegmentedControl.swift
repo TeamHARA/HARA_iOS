@@ -39,7 +39,6 @@ final class UnderlineSegmentedControl: UISegmentedControl {
 
     private func removeBackgroundAndDivider() {
         let image = UIImage()
-        // segmentedControl 탭의 배경화면 색/효과가 변동되지 않게끔 해주는 setBackgroundImage
         self.setBackgroundImage(image, for: .normal, barMetrics: .default)
         self.setBackgroundImage(image, for: .selected, barMetrics: .default)
         self.setBackgroundImage(image, for: .highlighted, barMetrics: .default)

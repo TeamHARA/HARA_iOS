@@ -15,19 +15,17 @@ class StorageVC: UIViewController {
     
     private let segmentedControl = UnderlineSegmentedControl(items: ["혼자 고민", "함께 고민"])
     
-    private let vc1: UIViewController = {
+    private let worriedAloneVC = UIViewController().then {_ in
         let vc = UIViewController()
         vc.view.backgroundColor = .hBlue1
-        return vc
-    }()
+    }
     
 //    self.addchild(vc1) - 뷰컨 안에 뷰컨 넣는 방법
     
-    private let vc2: UIViewController = {
+    private let worriedTogetherVC = UIViewController().then {_ in
         let vc = UIViewController()
         vc.view.backgroundColor = .hBlue2
-        return vc
-    }()
+    }
 
     private let haraIcon = UIButton().then {
         $0.setImage(UIImage(named: "storage_logo"), for: .normal)
@@ -55,7 +53,7 @@ class StorageVC: UIViewController {
     }()
     
     var dataViewControllers: [UIViewController] {
-        [self.vc1, self.vc2]
+        [self.worriedAloneVC, self.worriedTogetherVC]
     }
     
     var currentPage: Int = 0 {
