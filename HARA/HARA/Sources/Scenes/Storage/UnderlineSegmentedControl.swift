@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Then
 import UIKit
 
 final class UnderlineSegmentedControl: UISegmentedControl {
