@@ -33,7 +33,11 @@ final class TogetherVC: UIViewController {
     
     /// 고민의 개수
     private var worryNums = 10
+    /// 선택지의 개수
+    private var optionNums = 2
     
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
@@ -74,7 +78,11 @@ extension TogetherVC: UICollectionViewDelegateFlowLayout {
             /// cell의 높이 값이 0이 나와서 상수에 adjustedH쓰는 것으로 대체
 //            let sizingCell = WorryCardCVC()
 //            let height = sizingCell.contentView.frame.height
-            return CGSize(width: CGFloat(336.adjustedW), height: CGFloat(383.adjustedH))
+            let width = collectionView.frame.width
+            /// 선택지 두개 일때(default) 13mini 기준 worryCardCVC의 높이 383 + optionNums - 기본 선택지 개수(2개)를 빼고 그 값에 여백 포함 셀 높이 50 계산하고 adjustedH
+            let height = CGFloat((339 + (optionNums-2)*50)).adjustedH
+            print(height)
+            return CGSize(width: width, height: height)
         }
     }
 }
@@ -102,6 +110,9 @@ extension TogetherVC: UICollectionViewDataSource {
             return cell
         }else if collectionView == worryCardCV {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorryCardCVC.className, for: indexPath) as? WorryCardCVC else { return UICollectionViewCell() }
+            
+            /// VC의 optionNums를 cell의 optionNums에 전달
+            cell.setCellNums(optionNums: self.optionNums)
             return cell
         }else {
             return UICollectionViewCell()
