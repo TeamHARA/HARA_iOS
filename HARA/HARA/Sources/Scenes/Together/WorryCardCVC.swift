@@ -166,11 +166,7 @@ extension WorryCardCVC: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension WorryCardCVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) {
-            cell.isSelected 
-        }
-    }
+
 }
 
 
