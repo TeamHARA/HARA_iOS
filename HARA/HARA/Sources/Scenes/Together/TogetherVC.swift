@@ -23,10 +23,20 @@ final class TogetherVC: UIViewController {
         $0.collectionViewLayout = layout
     }
     
+    private let worryCardCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+        $0.backgroundColor = .clear
+        $0.showsVerticalScrollIndicator = false
+        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+    }
+    
     private let categoryTitles = ["전체", "일상", "연애", "패션/뷰티", "커리어", "운동", "여행", "기타"]
+    
+    /// 고민의 개수
+    private var worryNums = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
         setCategoryCV()
         registerCell()
@@ -38,38 +48,64 @@ final class TogetherVC: UIViewController {
     private func setCategoryCV() {
         categoryCV.dataSource = self
         categoryCV.delegate = self
+        
+        worryCardCV.dataSource = self
+        worryCardCV.delegate = self
     }
     
     private func registerCell() {
         categoryCV.register(cell: CategoryCVC.self, forCellWithReuseIdentifier: CategoryCVC.className)
+        
+        worryCardCV.register(cell: WorryCardCVC.self, forCellWithReuseIdentifier: WorryCardCVC.className)
     }
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension TogetherVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let sizingCell = CategoryCVC()
-        sizingCell.setData(data: categoryTitles[indexPath.row])
-        sizingCell.categoryLabel.sizeToFit()
-        
-        let cellWidth = sizingCell.categoryLabel.frame.width + 24
-        let cellHeight = CGFloat(31)
-        return CGSize(width: cellWidth, height: cellHeight)
+        if collectionView == categoryCV {
+            let sizingCell = CategoryCVC()
+            sizingCell.setData(data: categoryTitles[indexPath.row])
+            sizingCell.categoryLabel.sizeToFit()
+            
+            let cellWidth = sizingCell.categoryLabel.frame.width + 24
+            let cellHeight = CGFloat(31)
+            return CGSize(width: cellWidth, height: cellHeight)
+        }else {
+            /// cell의 높이 값이 0이 나와서 상수에 adjustedH쓰는 것으로 대체
+//            let sizingCell = WorryCardCVC()
+//            let height = sizingCell.contentView.frame.height
+            return CGSize(width: CGFloat(336.adjustedW), height: CGFloat(383.adjustedH))
+        }
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension TogetherVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        if collectionView == categoryCV {
+            return 8
+        }else {
+            return worryNums
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCVC.className, for: indexPath) as! CategoryCVC
-        cell.setData(data: categoryTitles[indexPath.row])
-        if indexPath.row != 0 {
-            cell.contentView.layer.borderColor = UIColor.hBlue2.cgColor
-            cell.contentView.layer.borderWidth = 1
+        
+        if collectionView == categoryCV {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCVC.className, for: indexPath) as? CategoryCVC
+            else { return UICollectionViewCell() }
+            cell.setData(data: categoryTitles[indexPath.row])
+            if indexPath.row != 0 {
+                cell.contentView.layer.borderColor = UIColor.hBlue2.cgColor
+                cell.contentView.layer.borderWidth = 1
+            }
+            return cell
+        }else if collectionView == worryCardCV {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorryCardCVC.className, for: indexPath) as? WorryCardCVC else { return UICollectionViewCell() }
+            return cell
+        }else {
+            return UICollectionViewCell()
         }
-        return cell
     }
     
 }
@@ -77,18 +113,25 @@ extension TogetherVC: UICollectionViewDataSource {
 // MARK: - Layout
 extension TogetherVC {
     private func setLayout() {
-        self.view.addSubviews([togetherNaviView, categoryCV])
+        self.view.addSubviews([togetherNaviView, categoryCV, worryCardCV])
         
         togetherNaviView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide)
             $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(24.adjustedH)
         }
         
         categoryCV.snp.makeConstraints {
-            $0.top.equalTo(togetherNaviView.snp.bottom).offset(47)
+            $0.top.equalTo(togetherNaviView.snp.bottom).offset(25)
             $0.leading.equalToSuperview().inset(16)
             $0.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(31)
+        }
+        
+        worryCardCV.snp.makeConstraints {
+            $0.top.equalTo(categoryCV.snp.bottom).offset(12)
+            $0.leading.equalToSuperview().offset(12)
+            $0.trailing.bottom.equalToSuperview().inset(12)
         }
         
     }

@@ -42,19 +42,19 @@ final class DefaultNavigationView: UIView {
         
         logoImageView.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
-            $0.width.equalTo(50)
-            $0.height.equalTo(24)
+            $0.width.equalTo(50.adjustedW)
+            $0.height.equalTo(24.adjustedH)
         }
         
         settingButton.snp.makeConstraints {
             $0.trailing.top.equalToSuperview()
-            $0.width.height.equalTo(24)
+            $0.width.height.equalTo(24.adjustedW)
         }
         
         searchButton.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.trailing.equalTo(settingButton.snp.leading).offset(-4)
-            $0.width.height.equalTo(24)
+            $0.width.height.equalTo(24.adjustedW)
         }
     }
 

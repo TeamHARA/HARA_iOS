@@ -67,6 +67,8 @@
 		E7C69CE32965566C00848B72 /* TogetherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CE22965566C00848B72 /* TogetherResponse.swift */; };
 		E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CE42965567800848B72 /* WriteResponse.swift */; };
 		E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CE62965569100848B72 /* StorageResponse.swift */; };
+		E7C69CEB29658BF900848B72 /* VoteOptionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CEA29658BF900848B72 /* VoteOptionCVC.swift */; };
+		E7C69CED29660AB500848B72 /* WorryCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CEC29660AB500848B72 /* WorryCardCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +130,8 @@
 		E7C69CE22965566C00848B72 /* TogetherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherResponse.swift; sourceTree = "<group>"; };
 		E7C69CE42965567800848B72 /* WriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteResponse.swift; sourceTree = "<group>"; };
 		E7C69CE62965569100848B72 /* StorageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageResponse.swift; sourceTree = "<group>"; };
+		E7C69CEA29658BF900848B72 /* VoteOptionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteOptionCVC.swift; sourceTree = "<group>"; };
+		E7C69CEC29660AB500848B72 /* WorryCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryCardCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +358,8 @@
 			children = (
 				E7C69C31295ADCAE00848B72 /* TogetherVC.swift */,
 				E7C69CCB29647C9700848B72 /* CategoryCVC.swift */,
+				E7C69CEC29660AB500848B72 /* WorryCardCVC.swift */,
+				E7C69CEA29658BF900848B72 /* VoteOptionCVC.swift */,
 			);
 			path = Together;
 			sourceTree = "<group>";
@@ -475,15 +481,17 @@
 				E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
-				E7C69C1A295AD72F00848B72 /* NetworkConstants.swift in Sources */,
+				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
 				85E0A45129646E4B0007C3CA /* FifthStepView.swift in Sources */,
 				85E0A44D29646E390007C3CA /* ThirdStepView.swift in Sources */,
 				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
 				E7C69CDE296555A600848B72 /* WriteService.swift in Sources */,
 				E7C69CD2296554D700848B72 /* NetworkConstant.swift in Sources */,
+				E7C69CEB29658BF900848B72 /* VoteOptionCVC.swift in Sources */,
 				E7C69CE0296555B400848B72 /* StorageService.swift in Sources */,
 				E7C69CD82965550500848B72 /* NetworkResult.swift in Sources */,
 				E7C69CD0296554C000848B72 /* APIConstant.swift in Sources */,
+				E7C69CED29660AB500848B72 /* WorryCardCVC.swift in Sources */,
 				E7C69CDC2965552700848B72 /* TogetherService.swift in Sources */,
 				E7C69CC6296213EB00848B72 /* ImageCacheManager.swift in Sources */,
 				E7C69C9B29613E2B00848B72 /* UIView+.swift in Sources */,
