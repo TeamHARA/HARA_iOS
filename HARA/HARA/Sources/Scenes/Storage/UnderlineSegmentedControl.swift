@@ -12,12 +12,12 @@ final class UnderlineSegmentedControl: UISegmentedControl {
     
     private lazy var underlineView: UIView = {
         let width = self.bounds.size.width / CGFloat(self.numberOfSegments)
-        let height = 10.0
+        let height = 15.0
         let xPosition = CGFloat(self.selectedSegmentIndex * Int(width))
-        let yPosition = self.bounds.size.height - 2.0
+        let yPosition = self.bounds.size.height - 3.0
       
         let view = UIView(frame: CGRect(x: xPosition, y: yPosition, width: width, height: height))
-        view.backgroundColor = UIColor.purple
+        view.backgroundColor = UIColor.hBlue1
         self.addSubview(view)
         return view
     }()
@@ -27,6 +27,7 @@ final class UnderlineSegmentedControl: UISegmentedControl {
         super.init(frame: frame)
         self.removeBackgroundAndDivider()
     }
+    
     // segmentedControl의 각 Item들의 속성을 rBAD함수를 통해 효과를 모두 제거
     override init(items: [Any]?) {
         super.init(items: items)
