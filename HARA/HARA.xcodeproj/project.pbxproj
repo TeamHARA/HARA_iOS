@@ -12,6 +12,8 @@
 		85E0A44D29646E390007C3CA /* ThirdStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdStepView.swift */; };
 		85E0A44F29646E440007C3CA /* FourthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthStepView.swift */; };
 		85E0A45129646E4B0007C3CA /* FifthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthStepView.swift */; };
+		673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */; };
+		673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315F02966D1AC00398AA5 /* StorageVC.swift */; };
 		E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BE8295AC8A900848B72 /* AppDelegate.swift */; };
 		E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */; };
 		E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69BF1295AC8AA00848B72 /* Assets.xcassets */; };
@@ -20,7 +22,6 @@
 		E7C69C05295AD66200848B72 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C04295AD66200848B72 /* BaseVC.swift */; };
 		E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C08295AD68100848B72 /* ToastMessageColorType.swift */; };
 		E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C0A295AD68E00848B72 /* UserInfo.swift */; };
-		E7C69C16295AD70F00848B72 /* TogetherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C15295AD70F00848B72 /* TogetherAPI.swift */; };
 		E7C69C18295AD71C00848B72 /* WriteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C17295AD71C00848B72 /* WriteAPI.swift */; };
 		E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C19295AD72F00848B72 /* StorageAPI.swift */; };
 		E7C69C21295AD7CA00848B72 /* ColorSets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69C20295AD7CA00848B72 /* ColorSets.xcassets */; };
@@ -47,7 +48,6 @@
 		E7C69CB72961E80E00848B72 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */; };
 		E7C69CB92961E84600848B72 /* Cafe24Ssurround-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */; };
 		E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBA2962017F00848B72 /* BaseNC.swift */; };
-		E7C69CBD2962039700848B72 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBC2962039700848B72 /* StorageVC.swift */; };
 		E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBF296203CA00848B72 /* WriteVC.swift */; };
 		E7C69CC22962099600848B72 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CC12962099500848B72 /* UIViewController+.swift */; };
 		E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CC329620C5600848B72 /* CALayer+.swift */; };
@@ -77,6 +77,8 @@
 		85E0A44C29646E390007C3CA /* ThirdStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdStepView.swift; sourceTree = "<group>"; };
 		85E0A44E29646E440007C3CA /* FourthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStepView.swift; sourceTree = "<group>"; };
 		85E0A45029646E4B0007C3CA /* FifthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthStepView.swift; sourceTree = "<group>"; };
+		673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
+		673315F02966D1AC00398AA5 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
 		E7C69BE5295AC8A900848B72 /* HARA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C69BE8295AC8A900848B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +112,6 @@
 		E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cafe24Ssurround-Bold.ttf"; sourceTree = "<group>"; };
 		E7C69CBA2962017F00848B72 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
-		E7C69CBC2962039700848B72 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
 		E7C69CBF296203CA00848B72 /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
 		E7C69CC12962099500848B72 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		E7C69CC329620C5600848B72 /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
@@ -367,7 +368,8 @@
 		E7C69C2C295AD86000848B72 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69CBC2962039700848B72 /* StorageVC.swift */,
+				673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */,
+				673315F02966D1AC00398AA5 /* StorageVC.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -504,6 +506,7 @@
 				85E0A44B29646E300007C3CA /* SecondStepView.swift in Sources */,
 				E7C69C9D29613F2700848B72 /* UIStackView+.swift in Sources */,
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
+				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
 				E7C69CCE29649EA900848B72 /* UICollectionVIew+.swift in Sources */,
 				E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */,
@@ -528,6 +531,7 @@
 				E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */,
 				E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */,
 				E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */,
+				673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */,
 				E7C69C05295AD66200848B72 /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,7 +671,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AFS6YUQ2Y4;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HARA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -695,7 +699,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AFS6YUQ2Y4;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HARA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
