@@ -33,17 +33,35 @@ class WorryCardCVC: UICollectionViewCell {
     private let worryContentLabel = UILabel().then {
         $0.textColor = .hBlack
         $0.font = .haraB2M14
-        $0.text = "1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세 2. 남산 위에 저 소나무 철갑을 두른 듯 바..."
+        $0.text = "1. 동해물과 백두산이 마"
         $0.numberOfLines = 0
     }
     
-    private let voteOptionCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.isScrollEnabled = false
-        $0.backgroundColor = .yellow
-        $0.showsHorizontalScrollIndicator = false
-        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    private lazy var voteOptionCV: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.compositionalLayout)
+        view.isScrollEnabled = false
+        view.backgroundColor = .yellow
+        view.showsHorizontalScrollIndicator = false
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return view
+    }()
+    
+    private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
+//        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         
-    }
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+                group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        //        group.interItemSpacing = .flexible(-16)
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }()
     
     private let voteButton = UIButton().then {
         $0.setTitle("투표하기", for: .normal)
@@ -100,6 +118,11 @@ class WorryCardCVC: UICollectionViewCell {
     func setCellNums(optionNums: Int) {
         self.optionNums = optionNums
     }
+        
+    func setData(title: String, content: String) {
+        self.worryTitleLabel.text = title
+        self.worryContentLabel.text = content
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -146,7 +169,7 @@ extension WorryCardCVC {
         }
         
         worryTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(worryCategoryLabel.snp.bottom).offset(14)
+            $0.top.equalToSuperview().offset(44)
             $0.leading.equalToSuperview().offset(14)
             $0.trailing.equalToSuperview().inset(14)
             $0.height.equalTo(19.adjustedH)
@@ -156,7 +179,7 @@ extension WorryCardCVC {
             $0.top.equalTo(worryTitleLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview().offset(14)
             $0.trailing.equalToSuperview().inset(14)
-            $0.height.equalTo(66.adjustedH)
+//            $0.height.equalTo(66.adjustedH)
         }
         
         voteOptionCV.snp.makeConstraints {
@@ -176,7 +199,7 @@ extension WorryCardCVC {
 
         chatButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(15)
-            $0.bottom.equalToSuperview().inset(16)
+            $0.top.equalTo(voteButton.snp.bottom).offset(12)
             $0.width.equalTo(39.adjustedW)
             $0.height.equalTo(24.adjustedH)
         }
