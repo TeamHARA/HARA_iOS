@@ -54,8 +54,8 @@ class WorryCardCVC: UICollectionViewCell {
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
-                group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
-        //        group.interItemSpacing = .flexible(-16)
+//            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+//            group.interItemSpacing = .flexible(-16)
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
@@ -122,6 +122,7 @@ class WorryCardCVC: UICollectionViewCell {
     func setData(title: String, content: String) {
         self.worryTitleLabel.text = title
         self.worryContentLabel.text = content
+        self.worryContentLabel.sizeToFit()
     }
 }
 

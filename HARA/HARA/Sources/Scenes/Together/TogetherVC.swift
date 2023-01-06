@@ -36,7 +36,7 @@ final class TogetherVC: UIViewController {
     /// 고민의 개수
     private var worryNums = 10
     private var worryTitles = ["고민1"]
-    private var worryContents = ["니ㅏ"]
+    private var worryContents = ["dsfsdfdsfdsf"]
     
     /// 선택지의 개수
     private var optionNums = 4
