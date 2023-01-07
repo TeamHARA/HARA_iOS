@@ -55,5 +55,5 @@ final class UnderlineSegmentedControl: UISegmentedControl {
         UIView.animate(withDuration: 0.05, animations:{
         self.underlineView.frame.origin.x = underlineFinalXPosition})
     }
-    
 }
+

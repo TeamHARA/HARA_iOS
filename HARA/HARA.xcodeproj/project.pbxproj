@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */; };
+		673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315F02966D1AC00398AA5 /* StorageVC.swift */; };
+		677D5E1F29672CF8007FCAEB /* AloneWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E1E29672CF8007FCAEB /* AloneWorriedVC.swift */; };
+		677D5E2129672E7C007FCAEB /* TogetherWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E2029672E7C007FCAEB /* TogetherWorriedVC.swift */; };
+		677D5E2429674168007FCAEB /* AloneWorriedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E2329674168007FCAEB /* AloneWorriedCVC.swift */; };
+		677D5E2629674BD5007FCAEB /* WorriedAloneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E2529674BD5007FCAEB /* WorriedAloneModel.swift */; };
+		67E16C882968F1AB00B0D384 /* WorriedTogetherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E16C872968F1AB00B0D384 /* WorriedTogetherModel.swift */; };
+		67E16C8A2968F2D700B0D384 /* TogetherWorriedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E16C892968F2D700B0D384 /* TogetherWorriedCVC.swift */; };
 		85E0A44929646E280007C3CA /* FirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstStepView.swift */; };
 		85E0A44B29646E300007C3CA /* SecondStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondStepView.swift */; };
 		85E0A44D29646E390007C3CA /* ThirdStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdStepView.swift */; };
 		85E0A44F29646E440007C3CA /* FourthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthStepView.swift */; };
 		85E0A45129646E4B0007C3CA /* FifthStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthStepView.swift */; };
-		673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */; };
-		673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315F02966D1AC00398AA5 /* StorageVC.swift */; };
 		E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BE8295AC8A900848B72 /* AppDelegate.swift */; };
 		E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */; };
 		E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69BF1295AC8AA00848B72 /* Assets.xcassets */; };
@@ -72,13 +78,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
+		673315F02966D1AC00398AA5 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
+		677D5E1E29672CF8007FCAEB /* AloneWorriedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AloneWorriedVC.swift; sourceTree = "<group>"; };
+		677D5E2029672E7C007FCAEB /* TogetherWorriedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherWorriedVC.swift; sourceTree = "<group>"; };
+		677D5E2329674168007FCAEB /* AloneWorriedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AloneWorriedCVC.swift; sourceTree = "<group>"; };
+		677D5E2529674BD5007FCAEB /* WorriedAloneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorriedAloneModel.swift; sourceTree = "<group>"; };
+		67E16C872968F1AB00B0D384 /* WorriedTogetherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorriedTogetherModel.swift; sourceTree = "<group>"; };
+		67E16C892968F2D700B0D384 /* TogetherWorriedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherWorriedCVC.swift; sourceTree = "<group>"; };
 		85E0A44829646E280007C3CA /* FirstStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStepView.swift; sourceTree = "<group>"; };
 		85E0A44A29646E300007C3CA /* SecondStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStepView.swift; sourceTree = "<group>"; };
 		85E0A44C29646E390007C3CA /* ThirdStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdStepView.swift; sourceTree = "<group>"; };
 		85E0A44E29646E440007C3CA /* FourthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthStepView.swift; sourceTree = "<group>"; };
 		85E0A45029646E4B0007C3CA /* FifthStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthStepView.swift; sourceTree = "<group>"; };
-		673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
-		673315F02966D1AC00398AA5 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
 		E7C69BE5295AC8A900848B72 /* HARA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C69BE8295AC8A900848B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +162,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67E16C8629685E9500B0D384 /* StorageModel */ = {
+			isa = PBXGroup;
+			children = (
+				677D5E2529674BD5007FCAEB /* WorriedAloneModel.swift */,
+				67E16C872968F1AB00B0D384 /* WorriedTogetherModel.swift */,
+			);
+			path = StorageModel;
+			sourceTree = "<group>";
+		};
 		85E0A44729646DB30007C3CA /* WriteStepView */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,8 +389,13 @@
 		E7C69C2C295AD86000848B72 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				67E16C8629685E9500B0D384 /* StorageModel */,
 				673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */,
 				673315F02966D1AC00398AA5 /* StorageVC.swift */,
+				677D5E1E29672CF8007FCAEB /* AloneWorriedVC.swift */,
+				677D5E2029672E7C007FCAEB /* TogetherWorriedVC.swift */,
+				677D5E2329674168007FCAEB /* AloneWorriedCVC.swift */,
+				67E16C892968F2D700B0D384 /* TogetherWorriedCVC.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -483,7 +509,9 @@
 				E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
+				677D5E1F29672CF8007FCAEB /* AloneWorriedVC.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
+				677D5E2629674BD5007FCAEB /* WorriedAloneModel.swift in Sources */,
 				85E0A45129646E4B0007C3CA /* FifthStepView.swift in Sources */,
 				85E0A44D29646E390007C3CA /* ThirdStepView.swift in Sources */,
 				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
@@ -502,18 +530,19 @@
 				E7C69CDA2965551400848B72 /* BaseTargetType.swift in Sources */,
 				E7C69C18295AD71C00848B72 /* WriteAPI.swift in Sources */,
 				E7C69CCC29647C9700848B72 /* CategoryCVC.swift in Sources */,
-				E7C69CBD2962039700848B72 /* StorageVC.swift in Sources */,
 				85E0A44B29646E300007C3CA /* SecondStepView.swift in Sources */,
 				E7C69C9D29613F2700848B72 /* UIStackView+.swift in Sources */,
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
 				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
 				E7C69CCE29649EA900848B72 /* UICollectionVIew+.swift in Sources */,
+				677D5E2429674168007FCAEB /* AloneWorriedCVC.swift in Sources */,
 				E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */,
 				E7C69CD6296554F800848B72 /* GeneralResponse.swift in Sources */,
 				E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */,
 				85E0A44929646E280007C3CA /* FirstStepView.swift in Sources */,
 				E7C69CA52961407500848B72 /* String+.swift in Sources */,
+				67E16C882968F1AB00B0D384 /* WorriedTogetherModel.swift in Sources */,
 				E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */,
 				E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */,
 				E7C69C9729613A1400848B72 /* UIFont+.swift in Sources */,
@@ -521,13 +550,14 @@
 				E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */,
 				E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */,
 				E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */,
-				E7C69C16295AD70F00848B72 /* TogetherAPI.swift in Sources */,
+				67E16C8A2968F2D700B0D384 /* TogetherWorriedCVC.swift in Sources */,
 				E7C69CA329613FAA00848B72 /* UILabel+.swift in Sources */,
 				E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */,
 				E7C69CC22962099600848B72 /* UIViewController+.swift in Sources */,
 				E7C69CE32965566C00848B72 /* TogetherResponse.swift in Sources */,
 				E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */,
 				E7C69C9F29613F4800848B72 /* Adjusted+.swift in Sources */,
+				677D5E2129672E7C007FCAEB /* TogetherWorriedVC.swift in Sources */,
 				E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */,
 				E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */,
 				E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */,

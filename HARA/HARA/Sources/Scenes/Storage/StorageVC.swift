@@ -15,15 +15,25 @@ class StorageVC: UIViewController {
     
     private let segmentedControl = UnderlineSegmentedControl(items: ["혼자 고민", "함께 고민"])
     
-    private let worriedAloneVC = UIViewController().then {
-        $0.view.backgroundColor = .hBlue1
-    }
+    private let worriedAloneVC = AloneWorriedVC()
+    private let worriedTogetherVC = TogetherWorriedVC()
     
-//    self.addchild(vc1) - 뷰컨 안에 뷰컨 넣는 방법
+    private lazy var segmentedLineField : UITextField = {
+        let textField = UITextField(frame: CGRect(x: 30, y: 428, width: 333, height: 1))
+        textField.backgroundColor = .hBlue3
+        return textField
+    }()
     
-    private let worriedTogetherVC = UIViewController().then {
-        $0.view.backgroundColor = .hBlue2
-    }
+    lazy var gradient: CAGradientLayer = {
+        let gradient = CAGradientLayer()
+        gradient.type = .axial
+        gradient.colors = [
+            UIColor.hWhite.cgColor,
+            UIColor.hBlue3.cgColor        ]
+        gradient.locations = [0, 1]
+        return gradient
+    }()
+
 
     private let haraIcon = UIButton().then {
         $0.setImage(UIImage(named: "storage_logo"), for: .normal)
@@ -39,7 +49,6 @@ class StorageVC: UIViewController {
         $0.setImage(UIImage(named: "strorage_oneclick_btn"), for: .normal)
         $0.tintColor = .gray
     }
-    
     
     private lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil).then {
         $0.setViewControllers([self.dataViewControllers[0]], direction: .forward, animated: true)
@@ -61,13 +70,12 @@ class StorageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        gradient.frame = view.bounds
+        view.layer.addSublayer(gradient)
         setSegmentedControl()
         setLayout()
     }
 }
-
-
 extension StorageVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = self.dataViewControllers.firstIndex(of: viewController), index - 1 >= 0 // 만약, '(현재 viewcontroller의 index 번호) - 1' 이 0보다 크거나 같다면~
@@ -88,7 +96,6 @@ extension StorageVC: UIPageViewControllerDataSource, UIPageViewControllerDelegat
         else { return }
         self.currentPage = index
         self.segmentedControl.selectedSegmentIndex = index
-      
     }
 }
 
@@ -96,10 +103,9 @@ extension StorageVC {
     
     private func setLayout(){
         
-        [haraIcon, bellButton, setting, oneclickButton].forEach {
+        [haraIcon, bellButton, setting, segmentedLineField, oneclickButton].forEach {
             view.addSubview($0)
         }
-        
         
         self.view.addSubview(self.segmentedControl)
         self.view.addSubview(self.pageViewController.view)
@@ -118,6 +124,12 @@ extension StorageVC {
             $0.top.equalTo(70.adjustedH)
             $0.trailing.equalTo(44.adjustedW).inset(18.5)
         }
+        segmentedLineField.snp.makeConstraints{
+            $0.top.equalTo(oneclickButton.snp.bottom).offset(55)
+            $0.trailing.equalTo(2.adjustedW).inset(20)
+            $0.leading.equalTo(2.adjustedW).inset(20)
+            $0.height.equalTo(3)
+        }
         oneclickButton.snp.makeConstraints{
             $0.top.equalTo(haraIcon.snp.bottom).offset(10)
             $0.trailing.equalTo(2.adjustedW).inset(17)
@@ -133,10 +145,9 @@ extension StorageVC {
         pageViewController.view.snp.makeConstraints{
             $0.top.equalTo(segmentedControl.snp.bottom)
             $0.bottom.equalToSuperview().offset(-50)
-            $0.trailing.equalTo(2.adjustedW).inset(17)
-            $0.leading.equalTo(2.adjustedW).inset(17)
+            $0.trailing.equalTo(1.adjustedW).inset(9)
+            $0.leading.equalTo(1.adjustedW).inset(9)
         }
- 
     }
     
     private func setSegmentedControl(){
