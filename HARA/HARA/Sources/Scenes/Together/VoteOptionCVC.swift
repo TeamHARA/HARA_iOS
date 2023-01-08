@@ -26,14 +26,17 @@ class VoteOptionCVC: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                contentView.backgroundColor = .hBlue1
-                optionLabel.textColor = .hWhite
-                contentView.layer.borderWidth = 0
-            } else {
-                contentView.backgroundColor = .hWhite
+//                contentView.backgroundColor = .hBlue1
+                optionLabel.textColor = .hBlue1
                 contentView.layer.borderColor = UIColor.hBlue2.cgColor
                 contentView.layer.borderWidth = 1
-                optionLabel.textColor = .hBlue2
+                self.checkButton.isSelected = true
+            } else {
+                optionLabel.textColor = .hBlack
+                contentView.backgroundColor = .hWhite
+                contentView.layer.borderColor = UIColor.hGray4.cgColor
+                contentView.layer.borderWidth = 1
+                self.checkButton.isSelected = false
             }
         }
     }
@@ -65,16 +68,16 @@ class VoteOptionCVC: UICollectionViewCell {
     func setData(isSelected: Bool) {
         optionLabel.textColor = isSelected ? .hBlue1 : .hBlack
         checkButton.isSelected = isSelected
-        contentView.backgroundColor = isSelected ? .hBlue1 : .hGray4
+//        contentView.backgroundColor = isSelected ? .hBlue1 : .hGray4
     }
     
     // MARK: - UI
     private func setUI() {
-        contentView.backgroundColor = .hWhite
-        contentView.layer.borderColor = UIColor.hBlue2.cgColor
-        contentView.layer.borderWidth = 1
-        optionLabel.textColor = .hBlue2
         contentView.makeRounded(cornerRadius: 8)
+        contentView.backgroundColor = .hWhite
+        contentView.layer.borderColor = UIColor.hGray4.cgColor
+        contentView.layer.borderWidth = 1
+        optionLabel.textColor = .hBlack
     }
     
     // MARK: - Layout
