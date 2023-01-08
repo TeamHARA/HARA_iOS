@@ -22,7 +22,7 @@ class VoteOptionCVC: UICollectionViewCell {
         $0.font = .haraB3R14
         $0.text = "선택지 글자수 제한은 공백 포함 20"
     }
-    
+        
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -83,3 +83,5 @@ class VoteOptionCVC: UICollectionViewCell {
         }
     }
 }
+
+
