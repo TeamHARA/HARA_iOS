@@ -127,7 +127,7 @@ final class WorryCardCVC: UICollectionViewCell {
     
     private func setPressAction() {
         voteButton.press {
-            self.isVoted = true
+            self.isOptionSelected = true
             self.voteButton.backgroundColor = .hOrange3
             self.voteButton.layer.borderWidth = 0
             self.voteOptionCV.reloadData()
@@ -143,7 +143,7 @@ extension WorryCardCVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if isVoted {
+        if isOptionSelected {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VotedCVC.className, for: indexPath) as! VotedCVC
             cell.setPercentage(percentage: 50, isOptionVoted: true)
             return cell
