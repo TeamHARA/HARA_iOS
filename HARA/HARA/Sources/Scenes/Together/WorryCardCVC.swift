@@ -12,6 +12,8 @@ import Then
 final class WorryCardCVC: UICollectionViewCell {
     
     // MARK: - Properties
+    var isVoted = false
+    
     private let worryCategoryLabel = UILabel().then {
         $0.textColor = .hBlue1
         $0.font = .haraSub1Sb12
@@ -110,6 +112,7 @@ final class WorryCardCVC: UICollectionViewCell {
         voteOptionCV.delegate = self
         
         voteOptionCV.register(cell: VoteOptionCVC.self, forCellWithReuseIdentifier: VoteOptionCVC.className)
+        voteOptionCV.register(cell: VotedCVC.self, forCellWithReuseIdentifier: VotedCVC.className)
     }
     
     func setCellNums(optionNums: Int) {
@@ -124,24 +127,14 @@ final class WorryCardCVC: UICollectionViewCell {
     
     private func setPressAction() {
         voteButton.press {
-            self.voteButton.isSelected.toggle()
-            if self.voteButton.isSelected == true {
-                self.voteButton.backgroundColor = .hOrange3
-//                self.voteButton.setTitleColor(.hOrange1, for: .selected)
-                self.voteButton.layer.borderWidth = 0
-                print("선택")
-            }else {
-                self.voteButton.backgroundColor = .hWhite
-                self.voteButton.layer.borderColor = UIColor.hOrange3.cgColor
-                self.voteButton.layer.borderWidth = 1
-                self.voteButton.setTitleColor(.hOrange1, for: .normal)
-                print("비선택")
-            }
+            self.isVoted = true
+            self.voteButton.backgroundColor = .hOrange3
+            self.voteButton.layer.borderWidth = 0
+            self.voteOptionCV.reloadData()
         }
+        
     }
-    
 }
-
 // MARK: - UICollectionViewDataSource
 extension WorryCardCVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -149,9 +142,16 @@ extension WorryCardCVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //Todo: Cell만들기
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VoteOptionCVC.className, for: indexPath) as! VoteOptionCVC
-        return cell
+        
+        if isVoted {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VotedCVC.className, for: indexPath) as! VotedCVC
+            cell.setPercentage(percentage: 50, isOptionVoted: true)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VoteOptionCVC.className, for: indexPath) as! VoteOptionCVC
+            return cell
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -204,7 +204,7 @@ extension WorryCardCVC {
             $0.top.equalTo(worryContentLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(11)
             $0.trailing.equalToSuperview().inset(11)
-//            $0.bottom.equalToSuperview().inset(52)
+            //            $0.bottom.equalToSuperview().inset(52)
         }
         
         voteButton.snp.makeConstraints {

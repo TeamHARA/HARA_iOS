@@ -15,6 +15,7 @@ class VoteOptionCVC: UICollectionViewCell {
     private let checkButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named:"together_checked_icon"), for: .selected)
         $0.setBackgroundImage(UIImage(named:"together_unChecked_icon"), for: .normal)
+        $0.isUserInteractionEnabled = false
     }
     
     private let optionLabel = UILabel().then {
