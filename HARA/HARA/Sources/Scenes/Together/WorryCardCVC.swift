@@ -61,13 +61,21 @@ final class WorryCardCVC: UICollectionViewCell {
         section.interGroupSpacing = 10
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         
-        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40))
-        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize,elementKind:UICollectionView.elementKindSectionHeader,alignment: .bottom)
-        footer.pinToVisibleBounds = true
-        section.boundarySupplementaryItems = [footer]
-        
         return UICollectionViewCompositionalLayout(section: section)
     }()
+    
+    private var voteButton = UIButton().then {
+        $0.setTitle("투표하기", for: .normal)
+        $0.contentHorizontalAlignment = .center
+        $0.setTitleColor(.hOrange1, for: .normal)
+        $0.isEnabled = false
+        $0.setBackgroundColor(.hWhite, for: .disabled)
+        $0.setBackgroundColor(.hOrange3, for: .normal)
+        $0.makeRounded(cornerRadius: 8)
+        $0.layer.borderColor = UIColor.hOrange2.cgColor
+        $0.layer.borderWidth = 1
+    }
+    
     
     private let chatButton = UIButton().then {
         $0.setImage(UIImage(named: "together_chat_icon"), for: .normal)
@@ -88,6 +96,7 @@ final class WorryCardCVC: UICollectionViewCell {
         super.init(frame: .zero)
         setVoteOptionCV()
         setLayout()
+        setPressAction()
         self.contentView.backgroundColor = .green
     }
     
@@ -101,7 +110,6 @@ final class WorryCardCVC: UICollectionViewCell {
         voteOptionCV.delegate = self
         
         voteOptionCV.register(cell: VoteOptionCVC.self, forCellWithReuseIdentifier: VoteOptionCVC.className)
-        voteOptionCV.register(OptionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: OptionFooterView.className)
     }
     
     func setCellNums(optionNums: Int) {
@@ -112,6 +120,24 @@ final class WorryCardCVC: UICollectionViewCell {
         self.worryTitleLabel.text = title
         self.worryContentLabel.text = content
         self.worryContentLabel.sizeToFit()
+    }
+    
+    private func setPressAction() {
+        voteButton.press {
+            self.voteButton.isSelected.toggle()
+            if self.voteButton.isSelected == true {
+                self.voteButton.backgroundColor = .hOrange3
+//                self.voteButton.setTitleColor(.hOrange1, for: .selected)
+                self.voteButton.layer.borderWidth = 0
+                print("선택")
+            }else {
+                self.voteButton.backgroundColor = .hWhite
+                self.voteButton.layer.borderColor = UIColor.hOrange3.cgColor
+                self.voteButton.layer.borderWidth = 1
+                self.voteButton.setTitleColor(.hOrange1, for: .normal)
+                print("비선택")
+            }
+        }
     }
     
 }
@@ -133,32 +159,20 @@ extension WorryCardCVC: UICollectionViewDataSource {
         return CGSize(width: width, height: 40.adjustedH)
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: OptionFooterView.className, for: indexPath) as! OptionFooterView
-            return header
-        case UICollectionView.elementKindSectionFooter:
-            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: OptionFooterView.className, for: indexPath) as! OptionFooterView
-            /// optionCVC에서 protocol 생성해서 footer에서 채택
-            return footer
-        default:
-            return UICollectionReusableView()
-        }
-    }
 }
 // MARK: - UICollectionViewDelegate
 extension WorryCardCVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VoteOptionCVC.className, for: indexPath) as! VoteOptionCVC
         print("셀클릭\(indexPath.row)")
+        self.voteButton.isEnabled = true
     }
 }
 
 // MARK: - Layout
 extension WorryCardCVC {
     private func setLayout() {
-        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel,voteOptionCV, chatButton])
+        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel,voteOptionCV, voteButton, chatButton])
         
         worryCategoryLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(14)
@@ -190,16 +204,16 @@ extension WorryCardCVC {
             $0.top.equalTo(worryContentLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(11)
             $0.trailing.equalToSuperview().inset(11)
-            $0.bottom.equalToSuperview().inset(52)
+//            $0.bottom.equalToSuperview().inset(52)
         }
         
-        //        voteButton.snp.makeConstraints {
-        //            $0.leading.equalToSuperview().offset(11)
-        //            $0.trailing.equalToSuperview().inset(11)
-        //            $0.bottom.equalToSuperview().inset(52)
-        //            $0.top.equalTo(voteOptionCV.snp.bottom)
-        //            $0.height.equalTo(40.adjustedH)
-        //        }
+        voteButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(11)
+            $0.trailing.equalToSuperview().inset(11)
+            $0.bottom.equalToSuperview().inset(52)
+            $0.top.equalTo(voteOptionCV.snp.bottom)
+            $0.height.equalTo(40.adjustedH)
+        }
         
         chatButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(15)

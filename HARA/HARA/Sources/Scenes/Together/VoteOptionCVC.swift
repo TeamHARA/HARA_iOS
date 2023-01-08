@@ -43,14 +43,25 @@ class VoteOptionCVC: UICollectionViewCell {
         super.init(frame: .zero)
         setUI()
         setLayout()
+//        setPressAction()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //TODO: cell 클릭시 다른 셀 클릭해제
     // MARK: - Function
+//    func setPressAction() {
+//        self.checkButton.press {
+//            if self.isSelected == true{
+//                self.isSelected = false
+//            }else {
+//                self.isSelected = true
+//            }
+//
+//        }
+//    }
+    
     func setData(isSelected: Bool) {
         optionLabel.textColor = isSelected ? .hBlue1 : .hBlack
         checkButton.isSelected = isSelected
