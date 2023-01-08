@@ -163,8 +163,6 @@ extension WorryCardCVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension WorryCardCVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VoteOptionCVC.className, for: indexPath) as! VoteOptionCVC
-        print("셀클릭\(indexPath.row)")
         self.voteButton.isEnabled = true
     }
 }
