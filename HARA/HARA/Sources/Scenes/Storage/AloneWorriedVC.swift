@@ -12,11 +12,11 @@ import Moya
 
 
 class AloneWorriedVC: UIViewController {
-            
+
+    // MARK: - Properties 변수 선언
     private let worriedAllButton = UIButton().then {
         $0.setImage(UIImage(named: "storage_ing_all"), for: .normal)
     }
-    
     private let editButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.setTitleColor(.hBlack, for: .normal)
@@ -58,44 +58,35 @@ class AloneWorriedVC: UIViewController {
     final let aloneItemSpacing: CGFloat = 19
     final let aloneCellHeight: CGFloat = 100
     
-    var worriedList: [WorriedAloneModel] = [
-        WorriedAloneModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
-        WorriedAloneModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedAloneModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedAloneModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedAloneModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedAloneModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25")
+    var aloneList: [AloneWorriedModel] = [
+        AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
+        AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
+        AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
+        AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
+        AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
+        AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
+        AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
+
     ]
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
-        cellView()
-        register()
+        registerCVC()
     }
 }
 
-
 extension AloneWorriedVC {
-    // 수직 스크롤이라는 가정 하에, rowCount는 몇개의 행을 사용할지를 저장한 변수
+    /// 수직 스크롤이라는 가정 하에, rowCount는 몇개의 행을 사용할지를 저장한 변수
 
-    private func cellView() {
-        view.backgroundColor = .clear
-        view.addSubview(aloneCollectionView)
-        aloneCollectionView.snp.makeConstraints{
-            $0.top.equalTo(40.adjustedH)
-            $0.trailing.equalTo(2.adjustedW).inset(7)
-            $0.leading.equalTo(2.adjustedW).inset(3)
-            $0.height.equalTo(calculateCellHeight())
-        }
-    }
-    private func register() {
+    private func registerCVC() {
         aloneCollectionView.register(
             AloneWorriedCVC.self, forCellWithReuseIdentifier: AloneWorriedCVC.identifier)
     }
     
     private func calculateCellHeight() -> CGFloat{
-        let counting = CGFloat(worriedList.count)
+        let counting = CGFloat(aloneList.count)
 //        let heightCount = counting / 3 + counting.truncatingRemainder(dividingBy: 3)
 //        return counting * aloneCellHeight + (counting - 1) * aloneLineSpacing + aloneInset.top + aloneInset.bottom
         return counting * aloneCellHeight
@@ -105,7 +96,6 @@ extension AloneWorriedVC {
 
 
 // MARK: - UICollectionViewDelegateFlowLayout
-
 extension AloneWorriedVC: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -126,20 +116,20 @@ extension AloneWorriedVC: UICollectionViewDelegateFlowLayout{
 
 
 
-// MARK: -UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 extension AloneWorriedVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return worriedList.count
+        return aloneList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let aloneCell = collectionView.dequeueReusableCell(withReuseIdentifier: AloneWorriedCVC.identifier, for: indexPath) as? AloneWorriedCVC else { return UICollectionViewCell() }
-        aloneCell.dataBind(model: worriedList[indexPath.item])
+        aloneCell.dataBind(model: aloneList[indexPath.item])
         return aloneCell
     }
 }
 
-//MARK: Layout
+// MARK: Layout
 extension AloneWorriedVC {
     private func setLayout() {
         view.addSubview(aloneCollectionView)
@@ -154,7 +144,15 @@ extension AloneWorriedVC {
             $0.top.equalTo(10.adjustedH)
             $0.trailing.equalTo(2.adjustedW).inset(12)
         }
+        view.backgroundColor = .clear
+        view.addSubview(aloneCollectionView)
+        aloneCollectionView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(40.adjustedH)
+            $0.trailing.equalToSuperview().offset(-5)
+            $0.leading.equalTo(2.adjustedW).inset(3)
+            $0.height.equalTo(calculateCellHeight())
+        }
     }
-}
-
     
+    
+}

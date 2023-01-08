@@ -12,16 +12,15 @@ import Then
 
 class TogetherWorriedVC: UIViewController {
     
+    // MARK: - Properties 변수 선언
     private let worriedAllButton2 = UIButton().then {
         $0.setImage(UIImage(named: "storage_ing_all"), for: .normal)
     }
-    
     private let editButton2 = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.setTitleColor(.hBlack, for: .normal)
         $0.titleLabel?.font = .haraB2M14
     }
-    
     private lazy var aloneCollectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -43,19 +42,18 @@ class TogetherWorriedVC: UIViewController {
     final let aloneItemSpacing: CGFloat = 19
     final let aloneCellHeight: CGFloat = 100
     
-    var worriedList2: [WorriedTogetherModel] = [
-        WorriedTogetherModel(worring2: "storage_ing", categoryTitle2: "일상", mainText2: "인생 뭐 있나요", date2: "2022.12.25"),
-        WorriedTogetherModel(worring2: "storage_ing", categoryTitle2: "일상", mainText2: "제일 중요한 건 꺾이지 않는 마음", date2: "2022.12.25"),
-        WorriedTogetherModel(worring2: "storage_ing", categoryTitle2: "일상", mainText2: "멍멍멍", date2: "2022.12.25"),
-        WorriedTogetherModel(worring2: "storage_ing", categoryTitle2: "일상", mainText2: "으르릉르릉", date2: "2022.12.25"),
-        WorriedTogetherModel(worring2: "storage_ing", categoryTitle2: "일상", mainText2: "크르르르르를", date2: "2022.12.25"),
-        WorriedTogetherModel(worring2: "storage_ing", categoryTitle2: "일상", mainText2: "왈왈왈왈왈왈왈", date2: "2022.12.25"),
-        WorriedTogetherModel(worring2: "storage_ing", categoryTitle2: "일상", mainText2: "월월월월월", date2: "2022.12.25")
-        
-        
+    var togetherList: [TogetherWorriedModel] = [
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "중요한 건 꺾이지 않는 마음", date: "2022.12.25"),
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "즐거운 삶", date: "2022.12.25"),
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "중요한 건 꺾이지 않는 마음", date: "2022.12.25"),
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "즐거운 삶", date: "2022.12.25"),
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "중요한 건 꺾이지 않는 마음", date: "2022.12.25"),
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "즐거운 삶", date: "2022.12.25"),
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "중요한 건 꺾이지 않는 마음", date: "2022.12.25"),
+        TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "즐거운 삶", date: "2022.12.25"),
     ]
     
-    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
@@ -64,11 +62,9 @@ class TogetherWorriedVC: UIViewController {
     }
 }
 
-
-
+// MARK: - Layout
 extension TogetherWorriedVC {
-    // 수직 스크롤이라는 가정 하에, rowCount는 몇개의 행을 사용할지를 저장한 변수
-
+    /// 수직 스크롤이라는 가정 하에, rowCount는 몇개의 행을 사용할지를 저장한 변수
     private func cellView() {
         view.backgroundColor = .clear
         view.addSubview(aloneCollectionView)
@@ -85,7 +81,7 @@ extension TogetherWorriedVC {
     }
     
     private func calculateCellHeight() -> CGFloat{
-        let counting = CGFloat(worriedList2.count)
+        let counting = CGFloat(togetherList.count)
 //        let heightCount = counting / 3 + counting.truncatingRemainder(dividingBy: 3)
 //        return counting * aloneCellHeight + (counting - 1) * aloneLineSpacing + aloneInset.top + aloneInset.bottom
         return counting * aloneCellHeight
@@ -95,7 +91,6 @@ extension TogetherWorriedVC {
 
 
 // MARK: - UICollectionViewDelegateFlowLayout
-
 extension TogetherWorriedVC: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -114,21 +109,17 @@ extension TogetherWorriedVC: UICollectionViewDelegateFlowLayout{
 //    }
 }
 
-
-
 // MARK: -UICollectionViewDataSource
 extension TogetherWorriedVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return worriedList2.count
+        return togetherList.count
     }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let aloneCell = collectionView.dequeueReusableCell(withReuseIdentifier: TogetherWorriedCVC.identifier2, for: indexPath) as? TogetherWorriedCVC else { return UICollectionViewCell() }
-        aloneCell.dataBind(model: worriedList2[indexPath.item])
+        aloneCell.dataBind(model: togetherList[indexPath.item])
         return aloneCell
     }
 }
-
 
 //MARK: Layout
 extension TogetherWorriedVC {
