@@ -20,6 +20,7 @@ extension CGFloat {
         return self * ratio
     }
     
+    
     var adjustedH: CGFloat {
         let ratio: CGFloat = UIScreen.main.bounds.height / 812
         return self * ratio
