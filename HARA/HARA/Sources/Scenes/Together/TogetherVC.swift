@@ -23,17 +23,46 @@ final class TogetherVC: UIViewController {
         $0.collectionViewLayout = layout
     }
     
-    private let worryCardCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.backgroundColor = .clear
-        $0.showsVerticalScrollIndicator = false
-        $0.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
-    }
+    private lazy var worryCardCV: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.compositionalLayout)
+        view.backgroundColor = .blue
+        view.showsVerticalScrollIndicator = false
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        return view
+    }()
     
     private let categoryTitles = ["전체", "일상", "연애", "패션/뷰티", "커리어", "운동", "여행", "기타"]
     
     /// 고민의 개수
     private var worryNums = 10
+    private var worryTitles = ["고민1"]
+    private var worryContents = ["dsfsdfdsfdsf"]
     
+    /// 선택지의 개수
+    private var optionNums = 4
+    
+    private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
+        let calculatedHeight = Double((self.optionNums*50 + 225)).adjustedH
+        let estimatedHeight = CGFloat(calculatedHeight)
+        let layoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(estimatedHeight))
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, repeatingSubitem: item, count: 1)
+        
+//            item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
+//            item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        
+//            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+//            group.interItemSpacing = .flexible(-16)
+//
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+//        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }()
+    
+    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
@@ -58,6 +87,14 @@ final class TogetherVC: UIViewController {
         
         worryCardCV.register(cell: WorryCardCVC.self, forCellWithReuseIdentifier: WorryCardCVC.className)
     }
+    
+    func calculateLabelHeight(index: Int) -> CGFloat {
+        let label = UILabel()
+        label.text = worryContents[index]
+        label.font = .haraB2M14
+        return label.frame.height
+    }
+
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension TogetherVC: UICollectionViewDelegateFlowLayout {
@@ -71,13 +108,21 @@ extension TogetherVC: UICollectionViewDelegateFlowLayout {
             let cellHeight = CGFloat(31)
             return CGSize(width: cellWidth, height: cellHeight)
         }else {
-            /// cell의 높이 값이 0이 나와서 상수에 adjustedH쓰는 것으로 대체
-//            let sizingCell = WorryCardCVC()
-//            let height = sizingCell.contentView.frame.height
-            return CGSize(width: CGFloat(336.adjustedW), height: CGFloat(383.adjustedH))
+            
+//            let width = collectionView.frame.width
+//
+//            let contentHeight = calculateCellWidth(index: 0)
+//
+//            print("높이\(contentHeight)")
+//
+//            let height = CGFloat(optionNums*50 + Int(contentHeight) + 185)
+//
+//            return CGSize(width: width, height: height)
+            return .zero
         }
     }
 }
+
 
 // MARK: - UICollectionViewDataSource
 extension TogetherVC: UICollectionViewDataSource {
@@ -102,6 +147,10 @@ extension TogetherVC: UICollectionViewDataSource {
             return cell
         }else if collectionView == worryCardCV {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorryCardCVC.className, for: indexPath) as? WorryCardCVC else { return UICollectionViewCell() }
+            
+            /// VC의 optionNums를 cell의 optionNums에 전달
+            cell.setCellNums(optionNums: self.optionNums)
+            cell.setData(title: worryTitles[0], content: worryContents[0])
             return cell
         }else {
             return UICollectionViewCell()
@@ -137,3 +186,4 @@ extension TogetherVC {
     }
     
 }
+
