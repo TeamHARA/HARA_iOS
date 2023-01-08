@@ -12,8 +12,8 @@
 		677D5E1F29672CF8007FCAEB /* AloneWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E1E29672CF8007FCAEB /* AloneWorriedVC.swift */; };
 		677D5E2129672E7C007FCAEB /* TogetherWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E2029672E7C007FCAEB /* TogetherWorriedVC.swift */; };
 		677D5E2429674168007FCAEB /* AloneWorriedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E2329674168007FCAEB /* AloneWorriedCVC.swift */; };
-		677D5E2629674BD5007FCAEB /* WorriedAloneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E2529674BD5007FCAEB /* WorriedAloneModel.swift */; };
-		67E16C882968F1AB00B0D384 /* WorriedTogetherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E16C872968F1AB00B0D384 /* WorriedTogetherModel.swift */; };
+		677D5E2629674BD5007FCAEB /* AloneWorriedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677D5E2529674BD5007FCAEB /* AloneWorriedModel.swift */; };
+		67E16C882968F1AB00B0D384 /* TogetherWorriedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E16C872968F1AB00B0D384 /* TogetherWorriedModel.swift */; };
 		67E16C8A2968F2D700B0D384 /* TogetherWorriedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67E16C892968F2D700B0D384 /* TogetherWorriedCVC.swift */; };
 		85E0A44929646E280007C3CA /* FirstStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstStepView.swift */; };
 		85E0A44B29646E300007C3CA /* SecondStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondStepView.swift */; };
@@ -83,8 +83,8 @@
 		677D5E1E29672CF8007FCAEB /* AloneWorriedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AloneWorriedVC.swift; sourceTree = "<group>"; };
 		677D5E2029672E7C007FCAEB /* TogetherWorriedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherWorriedVC.swift; sourceTree = "<group>"; };
 		677D5E2329674168007FCAEB /* AloneWorriedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AloneWorriedCVC.swift; sourceTree = "<group>"; };
-		677D5E2529674BD5007FCAEB /* WorriedAloneModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorriedAloneModel.swift; sourceTree = "<group>"; };
-		67E16C872968F1AB00B0D384 /* WorriedTogetherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorriedTogetherModel.swift; sourceTree = "<group>"; };
+		677D5E2529674BD5007FCAEB /* AloneWorriedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AloneWorriedModel.swift; sourceTree = "<group>"; };
+		67E16C872968F1AB00B0D384 /* TogetherWorriedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherWorriedModel.swift; sourceTree = "<group>"; };
 		67E16C892968F2D700B0D384 /* TogetherWorriedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherWorriedCVC.swift; sourceTree = "<group>"; };
 		85E0A44829646E280007C3CA /* FirstStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstStepView.swift; sourceTree = "<group>"; };
 		85E0A44A29646E300007C3CA /* SecondStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondStepView.swift; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 		67E16C8629685E9500B0D384 /* StorageModel */ = {
 			isa = PBXGroup;
 			children = (
-				677D5E2529674BD5007FCAEB /* WorriedAloneModel.swift */,
-				67E16C872968F1AB00B0D384 /* WorriedTogetherModel.swift */,
+				677D5E2529674BD5007FCAEB /* AloneWorriedModel.swift */,
+				67E16C872968F1AB00B0D384 /* TogetherWorriedModel.swift */,
 			);
 			path = StorageModel;
 			sourceTree = "<group>";
@@ -511,7 +511,7 @@
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
 				677D5E1F29672CF8007FCAEB /* AloneWorriedVC.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
-				677D5E2629674BD5007FCAEB /* WorriedAloneModel.swift in Sources */,
+				677D5E2629674BD5007FCAEB /* AloneWorriedModel.swift in Sources */,
 				85E0A45129646E4B0007C3CA /* FifthStepView.swift in Sources */,
 				85E0A44D29646E390007C3CA /* ThirdStepView.swift in Sources */,
 				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
@@ -542,7 +542,7 @@
 				E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */,
 				85E0A44929646E280007C3CA /* FirstStepView.swift in Sources */,
 				E7C69CA52961407500848B72 /* String+.swift in Sources */,
-				67E16C882968F1AB00B0D384 /* WorriedTogetherModel.swift in Sources */,
+				67E16C882968F1AB00B0D384 /* TogetherWorriedModel.swift in Sources */,
 				E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */,
 				E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */,
 				E7C69C9729613A1400848B72 /* UIFont+.swift in Sources */,

@@ -7,11 +7,9 @@
 
 import Foundation
 
-struct WorriedAloneModel {
-    
+struct AloneWorriedModel {
     let worring : String
     let categoryTitle : String
     let mainText : String
     let date : String
-    
 }
