@@ -28,12 +28,12 @@ class FirstWriteStepView: UIViewController{
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
-        let BoldString = NSAttributedString(string: "무엇", attributes: [
+        let boldString = NSAttributedString(string: "무엇", attributes: [
             .font: UIFont.haraM1B24])
-        let NormalString = NSAttributedString(string: "에 대해\n고민중인가요?", attributes: [
+        let normalString = NSAttributedString(string: "에 대해\n고민중인가요?", attributes: [
             .font: UIFont.haraM1M24])
         
-        let title = BoldString + NormalString
+        let title = boldString + normalString
         $0.attributedText = title
     }
     

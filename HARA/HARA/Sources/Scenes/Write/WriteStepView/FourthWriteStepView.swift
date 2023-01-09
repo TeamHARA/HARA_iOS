@@ -28,14 +28,14 @@ class FourthWriteStepView: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
-        let NormalString1 = NSAttributedString(string: "고민의 ", attributes: [
+        let normalString1 = NSAttributedString(string: "고민의 ", attributes: [
             .font: UIFont.haraM1M24])
-        let BoldString = NSAttributedString(string: "카테고리", attributes: [
+        let boldString = NSAttributedString(string: "카테고리", attributes: [
             .font: UIFont.haraM1B24])
-        let NormalString2 = NSAttributedString(string: "를\n정해주세요.", attributes: [
+        let normalString2 = NSAttributedString(string: "를\n정해주세요.", attributes: [
             .font: UIFont.haraM1M24])
         
-        let title = NormalString1 + BoldString + NormalString2
+        let title = normalString1 + boldString + normalString2
         $0.attributedText = title
     }
     

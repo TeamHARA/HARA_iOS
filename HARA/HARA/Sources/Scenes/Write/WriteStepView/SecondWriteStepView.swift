@@ -31,12 +31,12 @@ class SecondWriteStepView: UIViewController{
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
-        let BoldString = NSAttributedString(string: "고민되는 선택지", attributes: [
+        let boldString = NSAttributedString(string: "고민되는 선택지", attributes: [
             .font: UIFont.haraM1B24])
-        let NormalString = NSAttributedString(string: "를\n적어주세요.", attributes: [
+        let normalString = NSAttributedString(string: "를\n적어주세요.", attributes: [
             .font: UIFont.haraM1M24])
         
-        let title = BoldString + NormalString
+        let title = boldString + normalString
         $0.attributedText = title
     }
 
