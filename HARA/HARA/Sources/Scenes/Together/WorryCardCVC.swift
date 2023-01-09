@@ -33,16 +33,35 @@ class WorryCardCVC: UICollectionViewCell {
     private let worryContentLabel = UILabel().then {
         $0.textColor = .hBlack
         $0.font = .haraB2M14
-        $0.text = "1. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세 2. 남산 위에 저 소나무 철갑을 두른 듯 바람 서리 불변함은 우리 기상일세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세 3. 가을 하늘 공활한데 ..."
+        $0.text = "1. 동해물과 백두산이 마"
         $0.numberOfLines = 0
     }
     
-    private let voteOptionCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-        $0.isScrollEnabled = false
-        $0.backgroundColor = .yellow
-        $0.showsHorizontalScrollIndicator = false
-        $0.contentInset = UIEdgeInsets.zero
-    }
+    private lazy var voteOptionCV: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.compositionalLayout)
+        view.isScrollEnabled = false
+        view.backgroundColor = .yellow
+        view.showsHorizontalScrollIndicator = false
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return view
+    }()
+    
+    private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+//        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
+//        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+//            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+//            group.interItemSpacing = .flexible(-16)
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 10
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }()
     
     private let voteButton = UIButton().then {
         $0.setTitle("투표하기", for: .normal)
@@ -58,24 +77,28 @@ class WorryCardCVC: UICollectionViewCell {
     private let chatButton = UIButton().then {
         $0.setImage(UIImage(named: "together_chat_icon"), for: .normal)
         var config = UIButton.Configuration.plain()
-        config.imagePadding = 5
+        config.imagePadding = 2
+        config.contentInsets = NSDirectionalEdgeInsets.zero
         $0.configuration = config
+        
         let attribute = [NSAttributedString.Key.font: UIFont.haraSub3R12, NSAttributedString.Key.foregroundColor: UIColor.hGray3 ]
         let attributedTitle = NSAttributedString(string: "10", attributes: attribute)
         $0.setAttributedTitle(attributedTitle, for: .normal)
     }
     
+    private var optionNums = 2
+
     // MARK: - View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        setvoteOptionCV()
+        setVoteOptionCV()
         setLayout()
         setPressAction()
+        self.contentView.backgroundColor = .green
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-        
     }
     
     // MARK: - Function
@@ -85,70 +108,29 @@ class WorryCardCVC: UICollectionViewCell {
         }
     }
     
-    private func setvoteOptionCV() {
+    private func setVoteOptionCV() {
         voteOptionCV.dataSource = self
         voteOptionCV.delegate = self
         
         voteOptionCV.register(cell: VoteOptionCVC.self, forCellWithReuseIdentifier: VoteOptionCVC.className)
     }
-
     
-    // MARK: - Layout
-    private func setLayout() {
-        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel,voteOptionCV,voteButton, chatButton])
+    func setCellNums(optionNums: Int) {
+        self.optionNums = optionNums
+    }
         
-        worryCategoryLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(14)
-            $0.top.equalToSuperview().offset(16)
-        }
-        
-        worryDateLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().inset(14)
-        }
-        
-        worryTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(worryCategoryLabel.snp.bottom).offset(14)
-            $0.leading.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().inset(14)
-        }
-
-        worryContentLabel.snp.makeConstraints {
-            $0.top.equalTo(worryTitleLabel.snp.bottom).offset(8)
-            $0.leading.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().inset(14)
-//            $0.height.equalTo(110.adjustedH)
-        }
-        
-        voteOptionCV.snp.makeConstraints {
-            $0.top.equalTo(worryContentLabel.snp.bottom).offset(10)
-            $0.directionalHorizontalEdges.equalToSuperview()
-            $0.height.equalTo(90)
-        }
-        
-        voteButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(15)
-            $0.trailing.equalToSuperview().inset(15)
-            $0.bottom.equalToSuperview().inset(52)
-            $0.height.equalTo(40.adjustedH)
-        }
-
-        chatButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(15)
-            $0.bottom.equalToSuperview().inset(16)
-//            $0.width.equalTo(39.adjustedW)
-//            $0.height.equalTo(24.adjustedH)
-        }
-        
-        
-        
+    func setData(title: String, content: String) {
+        self.worryTitleLabel.text = title
+        self.worryContentLabel.text = content
+        self.worryContentLabel.sizeToFit()
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension WorryCardCVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        print(optionNums)
+        return optionNums
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -158,15 +140,71 @@ extension WorryCardCVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 312.adjustedW, height: 40.adjustedH)
+        let width = collectionView.frame.width
+        return CGSize(width: width, height: 40.adjustedH)
     }
-    
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension WorryCardCVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+}
 
+// MARK: - Layout
+extension WorryCardCVC {
+    private func setLayout() {
+        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel,voteOptionCV,voteButton, chatButton])
+        
+        worryCategoryLabel.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(14)
+            $0.top.equalToSuperview().offset(16)
+            $0.height.equalTo(14)
+        }
+        
+        worryDateLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().inset(14)
+            $0.height.equalTo(14)
+        }
+        
+        worryTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(44)
+            $0.leading.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().inset(14)
+            $0.height.equalTo(19.adjustedH)
+        }
+
+        worryContentLabel.snp.makeConstraints {
+            $0.top.equalTo(worryTitleLabel.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().inset(14)
+//            $0.height.equalTo(66.adjustedH)
+        }
+        
+        voteOptionCV.snp.makeConstraints {
+            $0.top.equalTo(worryContentLabel.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(11)
+            $0.trailing.equalToSuperview().inset(11)
+//            $0.bottom.equalTo(voteButton.snp.top).inset(10)
+        }
+        
+        voteButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(11)
+            $0.trailing.equalToSuperview().inset(11)
+            $0.bottom.equalToSuperview().inset(52)
+            $0.top.equalTo(voteOptionCV.snp.bottom)
+            $0.height.equalTo(40.adjustedH)
+        }
+
+        chatButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(15)
+            $0.top.equalTo(voteButton.snp.bottom).offset(12)
+            $0.width.equalTo(39.adjustedW)
+            $0.height.equalTo(24.adjustedH)
+        }
+    }
 }
 
 
