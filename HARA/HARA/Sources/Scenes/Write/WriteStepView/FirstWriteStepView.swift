@@ -11,6 +11,13 @@ import Then
 
 class FirstWriteStepView: UIViewController{
     
+    // MARK: - Properties
+    private let background = UIImageView().then {
+        $0.image = UIImage(named: "background")
+        $0.contentMode = .scaleToFill
+        $0.backgroundColor = .clear
+    }
+    
     lazy var navigationView = UIView().then{
         $0.backgroundColor = .hBlue4
     }
@@ -20,22 +27,111 @@ class FirstWriteStepView: UIViewController{
     }
     
     private let questionLabel = UILabel().then{
-        $0.numberOfLines = 3
-        $0.text = "Q.\n내 고민의\n제목이 무엇인가요?"
-        $0.font = .haraM1M24
+        $0.numberOfLines = 2
+        let BoldString = NSAttributedString(string: "무엇", attributes: [
+            .font: UIFont.haraM1B24])
+        let NormalString = NSAttributedString(string: "에 대해\n고민중인가요?", attributes: [
+            .font: UIFont.haraM1M24])
+        
+        let title = BoldString + NormalString
+        $0.attributedText = title
     }
     
+    let titleletterNumLabel = UILabel().then {
+        $0.text = "0/25"
+        $0.font = .haraB3R14
+        $0.textColor = .hGray3
+        $0.textAlignment = .right
+    }
+    
+    private let titleTextField = UITextField().then{
+        $0.borderStyle = .none
+        $0.layer.borderColor = UIColor.clear.cgColor
+        $0.layer.borderWidth = 1
+        $0.backgroundColor = .clear
+        $0.placeholder = "고민의 제목을 입력해주세요."
+        $0.font = .haraM2M18
+        $0.textColor = .hGray3
+//        let paddingView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 33.adjustedH))
+//        $0.leftView = paddingView
+//        $0.leftViewMode = .always
+    }
+    
+    private let editImage = UIImageView().then {
+        $0.image = UIImage(named: "editBtn")
+        $0.contentMode = .scaleToFill
+        $0.backgroundColor = .clear
+    }
+    
+    private let titleUnderLine = UIView().then{
+        $0.backgroundColor = .hBlue2
+    }
+    
+    let placeholder = "고민에 대해 더 자세히 적어주세요."
+    
+    let infoTextView = UITextView().then {
+        $0.font = .haraH2M16
+        $0.textColor = .hGray3
+        $0.layer.cornerRadius = 12
+        $0.layer.borderColor = UIColor.hBlue3.cgColor
+        $0.layer.borderWidth = 1
+        $0.backgroundColor = .clear
+        $0.textContainerInset = UIEdgeInsets(top: 14.adjustedH, left: 12.adjustedW, bottom: 14.adjustedH, right: 12.adjustedW)
+    }
+    
+    let detailletterNumLabel = UILabel().then {
+        $0.text = "0/300"
+        $0.font = .haraB3R14
+        $0.textColor = .hGray3
+        $0.textAlignment = .right
+    }
+    
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = .hGray1
+        self.view.backgroundColor = .white
+        titleTextField.delegate = self
+        titleTextField.returnKeyType = .done
         setLayout()
+        setKeyboardLocation()
+        setupTextView()
+        //textFieldShouldReturn(titleTextField)
+    }
+    
+    // MARK: - Function
+    private func setKeyboardLocation() {
+        /// 등록
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShown(_:)),name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeHidden(_:)),name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    /// 키보드가 보일때 화면을 위로 160 만큼 올린다.
+    @objc func keyboardWillShown(_ notificiation: NSNotification) {
+      self.view.frame = CGRect(x: 0, y: -110, width: self.view.frame.size.width, height: self.view.frame.size.height)
+    }
+     
+    /// 키보드가 사라질때 화면을 다시 원복한다.
+    @objc func keyboardWillBeHidden(_ notification: NSNotification) {
+      self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
+    }
+    
+    func setupTextView() {
+        infoTextView.delegate = self
+        infoTextView.text = placeholder /// 초반 placeholder 생성
+        infoTextView.textColor = .hGray3 /// 초반 placeholder 색상 설정
     }
 }
 
+// MARK: - Layout
 extension FirstWriteStepView{
     private func setLayout(){
-        view.addSubViews([navigationView, progressView])
+        view.addSubViews([background, navigationView, progressView, questionLabel, titleletterNumLabel, titleTextField, editImage, titleUnderLine,
+                          infoTextView, detailletterNumLabel])
+        
+        background.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+        }
         
         navigationView.snp.makeConstraints{
             $0.top.equalToSuperview()
@@ -50,112 +146,128 @@ extension FirstWriteStepView{
             $0.height.equalTo(4.adjustedH)
             $0.width.equalTo((UIScreen.main.bounds.size.width/4))
         }
+        
+        questionLabel.snp.makeConstraints{
+            $0.top.equalTo(progressView.snp.bottom).offset(70.adjustedH)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+        }
+        
+        titleletterNumLabel.snp.makeConstraints {
+            $0.top.equalTo(titleUnderLine.snp.bottom).offset(3.adjustedH)
+            $0.trailing.equalToSuperview().offset(-20.adjustedW)
+        }
+        
+        titleTextField.snp.makeConstraints{
+            $0.top.equalTo(questionLabel.snp.bottom).offset(34.adjustedH)
+            $0.leading.equalToSuperview().offset(18.adjustedW)
+            $0.trailing.equalToSuperview().offset(-40.adjustedW)
+            $0.height.equalTo(32.adjustedH)
+        }
+        
+        editImage.snp.makeConstraints{
+            $0.trailing.equalToSuperview().offset(-18.adjustedW)
+            $0.centerY.equalTo(titleTextField)
+            $0.width.equalTo(17.adjustedW)
+            $0.height.equalTo(17.adjustedH)
+        }
+        
+        titleUnderLine.snp.makeConstraints{
+            $0.top.equalTo(titleTextField.snp.bottom).offset(5.adjustedH)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
+            $0.height.equalTo(1)
+        }
+        
+        infoTextView.snp.makeConstraints{
+            $0.top.equalTo(titleUnderLine.snp.bottom).offset(38.adjustedH)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
+            $0.height.equalTo(314.adjustedH)
+        }
+        
+        detailletterNumLabel.snp.makeConstraints{
+            $0.bottom.equalTo(infoTextView.snp.bottom).offset(-16.adjustedH)
+            $0.trailing.equalTo(infoTextView.snp.trailing).offset(-16.adjustedW)
+        }
     }
 }
 
-//
-//class FirstStepView: UIView{
-//    
-//    let scrollView = UIScrollView().then {
-//        $0.backgroundColor = .clear
+// MARK: - UITextFieldDelegate
+extension FirstWriteStepView: UITextFieldDelegate {
+//    /// ✅ textField 에서 편집을 시작한 후
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        /// 키보드 업
+//        textField.becomeFirstResponder()
+//        /// 입력 시 textField 를 강조하기 위한 테두리 설정
+//        textField.layer.borderWidth = 1
+//        textField.layer.borderColor = UIColor.red.cgColor
 //    }
-//    
-//    let contentView = UIView().then{
-//        $0.backgroundColor = .clear
-//    }
-//    
-//
-//
-//    private let titleTextField = UITextField().then {
-//        $0.placeholder = "제목을 입력하세요"
-//        $0.font = .systemFont(ofSize: 18.adjustedW, weight: .bold)
-//        $0.borderStyle = .roundedRect
-//    }
-//
-//    private let mainTextField = UITextField().then {
-//        $0.placeholder = "어떤 내용을 입력할건가요?"
-//        $0.font = .systemFont(ofSize: 16.adjustedW, weight: .medium)
-//        $0.borderStyle = .roundedRect
-//    }
-//    
-//    private let pracTextField = UITextField().then {
-//        $0.placeholder = "어떤 내용을 입력할건가요?"
-//        $0.font = .systemFont(ofSize: 16.adjustedW, weight: .medium)
-//        $0.borderStyle = .roundedRect
-//    }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.navigationController?.navigationBar.isHidden = true
-//        self.view.backgroundColor = .white
-//        setLayout()
-//        setContentViewFlow()
-//        addTapGesture()
-//    }
-//}
-//
-//
-//        
-//        view.addSubview(scrollView)
-//        scrollView.addSubview(contentView)
-//        
-//        scrollView.snp.makeConstraints{
-//            $0.edges.equalTo(self.view.safeAreaLayoutGuide)
-//        }
-//        contentView.snp.makeConstraints{
-//            $0.edges.equalTo(scrollView.contentLayoutGuide)
-//        }
-//        
-//        contentView.addSubViews([closeButton, titleLabel,
-//                               titleTextField, mainTextField, pracTextField])
-//        
-//        closeButton.snp.makeConstraints{
-//            $0.top.equalToSuperview().offset(13.adjustedH)
-//            $0.leading.equalToSuperview().offset(16.adjustedW)
-//            $0.width.equalTo(24.adjustedW)
-//            $0.height.equalTo(24.adjustedH)
-//        }
-//        titleLabel.snp.makeConstraints{
-//            $0.top.equalToSuperview().offset(15)
-//            $0.centerX.equalToSuperview()
-//        }
-//        titleTextField.snp.makeConstraints {
-//            $0.top.equalTo(closeButton.snp.bottom).offset(90.adjustedH)
-//            $0.leading.equalToSuperview().offset(16.adjustedW)
-//            $0.trailing.equalToSuperview().offset(-16.adjustedW)
-//            $0.height.equalTo(40.adjustedH)
-//        }
-//        mainTextField.snp.makeConstraints {
-//            $0.top.equalTo(closeButton.snp.bottom).offset(144.adjustedH)
-//            $0.leading.equalToSuperview().offset(16.adjustedW)
-//            $0.trailing.equalToSuperview().offset(-16.adjustedW)
-//            $0.height.equalTo(156.adjustedH)
-//        }
-//        pracTextField.snp.makeConstraints {
-//            $0.top.equalTo(closeButton.snp.bottom).offset(300.adjustedH)
-//            $0.leading.equalToSuperview().offset(16.adjustedW)
-//            $0.trailing.equalToSuperview().offset(-16.adjustedW)
-//            $0.height.equalTo(800.adjustedH)
-//        }
-//    }
-//    
-//    private func setContentViewFlow() {
-//        contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-//
-//        let contentViewHeight = contentView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor)
-//        contentViewHeight.priority = .defaultLow
-//        contentViewHeight.isActive = true
-//    }
-//
-//    private func addTapGesture() {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
-//        view.addGestureRecognizer(tapGesture)
-//    }
-//    
-//    @objc
-//    private func hideKeyboard(_ sender: Any) {
-//        view.endEditing(true)
-//    }
-//}
-//
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.becomeFirstResponder()
+        return true
+    }
+    
+    /// 글자수 25자 이하로 제한
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let char = string.cString(using: String.Encoding.utf8) {
+            /// backSpace는 글자수 제한이 걸려도 눌릴 수 있게 해줌
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                return true
+            }
+        }
+        guard textField.text!.count < 25 else { return false }
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        /// 글자 수 부분 색상 변경 및 글자 수 표시
+        let attributedString = NSMutableAttributedString(string: "\(titleTextField.text!.count)/25")
+        attributedString.addAttribute(.foregroundColor, value: UIColor.hBlue1, range: ("\(titleTextField.text!.count)/25" as NSString).range(of:"\(titleTextField.text!.count)"))
+        titleletterNumLabel.attributedText = attributedString
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension FirstWriteStepView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        /// 플레이스홀더
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            infoTextView.textColor = .hGray3
+            infoTextView.text = placeholder
+        } else if textView.text == placeholder {
+            infoTextView.textColor = .hGray3
+            infoTextView.text = nil
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        /// 글자 수 제한
+        if infoTextView.text.count > 300 {
+            infoTextView.deleteBackward()
+        }
+        
+        /// 아래 글자 수 표시되게 하기
+        detailletterNumLabel.text = "\(infoTextView.text.count)/300"
+        
+        /// 글자 수 부분 색상 변경
+        let attributedString = NSMutableAttributedString(string: "\(infoTextView.text.count)/300")
+        attributedString.addAttribute(.foregroundColor, value: UIColor.hBlue1, range: ("\(infoTextView.text.count)/300" as NSString).range(of:"\(infoTextView.text.count)"))
+        detailletterNumLabel.attributedText = attributedString
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        /// 플레이스홀더
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || textView.text == placeholder {
+            infoTextView.textColor = .hGray3
+            infoTextView.text = placeholder
+            detailletterNumLabel.textColor = .hGray3 /// 텍스트 개수가 0일 경우에는 글자 수 표시 색상이 모두 gray 색이게 설정
+            detailletterNumLabel.text = "0/300"
+        }
+    }
+}
+
+
+
 
