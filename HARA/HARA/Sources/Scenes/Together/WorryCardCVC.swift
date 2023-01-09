@@ -93,6 +93,8 @@ final class WorryCardCVC: UICollectionViewCell {
     
     private var optionNums = 2
     
+    private var isOptionSelected = false
+    
     // MARK: - View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -163,7 +165,18 @@ extension WorryCardCVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension WorryCardCVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.voteButton.isEnabled = true
+        if let cell = collectionView.cellForItem(at: indexPath) as? VoteOptionCVC {
+            if cell.isSelected == false {
+                // deselectItem을 안해주면 본 didSelectItemAt 함수가 종료될때 cell의 isSelect가 다시 true로 동작함
+//                collectionView.deselectItem(at: indexPath, animated: false)
+                self.voteButton.isEnabled = false
+            }else {
+                self.voteButton.isEnabled = true
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     }
 }
 

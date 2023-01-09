@@ -23,15 +23,23 @@ class VoteOptionCVC: UICollectionViewCell {
         $0.font = .haraB3R14
         $0.text = "선택지 글자수 제한은 공백 포함 20"
     }
+    
+    private var alreadySelected = false
         
     override var isSelected: Bool {
         didSet {
             if isSelected {
-//                contentView.backgroundColor = .hBlue1
-                optionLabel.textColor = .hBlue1
-                contentView.layer.borderColor = UIColor.hBlue2.cgColor
-                contentView.layer.borderWidth = 1
-                self.checkButton.isSelected = true
+                /// 셀을 클릭할 때 cell 의 isSelect가 바로 true로 되기 때문에 alreadySlected를 통해 이미 선택된 상태면 isSelect를 false로 바꿈
+                if alreadySelected {
+                    alreadySelected = false
+                    isSelected = false
+                }else {
+                    optionLabel.textColor = .hBlue1
+                    contentView.layer.borderColor = UIColor.hBlue2.cgColor
+                    contentView.layer.borderWidth = 1
+                    self.checkButton.isSelected = true
+                    alreadySelected = true
+                }
             } else {
                 optionLabel.textColor = .hBlack
                 contentView.backgroundColor = .hWhite
