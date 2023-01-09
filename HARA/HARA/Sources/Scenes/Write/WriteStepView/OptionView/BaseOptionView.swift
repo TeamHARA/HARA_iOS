@@ -44,7 +44,7 @@ class BaseOptionView: UIView {
 extension BaseOptionView{
     private func setLayout(){
         backgroundColor = .clear
-        optionContainerView.backgroundColor = .clear
+        self.addSubView(optionContainerView)
         optionContainerView.addSubviews([optionTextField, imageInsertButton])
         
         optionContainerView.snp.makeConstraints {
@@ -55,7 +55,7 @@ extension BaseOptionView{
             $0.leading.equalToSuperview().offset(14.adjustedW)
             $0.centerY.equalToSuperview()
             $0.width.equalTo(250.adjustedW)
-            $0.height.equalTo(20)
+            $0.height.equalTo(30)
         }
         
         imageInsertButton.snp.makeConstraints{
