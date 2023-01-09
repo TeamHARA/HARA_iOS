@@ -23,13 +23,13 @@ final class UnderlineSegmentedControl: UISegmentedControl {
         return view
     }()
     
-    // segmentedControl의 각 frame의 속성을 rBAD함수를 통해 효과를 모두 제거
+    /// segmentedControl의 각 frame의 속성을 rBAD함수를 통해 효과를 모두 제거
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.removeBackgroundAndDivider()
     }
     
-    // segmentedControl의 각 Item들의 속성을 rBAD함수를 통해 효과를 모두 제거
+    /// segmentedControl의 각 Item들의 속성을 rBAD함수를 통해 효과를 모두 제거
     override init(items: [Any]?) {
         super.init(items: items)
         self.removeBackgroundAndDivider()}
@@ -37,14 +37,13 @@ final class UnderlineSegmentedControl: UISegmentedControl {
     required init?(coder: NSCoder) {
           fatalError()
     }
-
     private func removeBackgroundAndDivider() {
         let image = UIImage()
         self.setBackgroundImage(image, for: .normal, barMetrics: .default)
         self.setBackgroundImage(image, for: .selected, barMetrics: .default)
         self.setBackgroundImage(image, for: .highlighted, barMetrics: .default)
           
-        //segmentedControl 탭 사이의 바들을 안보여주게끔 해주는 setDividerImage
+        ///segmentedControl 탭 사이의 바들을 안보여주게끔 해주는 setDividerImage
         self.setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
     }
         
@@ -55,5 +54,5 @@ final class UnderlineSegmentedControl: UISegmentedControl {
         UIView.animate(withDuration: 0.05, animations:{
         self.underlineView.frame.origin.x = underlineFinalXPosition})
     }
-    
 }
+
