@@ -19,14 +19,14 @@ class BaseOptionView: UIView {
         $0.backgroundColor = .hWhite
     }
     
-    private let optionTextField = UITextField().then{
+    let optionTextField = UITextField().then{
         $0.borderStyle = .none
         $0.placeholder = "선택지의 제목을 적어주세요."
         $0.font = .haraH2M16
         $0.textColor = .hGray3
     }
     
-    private let imageInsertButton = UIButton().then {
+    let imageInsertButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "insertImageBtn"), for: .normal)
         $0.contentMode = .scaleAspectFit
     }

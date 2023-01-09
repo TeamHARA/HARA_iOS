@@ -98,11 +98,52 @@ class SecondWriteStepView: UIViewController{
                 optionStackView.addArrangedSubview(fourthOptionView)
                 stackAddOptionArray.append(fourthOptionView)
                 addButton.isHidden = true
+            case [fourthOptionView]:
+                optionStackView.addArrangedSubview(thirdOptionView)
+                stackAddOptionArray.append(thirdOptionView)
+                addButton.isHidden = true
             default:
                 break
             }
         }
-        
+        thirdOptionView.deleteButton.press {[self] in
+            /// 선택지의 height 만큼 stackview의 높이를 조정해줌
+            stackViewheight -= Int(64.adjustedH)
+            self.optionStackView.snp.updateConstraints {
+                $0.height.equalTo(self.stackViewheight)
+            }
+            thirdOptionView.optionTextField.text = ""
+            optionStackView.removeArrangedSubview(thirdOptionView)
+            thirdOptionView.removeFromSuperview()
+            addButton.isHidden = false
+            switch stackAddOptionArray{
+            case [thirdOptionView], [thirdOptionView,fourthOptionView]:
+                stackAddOptionArray.remove(at: 0)
+            case [fourthOptionView, thirdOptionView]:
+                stackAddOptionArray.remove(at: 1)
+            default:
+                break
+            }
+        }
+        fourthOptionView.deleteButton.press {[self] in
+            /// 선택지의 height 만큼 stackview의 높이를 조정해줌
+            stackViewheight -= Int(64.adjustedH)
+            self.optionStackView.snp.updateConstraints {
+                $0.height.equalTo(self.stackViewheight)
+            }
+            fourthOptionView.optionTextField.text = ""
+            optionStackView.removeArrangedSubview(fourthOptionView)
+            fourthOptionView.removeFromSuperview()
+            addButton.isHidden = false
+            switch stackAddOptionArray{
+            case [fourthOptionView], [fourthOptionView,thirdOptionView]:
+                stackAddOptionArray.remove(at: 0)
+            case [thirdOptionView, fourthOptionView]:
+                stackAddOptionArray.remove(at: 1)
+            default:
+                break
+            }
+        }
     }
 }
 
