@@ -78,7 +78,6 @@ final class WorryCardCVC: UICollectionViewCell {
         $0.layer.borderWidth = 1
     }
     
-    
     private let chatButton = UIButton().then {
         $0.setImage(UIImage(named: "together_chat_icon"), for: .normal)
         var config = UIButton.Configuration.plain()
@@ -132,6 +131,10 @@ final class WorryCardCVC: UICollectionViewCell {
             self.isOptionSelected = true
             self.voteButton.backgroundColor = .hOrange3
             self.voteButton.layer.borderWidth = 0
+            self.voteButton.setTitle("투표완료!", for: .normal)
+            self.voteButton.setTitleColor(.hWhite, for: .normal)
+            self.voteButton.setBackgroundColor(.hGray3, for: .normal)
+            self.voteButton.isUserInteractionEnabled = false
             self.voteOptionCV.reloadData()
         }
         
@@ -174,9 +177,6 @@ extension WorryCardCVC: UICollectionViewDelegate {
                 self.voteButton.isEnabled = true
             }
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     }
 }
 
