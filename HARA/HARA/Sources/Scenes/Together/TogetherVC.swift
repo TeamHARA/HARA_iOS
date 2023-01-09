@@ -48,15 +48,15 @@ final class TogetherVC: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: layoutSize)
         let group = NSCollectionLayoutGroup.vertical(layoutSize: layoutSize, repeatingSubitem: item, count: 1)
         
-//            item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
-//            item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        //            item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
+        //            item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         
-//            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
-//            group.interItemSpacing = .flexible(-16)
-//
+        //            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        //            group.interItemSpacing = .flexible(-16)
+        //
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
-//        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        //        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         return UICollectionViewCompositionalLayout(section: section)
     }()
@@ -94,7 +94,7 @@ final class TogetherVC: UIViewController {
         label.font = .haraB2M14
         return label.frame.height
     }
-
+    
 }
 // MARK: - UICollectionViewDelegateFlowLayout
 extension TogetherVC: UICollectionViewDelegateFlowLayout {
@@ -108,16 +108,6 @@ extension TogetherVC: UICollectionViewDelegateFlowLayout {
             let cellHeight = CGFloat(31)
             return CGSize(width: cellWidth, height: cellHeight)
         }else {
-            
-//            let width = collectionView.frame.width
-//
-//            let contentHeight = calculateCellWidth(index: 0)
-//
-//            print("높이\(contentHeight)")
-//
-//            let height = CGFloat(optionNums*50 + Int(contentHeight) + 185)
-//
-//            return CGSize(width: width, height: height)
             return .zero
         }
     }
@@ -157,6 +147,15 @@ extension TogetherVC: UICollectionViewDataSource {
         }
     }
     
+}
+
+// MARK: - UICollectionViewDelegate
+extension TogetherVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DetailWorryCardVC()
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+    }
 }
 
 // MARK: - Layout
