@@ -168,7 +168,7 @@ extension WorryCardCVC: UICollectionViewDelegate {
         if let cell = collectionView.cellForItem(at: indexPath) as? VoteOptionCVC {
             if cell.isSelected == false {
                 // deselectItem을 안해주면 본 didSelectItemAt 함수가 종료될때 cell의 isSelect가 다시 true로 동작함
-//                collectionView.deselectItem(at: indexPath, animated: false)
+                collectionView.deselectItem(at: indexPath, animated: false)
                 self.voteButton.isEnabled = false
             }else {
                 self.voteButton.isEnabled = true
