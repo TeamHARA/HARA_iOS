@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */; };
+		673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315F02966D1AC00398AA5 /* StorageVC.swift */; };
+		67DA6D22296C9242006F4C5C /* AloneWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D21296C9242006F4C5C /* AloneWorriedVC.swift */; };
+		67DA6D24296C924C006F4C5C /* TogetherWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D23296C924C006F4C5C /* TogetherWorriedVC.swift */; };
+		67DA6D26296C9259006F4C5C /* AloneWorriedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D25296C9259006F4C5C /* AloneWorriedCVC.swift */; };
+		67DA6D28296C925F006F4C5C /* TogetherWorriedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D27296C925F006F4C5C /* TogetherWorriedCVC.swift */; };
+		67DA6D2D296C92B9006F4C5C /* AloneWorriedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D2B296C92B9006F4C5C /* AloneWorriedModel.swift */; };
+		67DA6D2E296C92B9006F4C5C /* TogetherWorriedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D2C296C92B9006F4C5C /* TogetherWorriedModel.swift */; };
 		8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A779296BE14D00402E91 /* BaseOptionView.swift */; };
 		8532A77C296BE15300402E91 /* AddOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A77B296BE15300402E91 /* AddOptionView.swift */; };
 		85E0A44929646E280007C3CA /* FirstWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstWriteStepView.swift */; };
@@ -14,8 +22,6 @@
 		85E0A44D29646E390007C3CA /* ThirdWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */; };
 		85E0A44F29646E440007C3CA /* FourthWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */; };
 		85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */; };
-		673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */; };
-		673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315F02966D1AC00398AA5 /* StorageVC.swift */; };
 		E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BE8295AC8A900848B72 /* AppDelegate.swift */; };
 		E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */; };
 		E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69BF1295AC8AA00848B72 /* Assets.xcassets */; };
@@ -74,6 +80,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
+		673315F02966D1AC00398AA5 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
+		67DA6D21296C9242006F4C5C /* AloneWorriedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AloneWorriedVC.swift; sourceTree = "<group>"; };
+		67DA6D23296C924C006F4C5C /* TogetherWorriedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TogetherWorriedVC.swift; sourceTree = "<group>"; };
+		67DA6D25296C9259006F4C5C /* AloneWorriedCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AloneWorriedCVC.swift; sourceTree = "<group>"; };
+		67DA6D27296C925F006F4C5C /* TogetherWorriedCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TogetherWorriedCVC.swift; sourceTree = "<group>"; };
+		67DA6D2B296C92B9006F4C5C /* AloneWorriedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AloneWorriedModel.swift; sourceTree = "<group>"; };
+		67DA6D2C296C92B9006F4C5C /* TogetherWorriedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TogetherWorriedModel.swift; sourceTree = "<group>"; };
 		8532A779296BE14D00402E91 /* BaseOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOptionView.swift; sourceTree = "<group>"; };
 		8532A77B296BE15300402E91 /* AddOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionView.swift; sourceTree = "<group>"; };
 		85E0A44829646E280007C3CA /* FirstWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWriteStepView.swift; sourceTree = "<group>"; };
@@ -81,8 +95,6 @@
 		85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdWriteStepView.swift; sourceTree = "<group>"; };
 		85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthWriteStepView.swift; sourceTree = "<group>"; };
 		85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthWriteStepView.swift; sourceTree = "<group>"; };
-		673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
-		673315F02966D1AC00398AA5 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
 		E7C69BE5295AC8A900848B72 /* HARA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C69BE8295AC8A900848B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +166,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		67DA6D2F296C92BE006F4C5C /* StorageModel */ = {
+			isa = PBXGroup;
+			children = (
+				67DA6D2C296C92B9006F4C5C /* TogetherWorriedModel.swift */,
+				67DA6D2B296C92B9006F4C5C /* AloneWorriedModel.swift */,
+			);
+			path = StorageModel;
+			sourceTree = "<group>";
+		};
 		8532A778296BE13E00402E91 /* OptionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,8 +403,13 @@
 		E7C69C2C295AD86000848B72 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				67DA6D2F296C92BE006F4C5C /* StorageModel */,
+				67DA6D27296C925F006F4C5C /* TogetherWorriedCVC.swift */,
+				67DA6D25296C9259006F4C5C /* AloneWorriedCVC.swift */,
 				673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */,
 				673315F02966D1AC00398AA5 /* StorageVC.swift */,
+				67DA6D21296C9242006F4C5C /* AloneWorriedVC.swift */,
+				67DA6D23296C924C006F4C5C /* TogetherWorriedVC.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -496,6 +522,7 @@
 			files = (
 				E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
+				67DA6D2D296C92B9006F4C5C /* AloneWorriedModel.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
 				85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */,
@@ -508,6 +535,7 @@
 				E7C69CD82965550500848B72 /* NetworkResult.swift in Sources */,
 				E7C69CD0296554C000848B72 /* APIConstant.swift in Sources */,
 				E7C69CED29660AB500848B72 /* WorryCardCVC.swift in Sources */,
+				67DA6D24296C924C006F4C5C /* TogetherWorriedVC.swift in Sources */,
 				E7C69CDC2965552700848B72 /* TogetherService.swift in Sources */,
 				E7C69CC6296213EB00848B72 /* ImageCacheManager.swift in Sources */,
 				E7C69C9B29613E2B00848B72 /* UIView+.swift in Sources */,
@@ -531,10 +559,14 @@
 				E7C69CA52961407500848B72 /* String+.swift in Sources */,
 				E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */,
 				E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */,
+				67DA6D22296C9242006F4C5C /* AloneWorriedVC.swift in Sources */,
+				67DA6D26296C9259006F4C5C /* AloneWorriedCVC.swift in Sources */,
 				E7C69C9729613A1400848B72 /* UIFont+.swift in Sources */,
+				67DA6D2E296C92B9006F4C5C /* TogetherWorriedModel.swift in Sources */,
 				85E0A44F29646E440007C3CA /* FourthWriteStepView.swift in Sources */,
 				E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */,
 				E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */,
+				67DA6D28296C925F006F4C5C /* TogetherWorriedCVC.swift in Sources */,
 				E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */,
 				E7C69CA329613FAA00848B72 /* UILabel+.swift in Sources */,
 				E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */,
