@@ -22,7 +22,7 @@ class ProsConsCVC: UICollectionViewCell {
     let optionTitle = UILabel().then{
         $0.font = .haraH2M16
         $0.textColor = .hGray3
-        $0.text = "안녕 나는 리드 김담인"
+        $0.text = ""
     }
     
     let imageInsertButton = UIButton().then {

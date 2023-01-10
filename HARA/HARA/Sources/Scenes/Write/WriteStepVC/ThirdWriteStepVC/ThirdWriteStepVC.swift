@@ -26,7 +26,13 @@ class ThirdWriteStepVC: UIViewController{
         $0.backgroundColor = .hBlue1
     }
     
+    /// 배열 원소의 순서를 바꿔주기 위한 Temp 변수
     private var changeValue: String = ""
+    /// 배열 원소의 true, false를 확인하고 바꿔주기 위한 bool type Temp 변수
+    private var changeBool: Bool = true
+    
+    /// 2번째 stepView에서 데이터를 받아올 때, 제목이 있는 Cell 만 탐색해주는 변수
+    private var cvcCount: Int = 4
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
@@ -58,6 +64,7 @@ class ThirdWriteStepVC: UIViewController{
     }
     
     private var prosConsTitleArray: [String] = []
+    private var zeroCheckArray: [Bool] = []
     
     final let listLineSpacing: CGFloat = 14.adjustedH
     
@@ -81,8 +88,7 @@ class ThirdWriteStepVC: UIViewController{
 // MARK: - Layout
 extension ThirdWriteStepVC{
     private func setLayout(){
-        view.addSubViews([background, navigationView, progressView, questionLabel, tipLabel,
-                         prosConsCV])
+        view.addSubViews([background, navigationView, progressView, questionLabel, tipLabel,prosConsCV])
         
         background.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -137,14 +143,17 @@ extension ThirdWriteStepVC: UICollectionViewDelegateFlowLayout {
 
 extension ThirdWriteStepVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4//imageList.count
+        return cvcCount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let prosConsCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ProsConsCVC.classIdentifier, for: indexPath)
                 as? ProsConsCVC else { return UICollectionViewCell() }
-        prosConsCell.optionTitle.text = prosConsTitleArray[indexPath.row]
+        /// 제목이 빈 string 값이 아닐때만 collectionView에 그려준다
+        if prosConsTitleArray[indexPath.row] != ""{
+            prosConsCell.optionTitle.text = prosConsTitleArray[indexPath.row]
+        }
         return prosConsCell
     }
 }
@@ -152,15 +161,27 @@ extension ThirdWriteStepVC: UICollectionViewDataSource {
 /// 세번째 VC의 배열에 secondStepView에서 넣어둔 데이터들을 받아서 뿌려준다.
 // MARK: - optionTitleDelegate
 extension ThirdWriteStepVC: optionTitleDelegate{
-    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool){
+    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool, isZero: [Bool]){
         prosConsTitleArray = optionTitleArray
+        zeroCheckArray = isZero
+        cvcCount = 0
+        
         if arrayOrder == true{
             changeValue = prosConsTitleArray[2]
             prosConsTitleArray[2] = prosConsTitleArray[3]
             prosConsTitleArray[3] = changeValue
+            
+            changeBool = zeroCheckArray[2]
+            zeroCheckArray[2] = zeroCheckArray[3]
+            zeroCheckArray[3] = changeBool
         }
         print("여기 실행\(prosConsTitleArray)")
-        
+        print("0값 확인\(zeroCheckArray)")
+        for x in 0...3{
+            if prosConsTitleArray[x] != ""{
+                cvcCount += 1
+            }
+        }
     }
 }
 

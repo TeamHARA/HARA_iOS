@@ -11,7 +11,7 @@ import Then
 
 // MARK: - Protocols
 protocol optionTitleDelegate: AnyObject{
-    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool)
+    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool, isZero: [Bool])
 }
 
 class SecondWriteStepVC: UIViewController{
@@ -72,6 +72,9 @@ class SecondWriteStepVC: UIViewController{
     
     /// ThirdWriteStepView로 넘겨주기 위해 각 옵션의 제목을 저장해줄 Array
     var prosConsTitleArray = [String](repeating: "", count: 4)
+    
+    /// 각 옵션의 제목에 값이 입력 되어있는지를 확인해주는 Array
+    var checkZeroInArray = [Bool](repeating: true, count: 4)
 
     private lazy var optionStackView = UIStackView(arrangedSubviews: [firstOptionView, secondOptionView]).then {
         $0.axis = .vertical // default
@@ -241,24 +244,50 @@ extension SecondWriteStepVC: UITextFieldDelegate {
         switch textField{
         case firstOptionView.optionTextField:
             prosConsTitleArray[0] = firstOptionView.optionTextField.text!
-            print(prosConsTitleArray)
+            if prosConsTitleArray[0] == ""{
+                checkZeroInArray[0] = true
+            }else{
+                checkZeroInArray[0] = false
+            }
+            //print("0 확인 배열\(checkZeroInArray)")
+            //print("값 배열\(prosConsTitleArray)")
         case secondOptionView.optionTextField:
             prosConsTitleArray[1] = secondOptionView.optionTextField.text!
-            print(prosConsTitleArray)
+            if prosConsTitleArray[1] == ""{
+                checkZeroInArray[1] = true
+            }else{
+                checkZeroInArray[1] = false
+            }
+            //print("0 확인 배열\(checkZeroInArray)")
+            //print("값 배열\(prosConsTitleArray)")
         case thirdOptionView.optionTextField:
             prosConsTitleArray[2] = thirdOptionView.optionTextField.text!
-            print(prosConsTitleArray)
+            if prosConsTitleArray[2] == ""{
+                checkZeroInArray[2] = true
+            }else{
+                checkZeroInArray[2] = false
+            }
+            //print("0 확인 배열\(checkZeroInArray)")
+            //print("값 배열\(prosConsTitleArray)")
         case fourthOptionView.optionTextField:
             prosConsTitleArray[3] = fourthOptionView.optionTextField.text!
-            print(prosConsTitleArray)
+            if prosConsTitleArray[3] == ""{
+                checkZeroInArray[3] = true
+            }else{
+                checkZeroInArray[3] = false
+            }
+           // print("0 확인 배열\(checkZeroInArray)")
+            //print("값 배열\(prosConsTitleArray)")
         default:
             break
         }
 
         if stackAddOptionArray == [fourthOptionView] || stackAddOptionArray == [fourthOptionView, thirdOptionView]{
             orderReversed = true
+        }else{
+            orderReversed = false
         }
         /// 옵션 제목이 변경될때마다 titledelgate를 통해 세번째 stepView로 값을 보내준다
-        titledelegate?.sendOptionTitle(optionTitleArray: prosConsTitleArray, arrayOrder: orderReversed)
+        titledelegate?.sendOptionTitle(optionTitleArray: prosConsTitleArray, arrayOrder: orderReversed, isZero: checkZeroInArray)
     }
 }
