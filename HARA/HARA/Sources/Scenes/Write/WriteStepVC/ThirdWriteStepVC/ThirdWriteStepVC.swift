@@ -26,6 +26,8 @@ class ThirdWriteStepVC: UIViewController{
         $0.backgroundColor = .hBlue1
     }
     
+    private var changeValue: String = ""
+    
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
         let normalString1 = NSAttributedString(string: "선택지의\n", attributes: [
@@ -45,36 +47,17 @@ class ThirdWriteStepVC: UIViewController{
         $0.textColor = .hGray2
     }
     
-//    private lazy var scrollView = UIScrollView().then{
-//        $0.backgroundColor = .yellow
-//    }
-//
-//    private lazy var firstProsConsView = ProsConsView()
-//    private lazy var secondProsConsView = ProsConsView()
-//    private lazy var thirdProsConsView = ProsConsView()
-//    private lazy var fourthProsConsView = ProsConsView()
-//
-//    private lazy var stackProsConsArray: [ProsConsView] = []
-//
-//    private lazy var pcStackView = UIStackView(arrangedSubviews: [firstProsConsView, secondProsConsView, thirdProsConsView, fourthProsConsView]).then {
-//        $0.axis = .vertical // default
-//        $0.distribution = .fillProportionally // default
-//        $0.alignment = .fill // default
-//        $0.spacing = 14.adjustedH
-//        $0.backgroundColor = .red
-//    }
-    
     private let flowLayout = UICollectionViewFlowLayout().then {
         $0.scrollDirection = .vertical
     }
     
-    private lazy var prosConsCV = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then{
-
-        //$0.showsHorizontalScrollIndicator = true
+    lazy var prosConsCV = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then{
         $0.backgroundColor = .clear
         $0.delegate = self
         $0.dataSource = self
     }
+    
+    private var prosConsTitleArray: [String] = []
     
     final let listLineSpacing: CGFloat = 14.adjustedH
     
@@ -82,6 +65,7 @@ class ThirdWriteStepVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        print("델리\(prosConsTitleArray)")
         setLayout()
         registerCV()
     }
@@ -160,8 +144,23 @@ extension ThirdWriteStepVC: UICollectionViewDataSource {
         guard let prosConsCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ProsConsCVC.classIdentifier, for: indexPath)
                 as? ProsConsCVC else { return UICollectionViewCell() }
-        //imageCell.dataBind(model: imageList[indexPath.item])
+        prosConsCell.optionTitle.text = prosConsTitleArray[indexPath.row]
         return prosConsCell
+    }
+}
+
+/// 세번째 VC의 배열에 secondStepView에서 넣어둔 데이터들을 받아서 뿌려준다.
+// MARK: - optionTitleDelegate
+extension ThirdWriteStepVC: optionTitleDelegate{
+    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool){
+        prosConsTitleArray = optionTitleArray
+        if arrayOrder == true{
+            changeValue = prosConsTitleArray[2]
+            prosConsTitleArray[2] = prosConsTitleArray[3]
+            prosConsTitleArray[3] = changeValue
+        }
+        print("여기 실행\(prosConsTitleArray)")
+        
     }
 }
 

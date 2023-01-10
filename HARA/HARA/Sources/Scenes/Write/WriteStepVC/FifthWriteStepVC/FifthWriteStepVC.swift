@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - Protocols
+protocol SendIsclickedDelegate{
+    func SendIsclicked(alone: Bool, everyone: Bool)
+}
+
 class FifthWriteStepVC: UIViewController{
     
     // MARK: - Properties
@@ -171,10 +176,5 @@ extension FifthWriteStepVC{
             $0.height.equalTo(184.adjustedH)
         }
     }
-}
-
-// MARK: - Protocols
-protocol SendIsclickedDelegate{
-    func SendIsclicked(alone: Bool, everyone: Bool)
 }
 

@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - Protocols
+protocol optionTitleDelegate: AnyObject{
+    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool)
+}
+
 class SecondWriteStepVC: UIViewController{
     
     // MARK: - Properties
@@ -20,6 +25,10 @@ class SecondWriteStepVC: UIViewController{
     
     /// stackView의 height을 동적으로 주기 위한 변수
     private var stackViewheight: Int = Int(112.adjustedH)
+    
+    /// stackView의 순서를 맞게 반환하는지 확인하기 위한 Bool 변수
+    private var orderReversed: Bool = false
+    
     var optionNum: Int = 2
     
     lazy var navigationView = UIView().then{
@@ -42,16 +51,24 @@ class SecondWriteStepVC: UIViewController{
     }
 
     /// stackView의 추가할 뷰들 구현
-    private lazy var firstOptionView = BaseOptionView()
-    private lazy var secondOptionView = BaseOptionView()
-    private lazy var thirdOptionView = AddOptionView()
-    private lazy var fourthOptionView = AddOptionView()
+    private lazy var firstOptionView = BaseOptionView().then{
+        $0.optionTextField.delegate = self
+    }
+    private lazy var secondOptionView = BaseOptionView().then{
+        $0.optionTextField.delegate = self
+    }
+    private lazy var thirdOptionView = AddOptionView().then{
+        $0.optionTextField.delegate = self
+    }
+    private lazy var fourthOptionView = AddOptionView().then{
+        $0.optionTextField.delegate = self
+    }
     private lazy var addButton = AddOptionBtnView()
     
     /// 더이상 없앨 수 없는 기본 옵션 뷰 2개
     private lazy var stackBaseOptionArray: [BaseOptionView] = [firstOptionView, secondOptionView]
     /// 추가되는 옵션뷰(삭제 버튼이 있는) 뷰를 추가해줄 Array
-    private lazy var stackAddOptionArray: [AddOptionView] = []
+    lazy var stackAddOptionArray: [AddOptionView] = []
     
     /// ThirdWriteStepView로 넘겨주기 위해 각 옵션의 제목을 저장해줄 Array
     var prosConsTitleArray = [String](repeating: "", count: 4)
@@ -62,6 +79,8 @@ class SecondWriteStepVC: UIViewController{
         $0.alignment = .fill // default
         $0.spacing = 16.adjustedH
     }
+    
+    weak var titledelegate: optionTitleDelegate?
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -77,9 +96,9 @@ class SecondWriteStepVC: UIViewController{
     }
 
     // MARK: - Function
-    /// 키보드가 보일때 화면을 위로 160 만큼 올린다.
+    /// 키보드가 보일때 화면을 위로 120 만큼 올린다.
     @objc func keyboardWillShown(_ notificiation: NSNotification) {
-      self.view.frame = CGRect(x: 0, y: -100, width: self.view.frame.size.width, height: self.view.frame.size.height)
+      self.view.frame = CGRect(x: 0, y: -75, width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
      
     /// 키보드가 사라질때 화면을 다시 원복한다.
@@ -118,6 +137,7 @@ class SecondWriteStepVC: UIViewController{
             self.optionStackView.snp.updateConstraints {
                 $0.height.equalTo(self.stackViewheight)
             }
+            prosConsTitleArray[2] = ""
             thirdOptionView.optionTextField.text = ""
             optionStackView.removeArrangedSubview(thirdOptionView)
             thirdOptionView.removeFromSuperview()
@@ -131,16 +151,19 @@ class SecondWriteStepVC: UIViewController{
                 break
             }
         }
+        /// 네번째 옵션뷰의 삭제 버튼이 눌렸을 때,
         fourthOptionView.deleteButton.press {[self] in
             /// 선택지의 height 만큼 stackview의 높이를 조정해줌
             stackViewheight -= Int(64.adjustedH)
             self.optionStackView.snp.updateConstraints {
                 $0.height.equalTo(self.stackViewheight)
             }
+            prosConsTitleArray[3] = ""
             fourthOptionView.optionTextField.text = ""
             optionStackView.removeArrangedSubview(fourthOptionView)
             fourthOptionView.removeFromSuperview()
             addButton.isHidden = false
+            /// 배열의 순서에 따라 값을 remove 위치를 다르게 설정
             switch stackAddOptionArray{
             case [fourthOptionView], [fourthOptionView,thirdOptionView]:
                 stackAddOptionArray.remove(at: 0)
@@ -199,26 +222,43 @@ extension SecondWriteStepVC{
 
 // MARK: - UITextFieldDelegate
 extension SecondWriteStepVC: UITextFieldDelegate {
-    /// ✅ textField 에서 편집을 시작한 후
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        /// 키보드 업
-        textField.becomeFirstResponder()
-        /// 입력 시 textField 를 강조하기 위한 테두리 설정
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.red.cgColor
-    }
+//    ✅ textField 에서 편집을 시작한 후
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        /// 키보드 업
+//        textField.becomeFirstResponder()
+//        /// 입력 시 textField 를 강조하기 위한 테두리 설정
+//        textField.layer.borderWidth = 1
+//        textField.layer.borderColor = UIColor.red.cgColor
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.becomeFirstResponder()
         return true
     }
-    
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        switch textField{
-//        case firstOptionView.optionTextField:
-//        case secondOptionView.optionTextField:
-//        case thirdOptionView.optionTextField:
-//        case fourthOptionView.optionTextField:
-//        }
-//    }
+
+    /// 각 선택지의 제목을 작성했을 때 그 값을 배열에 계속 할당 시켜준다. 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField{
+        case firstOptionView.optionTextField:
+            prosConsTitleArray[0] = firstOptionView.optionTextField.text!
+            print(prosConsTitleArray)
+        case secondOptionView.optionTextField:
+            prosConsTitleArray[1] = secondOptionView.optionTextField.text!
+            print(prosConsTitleArray)
+        case thirdOptionView.optionTextField:
+            prosConsTitleArray[2] = thirdOptionView.optionTextField.text!
+            print(prosConsTitleArray)
+        case fourthOptionView.optionTextField:
+            prosConsTitleArray[3] = fourthOptionView.optionTextField.text!
+            print(prosConsTitleArray)
+        default:
+            break
+        }
+
+        if stackAddOptionArray == [fourthOptionView] || stackAddOptionArray == [fourthOptionView, thirdOptionView]{
+            orderReversed = true
+        }
+        /// 옵션 제목이 변경될때마다 titledelgate를 통해 세번째 stepView로 값을 보내준다
+        titledelegate?.sendOptionTitle(optionTitleArray: prosConsTitleArray, arrayOrder: orderReversed)
+    }
 }

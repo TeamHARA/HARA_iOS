@@ -78,6 +78,7 @@ class WriteVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .clear
         vc5.delegate = self
+        vc2.titledelegate = vc3
         disableArrowButton()
         setLayout()
         setPress()
@@ -108,6 +109,7 @@ class WriteVC: UIViewController {
             /// 버튼눌렸을 때 페이지 변경 애니메이션 적용
             self.disableArrowButton()
             self.makeProgressBarAnimate()
+            self.vc3.prosConsCV.reloadData()
         }
         uploadButton.press {
             self.dismiss(animated: true, completion: nil)
@@ -233,6 +235,7 @@ extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate 
         if nextIndex == viewList.count {
             return nil
         }
+        self.vc3.prosConsCV.reloadData()
         return viewList[nextIndex]
     }
     
@@ -282,6 +285,13 @@ extension WriteVC: SendIsclickedDelegate{
         }
     }
 }
+
+//extension WriteVC: optionTitleDelegate{
+//    func sendOptionTitle(optionTitleArray: [String]){
+//        print("1")
+//    }
+//}
+
 
 
 
