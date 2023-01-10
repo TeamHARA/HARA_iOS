@@ -45,17 +45,60 @@ class ThirdWriteStepVC: UIViewController{
         $0.textColor = .hGray2
     }
     
+//    private lazy var scrollView = UIScrollView().then{
+//        $0.backgroundColor = .yellow
+//    }
+//
+//    private lazy var firstProsConsView = ProsConsView()
+//    private lazy var secondProsConsView = ProsConsView()
+//    private lazy var thirdProsConsView = ProsConsView()
+//    private lazy var fourthProsConsView = ProsConsView()
+//
+//    private lazy var stackProsConsArray: [ProsConsView] = []
+//
+//    private lazy var pcStackView = UIStackView(arrangedSubviews: [firstProsConsView, secondProsConsView, thirdProsConsView, fourthProsConsView]).then {
+//        $0.axis = .vertical // default
+//        $0.distribution = .fillProportionally // default
+//        $0.alignment = .fill // default
+//        $0.spacing = 14.adjustedH
+//        $0.backgroundColor = .red
+//    }
+    
+    private let flowLayout = UICollectionViewFlowLayout().then {
+        $0.scrollDirection = .vertical
+    }
+    
+    private lazy var prosConsCV = UICollectionView(frame: .zero, collectionViewLayout: flowLayout).then{
+
+        //$0.showsHorizontalScrollIndicator = true
+        $0.backgroundColor = .clear
+        $0.delegate = self
+        $0.dataSource = self
+    }
+    
+    final let listLineSpacing: CGFloat = 14.adjustedH
+    
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = .hGray3
         setLayout()
+        registerCV()
+    }
+    
+    // MARK: - Functions
+    private func registerCV() {
+        prosConsCV.register(ProsConsCVC.self,
+                                forCellWithReuseIdentifier: ProsConsCVC.classIdentifier
+        )
     }
 }
 
+// MARK: - Layout
 extension ThirdWriteStepVC{
     private func setLayout(){
-        view.addSubViews([background, navigationView, progressView, questionLabel, tipLabel])
+        view.addSubViews([background, navigationView, progressView, questionLabel, tipLabel,
+                         prosConsCV])
         
         background.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -84,5 +127,41 @@ extension ThirdWriteStepVC{
             $0.top.equalTo(questionLabel.snp.bottom).offset(6.adjustedH)
             $0.leading.equalToSuperview().offset(16.adjustedW)
         }
+        
+        prosConsCV.snp.makeConstraints{
+            $0.top.equalTo(tipLabel.snp.bottom).offset(10.adjustedH)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
+            $0.bottom.equalToSuperview()
+        }
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension ThirdWriteStepVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 343.adjustedW, height: 153.adjustedH)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return listLineSpacing
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+
+extension ThirdWriteStepVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4//imageList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let prosConsCell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ProsConsCVC.classIdentifier, for: indexPath)
+                as? ProsConsCVC else { return UICollectionViewCell() }
+        //imageCell.dataBind(model: imageList[indexPath.item])
+        return prosConsCell
+    }
+}
+

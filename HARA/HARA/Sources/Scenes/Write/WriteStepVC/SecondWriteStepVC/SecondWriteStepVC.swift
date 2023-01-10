@@ -20,6 +20,7 @@ class SecondWriteStepVC: UIViewController{
     
     /// stackView의 height을 동적으로 주기 위한 변수
     private var stackViewheight: Int = Int(112.adjustedH)
+    var optionNum: Int = 2
     
     lazy var navigationView = UIView().then{
         $0.backgroundColor = .hBlue4
@@ -47,8 +48,13 @@ class SecondWriteStepVC: UIViewController{
     private lazy var fourthOptionView = AddOptionView()
     private lazy var addButton = AddOptionBtnView()
     
+    /// 더이상 없앨 수 없는 기본 옵션 뷰 2개
     private lazy var stackBaseOptionArray: [BaseOptionView] = [firstOptionView, secondOptionView]
+    /// 추가되는 옵션뷰(삭제 버튼이 있는) 뷰를 추가해줄 Array
     private lazy var stackAddOptionArray: [AddOptionView] = []
+    
+    /// ThirdWriteStepView로 넘겨주기 위해 각 옵션의 제목을 저장해줄 Array
+    var prosConsTitleArray = [String](repeating: "", count: 4)
 
     private lazy var optionStackView = UIStackView(arrangedSubviews: [firstOptionView, secondOptionView]).then {
         $0.axis = .vertical // default
@@ -206,4 +212,13 @@ extension SecondWriteStepVC: UITextFieldDelegate {
         textField.becomeFirstResponder()
         return true
     }
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        switch textField{
+//        case firstOptionView.optionTextField:
+//        case secondOptionView.optionTextField:
+//        case thirdOptionView.optionTextField:
+//        case fourthOptionView.optionTextField:
+//        }
+//    }
 }

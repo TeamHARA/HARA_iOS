@@ -36,11 +36,11 @@ class WriteVC: UIViewController {
     lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     /// pageView에 사용될 5개 VC 선언
-    lazy var vc1 = FirstWriteStepView()
-    lazy var vc2 = SecondWriteStepView()
-    lazy var vc3 = ThirdWriteStepView()
-    lazy var vc4 = FourthWriteStepView()
-    lazy var vc5 = FifthWriteStepView()
+    lazy var vc1 = FirstWriteStepVC()
+    lazy var vc2 = SecondWriteStepVC()
+    lazy var vc3 = ThirdWriteStepVC()
+    lazy var vc4 = FourthWriteStepVC()
+    lazy var vc5 = FifthWriteStepVC()
     
     lazy var viewList: [UIViewController] = {
         return [vc1, vc2, vc3, vc4, vc5]

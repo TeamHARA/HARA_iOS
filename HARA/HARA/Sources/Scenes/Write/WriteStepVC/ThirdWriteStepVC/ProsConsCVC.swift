@@ -16,7 +16,7 @@ class ProsConsCVC: UICollectionViewCell {
         $0.layer.borderColor = UIColor.hBlue3.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .blue
+        $0.backgroundColor = .hWhite
     }
     
     let optionTitle = UILabel().then{
@@ -52,31 +52,30 @@ class ProsConsCVC: UICollectionViewCell {
     let consPlaceHolder = "해당 선택지의 단점을 적어보세요"
     
     private let prosTextView = UITextView().then{
-        $0.font = .haraH2M16
+        $0.font = .haraB3R14
         $0.textColor = .hGray3
-        $0.backgroundColor = .hRed
+        $0.backgroundColor = .hBlue4
         $0.layer.cornerRadius = 12
         $0.layer.borderColor = UIColor.hBlue3.cgColor
         $0.layer.borderWidth = 1
-        $0.backgroundColor = .clear
-        $0.textContainerInset = UIEdgeInsets(top: 5.adjustedH, left: 39.adjustedW, bottom: 5.adjustedH, right: 8.adjustedW)
+        $0.textContainerInset = UIEdgeInsets(top: 8.adjustedH, left: 39.adjustedW, bottom: 5.adjustedH, right: 8.adjustedW)
     }
     
     private let consTextView = UITextView().then{
-        $0.font = .haraH2M16
+        $0.font = .haraB3R14
         $0.textColor = .hGray3
-        $0.backgroundColor = .hRed
+        $0.backgroundColor = .hBlue4
         $0.layer.cornerRadius = 12
         $0.layer.borderColor = UIColor.hBlue3.cgColor
         $0.layer.borderWidth = 1
-        $0.backgroundColor = .clear
-        $0.textContainerInset = UIEdgeInsets(top: 5.adjustedH, left: 39.adjustedW, bottom: 5.adjustedH, right: 8.adjustedW)
+        $0.textContainerInset = UIEdgeInsets(top: 8.adjustedH, left: 39.adjustedW, bottom: 5.adjustedH, right: 8.adjustedW)
     }
     
     // MARK: - Life Cycles
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
+        setupTextView()
     }
     
     required init?(coder: NSCoder) {
@@ -95,10 +94,13 @@ class ProsConsCVC: UICollectionViewCell {
     }
 }
 
-extension ProsConsView{
+extension ProsConsCVC{
     private func setLayout(){
-        self.addSubView(optionContainerView)
+        backgroundColor = .yellow
+        contentView.addSubView(optionContainerView)
         optionContainerView.addSubviews([optionTitle, imageInsertButton, divisionLine, prosTextView, consTextView])
+        prosTextView.addSubview(prosLabel)
+        consTextView.addSubview(consLabel)
         
         optionContainerView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -138,12 +140,22 @@ extension ProsConsView{
             $0.width.equalTo(315.adjustedW)
             $0.height.equalTo(34.adjustedH)
         }
+        
+        prosLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(8.adjustedW)
+            $0.centerY.equalToSuperview()
+        }
+        
+        consLabel.snp.makeConstraints{
+            $0.leading.equalToSuperview().offset(8.adjustedW)
+            $0.centerY.equalToSuperview()
+        }
     }
 }
 
 // MARK: - UITextViewDelegate
-extension ProsConsView: UITextViewDelegate{
-    internal func textViewDidChange(_ textView: UITextView) { // internal/>?
+extension ProsConsCVC: UITextViewDelegate{
+    func textViewDidChange(_ textView: UITextView) { // internal/>?
         
         let size = CGSize(width: 315.adjustedW, height: .infinity)
         let estimatedSize = textView.sizeThatFits(size)
@@ -170,18 +182,44 @@ extension ProsConsView: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
         /// 플레이스홀더
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            prosTextView.text = prosPlaceHolder /// 초반 placeholder 생성
-            prosTextView.textColor = .hGray3 /// 초반 placeholder 색상 설정
-
-            consTextView.text = consPlaceHolder /// 초반 placeholder 생성
-            consTextView.textColor = .hGray3 /// 초반 placeholder 색상 설정
-        } else if prosTextView.text == prosPlaceHolder {
-            prosTextView.text = nil /// placeholder 제거
-            prosTextView.textColor = .hGray3 /// 글자색 설정
+            switch textView{
+            case prosTextView:
+                prosTextView.textColor = .hGray3
+                prosTextView.text = prosPlaceHolder
+            case consTextView:
+                consTextView.textColor = .hGray3
+                consTextView.text = consPlaceHolder
+            default:
+                break
+            }
         }
-        else if consTextView.text == consPlaceHolder{
-            consTextView.text = nil /// placeholder 제거
-            consTextView.textColor = .hGray3 /// 글자색 설정
+        else if textView.text == prosPlaceHolder || textView.text == consPlaceHolder{
+            switch textView{
+            case prosTextView:
+                prosTextView.textColor = .hGray3
+                prosTextView.text = nil
+            case consTextView:
+                consTextView.textColor = .hGray3
+                consTextView.text = nil
+            default:
+                break
+            }
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        /// 플레이스홀더
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || textView.text == prosPlaceHolder || textView.text == consPlaceHolder{
+            switch textView{
+            case prosTextView:
+                prosTextView.textColor = .hGray3
+                prosTextView.text = prosPlaceHolder
+            case consTextView:
+                consTextView.textColor = .hGray3
+                consTextView.text = consPlaceHolder
+            default:
+                break
+            }
         }
     }
 }
