@@ -13,7 +13,6 @@
 		8532A77C296BE15300402E91 /* AddOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A77B296BE15300402E91 /* AddOptionView.swift */; };
 		8532A77F296BEFEF00402E91 /* AddOptionBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A77E296BEFEF00402E91 /* AddOptionBtnView.swift */; };
 		8532A786296C251200402E91 /* ProsConsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A785296C251200402E91 /* ProsConsCVC.swift */; };
-		8532A788296D37DE00402E91 /* ClassIdentifier+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A787296D37DE00402E91 /* ClassIdentifier+.swift */; };
 		85E0A44929646E280007C3CA /* FirstWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */; };
 		85E0A44B29646E300007C3CA /* SecondWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */; };
 		85E0A44D29646E390007C3CA /* ThirdWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */; };
@@ -83,7 +82,6 @@
 		8532A77B296BE15300402E91 /* AddOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionView.swift; sourceTree = "<group>"; };
 		8532A77E296BEFEF00402E91 /* AddOptionBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionBtnView.swift; sourceTree = "<group>"; };
 		8532A785296C251200402E91 /* ProsConsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProsConsCVC.swift; sourceTree = "<group>"; };
-		8532A787296D37DE00402E91 /* ClassIdentifier+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassIdentifier+.swift"; sourceTree = "<group>"; };
 		85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWriteStepVC.swift; sourceTree = "<group>"; };
 		85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWriteStepVC.swift; sourceTree = "<group>"; };
 		85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdWriteStepVC.swift; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 				E7C69CC12962099500848B72 /* UIViewController+.swift */,
 				E7C69CC329620C5600848B72 /* CALayer+.swift */,
 				E7C69CCD29649EA900848B72 /* UICollectionVIew+.swift */,
-				8532A787296D37DE00402E91 /* ClassIdentifier+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -572,7 +569,6 @@
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
 				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */,
-				8532A788296D37DE00402E91 /* ClassIdentifier+.swift in Sources */,
 				8532A786296C251200402E91 /* ProsConsCVC.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
 				E7C69CCE29649EA900848B72 /* UICollectionVIew+.swift in Sources */,
