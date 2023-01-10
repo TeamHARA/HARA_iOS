@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class FourthWriteStepView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     // MARK: - Properties
     private let background = UIImageView().then {
@@ -127,7 +127,7 @@ class FourthWriteStepView: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 }
 
-extension FourthWriteStepView{
+extension FourthWriteStepVC{
     private func setLayout(){
         view.addSubViews([background, navigationView, progressView, questionLabel,
                          categoryTextField, categoryTextLine, pickerImage])

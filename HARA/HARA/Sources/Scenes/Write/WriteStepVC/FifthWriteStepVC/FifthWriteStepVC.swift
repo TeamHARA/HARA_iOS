@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class FifthWriteStepView: UIViewController{
+class FifthWriteStepVC: UIViewController{
     
     // MARK: - Properties
     private let background = UIImageView().then {
@@ -128,7 +128,7 @@ class FifthWriteStepView: UIViewController{
 }
 
 // MARK: - Layout
-extension FifthWriteStepView{
+extension FifthWriteStepVC{
     private func setLayout(){
         view.addSubViews([background, navigationView, progressView, questionLabel,
                           aloneButton, everyoneButton])

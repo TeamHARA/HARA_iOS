@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class ThirdWriteStepView: UIViewController{
+class ThirdWriteStepVC: UIViewController{
     
     // MARK: - Properties
     private let background = UIImageView().then {
@@ -53,7 +53,7 @@ class ThirdWriteStepView: UIViewController{
     }
 }
 
-extension ThirdWriteStepView{
+extension ThirdWriteStepVC{
     private func setLayout(){
         view.addSubViews([background, navigationView, progressView, questionLabel, tipLabel])
         

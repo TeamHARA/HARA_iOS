@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class SecondWriteStepView: UIViewController{
+class SecondWriteStepVC: UIViewController{
     
     // MARK: - Properties
     private let background = UIImageView().then {
@@ -148,7 +148,7 @@ class SecondWriteStepView: UIViewController{
 }
 
 // MARK: - Layout
-extension SecondWriteStepView{
+extension SecondWriteStepVC{
     func setLayout(){
         view.addSubViews([background, navigationView, progressView, questionLabel, optionStackView, addButton])
         
@@ -192,7 +192,7 @@ extension SecondWriteStepView{
 }
 
 // MARK: - UITextFieldDelegate
-extension SecondWriteStepView: UITextFieldDelegate {
+extension SecondWriteStepVC: UITextFieldDelegate {
     /// ✅ textField 에서 편집을 시작한 후
     func textFieldDidBeginEditing(_ textField: UITextField) {
         /// 키보드 업
