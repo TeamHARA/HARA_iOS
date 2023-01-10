@@ -96,7 +96,7 @@ class ProsConsCVC: UICollectionViewCell {
 
 extension ProsConsCVC{
     private func setLayout(){
-        backgroundColor = .yellow
+        backgroundColor = .clear
         contentView.addSubView(optionContainerView)
         optionContainerView.addSubviews([optionTitle, imageInsertButton, divisionLine, prosTextView, consTextView])
         prosTextView.addSubview(prosLabel)

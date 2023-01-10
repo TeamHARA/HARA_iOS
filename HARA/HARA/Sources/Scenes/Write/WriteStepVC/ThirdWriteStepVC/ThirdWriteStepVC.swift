@@ -61,12 +61,15 @@ class ThirdWriteStepVC: UIViewController{
         $0.backgroundColor = .clear
         $0.delegate = self
         $0.dataSource = self
+        $0.showsVerticalScrollIndicator = false
+
     }
     
     private var prosConsTitleArray: [String] = []
     private var zeroCheckArray: [Bool] = []
     
     final let listLineSpacing: CGFloat = 14.adjustedH
+    final let listInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 230, right: 0)
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -75,6 +78,9 @@ class ThirdWriteStepVC: UIViewController{
         print("델리\(prosConsTitleArray)")
         setLayout()
         registerCV()
+        /// 키보드 관련 함수
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShown(_:)),name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeHidden(_:)),name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // MARK: - Functions
@@ -82,6 +88,15 @@ class ThirdWriteStepVC: UIViewController{
         prosConsCV.register(ProsConsCVC.self,
                                 forCellWithReuseIdentifier: ProsConsCVC.classIdentifier
         )
+    }
+    /// 키보드가 보일때 화면을 위로 120 만큼 올린다.
+    @objc func keyboardWillShown(_ notificiation: NSNotification) {
+      self.view.frame = CGRect(x: 0, y: -75, width: self.view.frame.size.width, height: self.view.frame.size.height)
+    }
+     
+    /// 키보드가 사라질때 화면을 다시 원복한다.
+    @objc func keyboardWillBeHidden(_ notification: NSNotification) {
+      self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
 }
 
@@ -133,9 +148,13 @@ extension ThirdWriteStepVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 343.adjustedW, height: 153.adjustedH)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return listLineSpacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return listInset
     }
 }
 
