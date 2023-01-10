@@ -44,10 +44,11 @@ final class WorryDetailHeaderView: UICollectionReusableView {
     private let worryContent = UILabel().then {
         $0.font = .haraB3R14
         $0.textColor = .hGray1
-        $0.text = "글자수 제한 "
+        $0.text = "아니 제가 어쩌고 저쩌고 해서 저쩌고 한데 저쩌고하거든요 그래서 진짜로 어쩌고 저쩌고 해요 강아지 멍멍 고양이 야옹야옹후하후하후하 "
         $0.numberOfLines = 0
     }
     
+    // MARK: - View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white

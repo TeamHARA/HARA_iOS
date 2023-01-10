@@ -31,8 +31,42 @@ final class DetailWorryCardVC: UIViewController {
         return view
     }()
     
-    private var optionNums = 3
+    private var optionNums = 4
     
+    static func getLayout() -> UICollectionViewCompositionalLayout {
+        UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
+            switch section {
+            case 0:
+                let fracHeight = CGFloat(Double(1) / Double(self.optionNums))
+                let estimatedHeight = CGFloat(300)
+                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(estimatedHeight) )
+                let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        //        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: nil, trailing: nil, bottom: .fixed(10))
+        //        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0)
+                
+        //        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(estimatedHeight) )
+                let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, repeatingSubitem: item, count: 1)
+                //            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        //        group.interItemSpacing = .fixed(10)
+                let section = NSCollectionLayoutSection(group: group)
+                section.interGroupSpacing = 10
+                section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 10, trailing: 16)
+                
+                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
+                let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind:UICollectionView.elementKindSectionHeader,alignment: .top)
+                
+                let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
+                let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize,elementKind:UICollectionView.elementKindSectionFooter,alignment: .bottom)
+                
+                section.boundarySupplementaryItems = [header, footer]
+                
+                return UICollectionViewCompositionalLayout(section: section)
+            default:
+                
+            }
+            
+        }
+    }
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
         let fracHeight = CGFloat(Double(1) / Double(self.optionNums))
         let estimatedHeight = CGFloat(300)
@@ -51,22 +85,14 @@ final class DetailWorryCardVC: UIViewController {
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind:UICollectionView.elementKindSectionHeader,alignment: .top)
-        section.boundarySupplementaryItems = [header]
+        
+        let footerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44))
+        let footer = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize,elementKind:UICollectionView.elementKindSectionFooter,alignment: .bottom)
+        
+        section.boundarySupplementaryItems = [header, footer]
         
         return UICollectionViewCompositionalLayout(section: section)
     }()
-    
-    private var voteButton = UIButton().then {
-        $0.setTitle("투표하기", for: .normal)
-        $0.contentHorizontalAlignment = .center
-        $0.setTitleColor(.hOrange1, for: .normal)
-        $0.isEnabled = false
-        $0.setBackgroundColor(.hWhite, for: .disabled)
-        $0.setBackgroundColor(.hOrange3, for: .normal)
-        $0.makeRounded(cornerRadius: 8)
-        $0.layer.borderColor = UIColor.hOrange2.cgColor
-        $0.layer.borderWidth = 1
-    }
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -79,7 +105,7 @@ final class DetailWorryCardVC: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-         self.voteOptionCV.collectionViewLayout.invalidateLayout()     
+         self.voteOptionCV.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: - Function
@@ -89,6 +115,8 @@ final class DetailWorryCardVC: UIViewController {
         
         voteOptionCV.register(cell: DetailWorryCVC.self, forCellWithReuseIdentifier: DetailWorryCVC.className)
         voteOptionCV.register(WorryDetailHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorryDetailHeaderView.className)
+        voteOptionCV.register(WorryDetailFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: WorryDetailFooterView.className)
+        
     }
 
     private func setPressAction() {
@@ -112,9 +140,18 @@ extension DetailWorryCardVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let headerview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorryDetailHeaderView.className, for: indexPath) as! WorryDetailHeaderView
-     
-        return headerview
+        switch kind {
+          case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: WorryDetailHeaderView.className, for: indexPath) as! WorryDetailHeaderView
+            return header
+            
+          case UICollectionView.elementKindSectionFooter:
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: WorryDetailFooterView.className, for: indexPath) as! WorryDetailFooterView
+            return footer
+            
+          default:
+            return UICollectionReusableView()
+          }
     }
     
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -131,7 +168,7 @@ extension DetailWorryCardVC: UICollectionViewDelegate {
 // MARK: - Layout
 extension DetailWorryCardVC {
     private func setLayout() {
-        view.addSubviews([closeDetailButton, worryStateTitle, voteOptionCV, voteButton])
+        view.addSubviews([closeDetailButton, worryStateTitle, voteOptionCV])
         
         closeDetailButton.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(13)
@@ -147,15 +184,10 @@ extension DetailWorryCardVC {
         
         voteOptionCV.snp.makeConstraints {
             $0.top.equalTo(worryStateTitle.snp.bottom).offset(16)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
-        
-        voteButton.snp.makeConstraints {
-            $0.top.equalTo(voteOptionCV.snp.bottom).offset(16)
-            $0.leading.trailing.equalTo(voteOptionCV)
-            $0.height.equalTo(44.adjustedH)
-        }
+    
     }
 }

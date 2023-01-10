@@ -18,7 +18,6 @@ final class DetailWorryCVC: UICollectionViewCell {
         $0.distribution = .fillProportionally
         $0.axis = .vertical
     }
-    //TODO: 보더 안먹힘
     private let voteOptionView = UIView().then {
         $0.layer.borderColor = UIColor.hGray4.cgColor
         $0.layer.borderWidth = 1
