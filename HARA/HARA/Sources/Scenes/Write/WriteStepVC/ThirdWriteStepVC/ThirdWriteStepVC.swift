@@ -75,7 +75,6 @@ class ThirdWriteStepVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        print("델리\(prosConsTitleArray)")
         setLayout()
         registerCV()
         /// 키보드 관련 함수
@@ -194,8 +193,7 @@ extension ThirdWriteStepVC: optionTitleDelegate{
             zeroCheckArray[2] = zeroCheckArray[3]
             zeroCheckArray[3] = changeBool
         }
-        print("여기 실행\(prosConsTitleArray)")
-        print("0값 확인\(zeroCheckArray)")
+        /// 빈칸 확인해주는 함수 나중에 구현 예정
         for x in 0...3{
             if prosConsTitleArray[x] != ""{
                 cvcCount += 1
