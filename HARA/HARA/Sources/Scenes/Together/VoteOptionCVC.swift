@@ -15,6 +15,7 @@ class VoteOptionCVC: UICollectionViewCell {
     private let checkButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named:"together_checked_icon"), for: .selected)
         $0.setBackgroundImage(UIImage(named:"together_unChecked_icon"), for: .normal)
+        $0.isUserInteractionEnabled = false
     }
     
     private let optionLabel = UILabel().then {
@@ -23,17 +24,28 @@ class VoteOptionCVC: UICollectionViewCell {
         $0.text = "선택지 글자수 제한은 공백 포함 20"
     }
     
+    private var alreadySelected = false
+        
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                contentView.backgroundColor = .hBlue1
-                optionLabel.textColor = .hWhite
-                contentView.layer.borderWidth = 0
+                /// 셀을 클릭할 때 cell 의 isSelect가 바로 true로 되기 때문에 alreadySlected를 통해 이미 선택된 상태면 isSelect를 false로 바꿈
+                if alreadySelected {
+                    alreadySelected = false
+                    isSelected = false
+                }else {
+                    optionLabel.textColor = .hBlue1
+                    contentView.layer.borderColor = UIColor.hBlue2.cgColor
+                    contentView.layer.borderWidth = 1
+                    self.checkButton.isSelected = true
+                    alreadySelected = true
+                }
             } else {
+                optionLabel.textColor = .hBlack
                 contentView.backgroundColor = .hWhite
-                contentView.layer.borderColor = UIColor.hBlue2.cgColor
+                contentView.layer.borderColor = UIColor.hGray4.cgColor
                 contentView.layer.borderWidth = 1
-                optionLabel.textColor = .hBlue2
+                self.checkButton.isSelected = false
             }
         }
     }
@@ -43,27 +55,38 @@ class VoteOptionCVC: UICollectionViewCell {
         super.init(frame: .zero)
         setUI()
         setLayout()
+//        setPressAction()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //TODO: cell 클릭시 다른 셀 클릭해제
     // MARK: - Function
+//    func setPressAction() {
+//        self.checkButton.press {
+//            if self.isSelected == true{
+//                self.isSelected = false
+//            }else {
+//                self.isSelected = true
+//            }
+//
+//        }
+//    }
+    
     func setData(isSelected: Bool) {
         optionLabel.textColor = isSelected ? .hBlue1 : .hBlack
         checkButton.isSelected = isSelected
-        contentView.backgroundColor = isSelected ? .hBlue1 : .hGray4
+//        contentView.backgroundColor = isSelected ? .hBlue1 : .hGray4
     }
     
     // MARK: - UI
     private func setUI() {
-        contentView.backgroundColor = .hWhite
-        contentView.layer.borderColor = UIColor.hBlue2.cgColor
-        contentView.layer.borderWidth = 1
-        optionLabel.textColor = .hBlue2
         contentView.makeRounded(cornerRadius: 8)
+        contentView.backgroundColor = .hWhite
+        contentView.layer.borderColor = UIColor.hGray4.cgColor
+        contentView.layer.borderWidth = 1
+        optionLabel.textColor = .hBlack
     }
     
     // MARK: - Layout
@@ -83,3 +106,5 @@ class VoteOptionCVC: UICollectionViewCell {
         }
     }
 }
+
+
