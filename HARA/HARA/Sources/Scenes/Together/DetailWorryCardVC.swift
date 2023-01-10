@@ -21,43 +21,7 @@ final class DetailWorryCardVC: UIViewController {
         $0.textColor = .hGray1
         $0.text = "고민중"
     }
-    
-    private let profileImageButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "together_profile_icon"), for: .normal)
-    }
-    
-    private let userName = UILabel().then {
-        $0.text = "닉네임"
-        $0.textColor = .hGray2
-        $0.font = .haraSub1Sb12
-    }
-    
-    private let createdAt = UILabel().then {
-        $0.font = .haraSub3R12
-        $0.textColor = .hGray2
-        $0.text = "2022.12.25"
-    }
-    
-    private let categoryTitle = UILabel().then {
-        $0.font = .haraSub2M12
-        $0.textColor = .hBlue1
-        $0.text = "진로고민"
-    }
-    
-    private let worryTitle = UILabel().then {
-        $0.font = .haraH1Sb16
-        $0.textColor = .hGray1
-        $0.text = "글자수 제한은 공백 포함 28자 글자수 제한은 공백"
-        $0.numberOfLines = 0
-    }
-    
-    private let worryContent = UILabel().then {
-        $0.font = .haraB3R14
-        $0.textColor = .hGray1
-        $0.text = "아니 제가 어쩌고 저쩌고 해서 저쩌고 한데 저쩌고하거든요 그래서 진짜로 어쩌고 저쩌고 해요 강아지 멍멍 고양이 야옹야옹후하후하후하"
-        $0.numberOfLines = 0
-    }
-    
+        
     private lazy var voteOptionCV: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.compositionalLayout)
         view.backgroundColor = .yellow
@@ -71,18 +35,23 @@ final class DetailWorryCardVC: UIViewController {
     
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
         let fracHeight = CGFloat(Double(1) / Double(self.optionNums))
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(126.adjustedH))
+        let estimatedHeight = CGFloat(300)
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(estimatedHeight) )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        //        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
-        //        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+//        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: nil, trailing: nil, bottom: .fixed(10))
+//        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(fracHeight))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(estimatedHeight) )
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, repeatingSubitem: item, count: 1)
         //            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
-            group.interItemSpacing = .flexible(10)
+//        group.interItemSpacing = .fixed(10)
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 50
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
+        section.interGroupSpacing = 10
+        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 10, trailing: 16)
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(200))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,elementKind:UICollectionView.elementKindSectionHeader,alignment: .top)
+        section.boundarySupplementaryItems = [header]
         
         return UICollectionViewCompositionalLayout(section: section)
     }()
@@ -106,6 +75,11 @@ final class DetailWorryCardVC: UIViewController {
         setLayout()
         setPressAction()
         setVoteOptionCV()
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+         self.voteOptionCV.collectionViewLayout.invalidateLayout()     
     }
     
     // MARK: - Function
@@ -114,6 +88,7 @@ final class DetailWorryCardVC: UIViewController {
         voteOptionCV.delegate = self
         
         voteOptionCV.register(cell: DetailWorryCVC.self, forCellWithReuseIdentifier: DetailWorryCVC.className)
+        voteOptionCV.register(WorryDetailHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorryDetailHeaderView.className)
     }
 
     private func setPressAction() {
@@ -135,6 +110,13 @@ extension DetailWorryCardVC: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorryDetailHeaderView.className, for: indexPath) as! WorryDetailHeaderView
+     
+        return headerview
+    }
+    
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        let width = collectionView.frame.width
 //        return CGSize(width: width, height: 200.adjustedH)
@@ -149,7 +131,7 @@ extension DetailWorryCardVC: UICollectionViewDelegate {
 // MARK: - Layout
 extension DetailWorryCardVC {
     private func setLayout() {
-        view.addSubviews([closeDetailButton, worryStateTitle, profileImageButton,userName, createdAt, categoryTitle, worryTitle, worryContent, voteOptionCV, voteButton])
+        view.addSubviews([closeDetailButton, worryStateTitle, voteOptionCV, voteButton])
         
         closeDetailButton.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(13)
@@ -163,44 +145,11 @@ extension DetailWorryCardVC {
             $0.height.equalTo(19)
         }
         
-        profileImageButton.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(66)
-            $0.leading.equalToSuperview().offset(16)
-            $0.height.width.equalTo(34)
-        }
-        
-        userName.snp.makeConstraints {
-            $0.leading.equalTo(profileImageButton.snp.trailing).offset(6)
-            $0.top.equalTo(profileImageButton)
-        }
-        
-        createdAt.snp.makeConstraints {
-            $0.leading.equalTo(userName)
-            $0.bottom.equalTo(profileImageButton)
-        }
-        
-        categoryTitle.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(22)
-            $0.bottom.equalTo(profileImageButton)
-        }
-        
-        worryTitle.snp.makeConstraints {
-            $0.top.equalTo(profileImageButton.snp.bottom).offset(17)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().inset(16)
-        }
-        
-        worryContent.snp.makeConstraints {
-            $0.top.equalTo(worryTitle.snp.bottom).offset(10)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview().inset(16)
-        }
-        
         voteOptionCV.snp.makeConstraints {
-            $0.top.equalTo(worryContent.snp.bottom).offset(16)
+            $0.top.equalTo(worryStateTitle.snp.bottom).offset(16)
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().inset(16)
-            $0.height.equalTo(262)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide)
         }
         
         voteButton.snp.makeConstraints {
