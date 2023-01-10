@@ -84,10 +84,17 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.sizeToFit()
-        let btnSelect = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(onPickDone))
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let btnCancel = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(onPickCancel))
-        toolBar.setItems([btnCancel, space, btnSelect], animated: true)
+        let btnSelect = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(onPickDone))
+        let spaceLeft = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let categoryLabel = UILabel().then{
+            $0.text = "카테고리"
+            $0.font = .haraM2M18
+            $0.textColor = .hBlack
+        }
+        let barTitle = UIBarButtonItem(customView: categoryLabel)
+        let spaceRight = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let btnCancel = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onPickCancel))
+        toolBar.setItems([btnCancel, spaceLeft, barTitle, spaceRight, btnSelect], animated: true)
         toolBar.isUserInteractionEnabled = true
         categoryTextField.inputView = pickerView
         categoryTextField.inputAccessoryView = toolBar
@@ -123,6 +130,7 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = categories[row]
         categoryTextField.textAlignment = .center
+        categoryTextField.textColor = .black
         selectedItem = categories[row]
     }
 }
