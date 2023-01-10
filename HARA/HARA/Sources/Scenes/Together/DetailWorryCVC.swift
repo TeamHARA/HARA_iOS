@@ -35,23 +35,25 @@ final class DetailWorryCVC: UICollectionViewCell {
         $0.textColor = .hBlack
         $0.font = .haraB3R14
         $0.text = "청춘은 얼마나 영락과 주며, 말이다."
+        $0.sizeToFit()
+        $0.numberOfLines = 1
     }
     
     private let advantageLabel = UILabel().then{
-        $0.numberOfLines = 1
-        let advantage = NSAttributedString(string: "장점 ", attributes: [
+        $0.numberOfLines = 0
+        let advantage = NSAttributedString(string: "장점  ", attributes: [
             .font: UIFont.haraB2M14, .foregroundColor: UIColor.hBlue1])
-        let advantageContent = NSAttributedString(string: "이거는 장점입니다. ", attributes: [
+        let advantageContent = NSAttributedString(string: "글자수 제한 공백 포함 50자, 두줄이 최대라고 판단했습니다요..흑흑 글자수 제한 공백 포", attributes: [
             .font: UIFont.haraB2M14, .foregroundColor: UIColor.hGray1])
         let content = advantage + advantageContent
         $0.attributedText = content
     }
     
     private let disadvantageLabel = UILabel().then{
-        $0.numberOfLines = 1
-        let disadvantage = NSAttributedString(string: "단점 ", attributes: [
+        $0.numberOfLines = 0
+        let disadvantage = NSAttributedString(string: "단점  ", attributes: [
             .font: UIFont.haraB2M14, .foregroundColor: UIColor.hRed])
-        let disadvantageContent = NSAttributedString(string: "이거는 단점dfgfdgfdgdfgfdgdfgfdgdfgfdgdfgdfgfdgfdgfdgdfgdfgfdgfdgdfg입니다. ", attributes: [
+        let disadvantageContent = NSAttributedString(string: "글자수 ", attributes: [
             .font: UIFont.haraB2M14, .foregroundColor: UIColor.hGray1])
         let content = disadvantage + disadvantageContent
         $0.attributedText = content
@@ -113,7 +115,7 @@ extension DetailWorryCVC {
             $0.top.equalTo(voteOptionView.snp.bottom).offset(12)
             $0.leading.equalToSuperview().offset(17)
             $0.trailing.equalToSuperview().inset(17)
-            
+            $0.bottom.equalToSuperview().inset(12)
         }
     }
 }

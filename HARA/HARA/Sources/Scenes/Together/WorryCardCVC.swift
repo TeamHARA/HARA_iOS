@@ -55,8 +55,8 @@ final class WorryCardCVC: UICollectionViewCell {
         //        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
         //        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, repeatingSubitem: item, count: 1)
         //            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         //            group.interItemSpacing = .flexible(-16)
         let section = NSCollectionLayoutSection(group: group)
@@ -216,7 +216,7 @@ extension WorryCardCVC {
             $0.top.equalTo(worryContentLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(11)
             $0.trailing.equalToSuperview().inset(11)
-            //            $0.bottom.equalToSuperview().inset(52)
+            $0.bottom.equalTo(voteButton.snp.top)
         }
         
         voteButton.snp.makeConstraints {

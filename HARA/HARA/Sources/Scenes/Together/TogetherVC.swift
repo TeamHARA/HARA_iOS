@@ -36,10 +36,10 @@ final class TogetherVC: UIViewController {
     /// 고민의 개수
     private var worryNums = 10
     private var worryTitles = ["고민1"]
-    private var worryContents = ["dsfsdfdsfdsf"]
+    private var worryContents = ["dsdsdf"]
     
     /// 선택지의 개수
-    private var optionNums = 4
+    private var optionNums = 2
     
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
         let calculatedHeight = Double((self.optionNums*50 + 225)).adjustedH
@@ -71,6 +71,10 @@ final class TogetherVC: UIViewController {
         registerCell()
         setLayout()
         categoryCV.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .right)
+    }
+    
+    override func viewWillLayoutSubviews() {
+         self.worryCardCV.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: - Function
@@ -153,7 +157,7 @@ extension TogetherVC: UICollectionViewDataSource {
 extension TogetherVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == categoryCV {
-            
+            /// 카테고리 별 서버 연결 
         }else if collectionView == worryCardCV {
             let vc = DetailWorryCardVC()
             vc.modalPresentationStyle = .overFullScreen
@@ -184,6 +188,7 @@ extension TogetherVC {
             $0.top.equalTo(categoryCV.snp.bottom).offset(12)
             $0.leading.equalToSuperview().offset(12)
             $0.trailing.bottom.equalToSuperview().inset(12)
+            $0.bottom.equalToSuperview()
         }
         
     }
