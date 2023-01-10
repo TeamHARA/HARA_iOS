@@ -28,14 +28,14 @@ class ThirdWriteStepView: UIViewController{
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
-        let NormalString1 = NSAttributedString(string: "선택지의\n", attributes: [
+        let normalString1 = NSAttributedString(string: "선택지의\n", attributes: [
             .font: UIFont.haraM1M24])
-        let BoldString = NSAttributedString(string: "장단점", attributes: [
+        let boldString = NSAttributedString(string: "장단점", attributes: [
             .font: UIFont.haraM1B24])
-        let NormalString2 = NSAttributedString(string: "을 적어보세요.", attributes: [
+        let normalString2 = NSAttributedString(string: "을 적어보세요.", attributes: [
             .font: UIFont.haraM1M24])
         
-        let title = NormalString1 + BoldString + NormalString2
+        let title = normalString1 + boldString + normalString2
         $0.attributedText = title
     }
     

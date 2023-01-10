@@ -18,6 +18,9 @@ class SecondWriteStepView: UIViewController{
         $0.backgroundColor = .clear
     }
     
+    /// stackView의 height을 동적으로 주기 위한 변수
+    private var stackViewheight: Int = Int(112.adjustedH)
+    
     lazy var navigationView = UIView().then{
         $0.backgroundColor = .hBlue4
     }
@@ -28,27 +31,31 @@ class SecondWriteStepView: UIViewController{
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
-        let BoldString = NSAttributedString(string: "고민되는 선택지", attributes: [
+        let boldString = NSAttributedString(string: "고민되는 선택지", attributes: [
             .font: UIFont.haraM1B24])
-        let NormalString = NSAttributedString(string: "를\n적어주세요.", attributes: [
+        let normalString = NSAttributedString(string: "를\n적어주세요.", attributes: [
             .font: UIFont.haraM1M24])
         
-        let title = BoldString + NormalString
+        let title = boldString + normalString
         $0.attributedText = title
     }
-//
-//    /// stackView의 추가할 뷰들 구현
-//    private lazy var firstOptionView = BaseOptionView().then
-//    private lazy var secondOptionView = BaseOptionView().then
-//    private lazy var thirdOptionView = AddOptionView().then
-//    private lazy var fourthOptionView = AddOptionView().then
-//
-//    private lazy var optionStackView = UIStackView(arrangedSubviews: [firstOptionView, secondOptionView, thirdOptionView, fourthOptionView]).then {
-//        $0.axis = .vertical // default
-//        $0.distribution = .fill // default
-//        $0.alignment = .fill // default
-//        $0.spacing = 16.adjustedH
-//    }
+
+    /// stackView의 추가할 뷰들 구현
+    private lazy var firstOptionView = BaseOptionView()
+    private lazy var secondOptionView = BaseOptionView()
+    private lazy var thirdOptionView = AddOptionView()
+    private lazy var fourthOptionView = AddOptionView()
+    private lazy var addButton = AddOptionBtnView()
+    
+    private lazy var stackBaseOptionArray: [BaseOptionView] = [firstOptionView, secondOptionView]
+    private lazy var stackAddOptionArray: [AddOptionView] = []
+
+    private lazy var optionStackView = UIStackView(arrangedSubviews: [firstOptionView, secondOptionView]).then {
+        $0.axis = .vertical // default
+        $0.distribution = .fillEqually // default
+        $0.alignment = .fill // default
+        $0.spacing = 16.adjustedH
+    }
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -56,12 +63,13 @@ class SecondWriteStepView: UIViewController{
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
         setLayout()
+        setPress()
         /// 등록
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShown(_:)),name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeHidden(_:)),name: UIResponder.keyboardWillHideNotification, object: nil)
         //textFieldShouldReturn(infoTextField)
     }
-    
+
     // MARK: - Function
     /// 키보드가 보일때 화면을 위로 160 만큼 올린다.
     @objc func keyboardWillShown(_ notificiation: NSNotification) {
@@ -72,14 +80,77 @@ class SecondWriteStepView: UIViewController{
     @objc func keyboardWillBeHidden(_ notification: NSNotification) {
       self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
+    
+    private func setPress() {
+        addButton.addOptionButton.press { [self] in
+            /// 선택지의 height 만큼 stackview의 높이를 조정해줌
+            stackViewheight += Int(64.adjustedH)
+            self.optionStackView.snp.updateConstraints {
+                $0.height.equalTo(self.stackViewheight)
+            }
+            switch stackAddOptionArray{
+            /// 만약 선택지가 1, 2 뿐일때, 3을 추가
+            case []:
+                optionStackView.addArrangedSubview(thirdOptionView)
+                stackAddOptionArray.append(thirdOptionView)
+            /// 만약, 선택지가 1, 2, 3일때, 4를 추가
+            case [thirdOptionView]:
+                optionStackView.addArrangedSubview(fourthOptionView)
+                stackAddOptionArray.append(fourthOptionView)
+                addButton.isHidden = true
+            case [fourthOptionView]:
+                optionStackView.addArrangedSubview(thirdOptionView)
+                stackAddOptionArray.append(thirdOptionView)
+                addButton.isHidden = true
+            default:
+                break
+            }
+        }
+        thirdOptionView.deleteButton.press {[self] in
+            /// 선택지의 height 만큼 stackview의 높이를 조정해줌
+            stackViewheight -= Int(64.adjustedH)
+            self.optionStackView.snp.updateConstraints {
+                $0.height.equalTo(self.stackViewheight)
+            }
+            thirdOptionView.optionTextField.text = ""
+            optionStackView.removeArrangedSubview(thirdOptionView)
+            thirdOptionView.removeFromSuperview()
+            addButton.isHidden = false
+            switch stackAddOptionArray{
+            case [thirdOptionView], [thirdOptionView,fourthOptionView]:
+                stackAddOptionArray.remove(at: 0)
+            case [fourthOptionView, thirdOptionView]:
+                stackAddOptionArray.remove(at: 1)
+            default:
+                break
+            }
+        }
+        fourthOptionView.deleteButton.press {[self] in
+            /// 선택지의 height 만큼 stackview의 높이를 조정해줌
+            stackViewheight -= Int(64.adjustedH)
+            self.optionStackView.snp.updateConstraints {
+                $0.height.equalTo(self.stackViewheight)
+            }
+            fourthOptionView.optionTextField.text = ""
+            optionStackView.removeArrangedSubview(fourthOptionView)
+            fourthOptionView.removeFromSuperview()
+            addButton.isHidden = false
+            switch stackAddOptionArray{
+            case [fourthOptionView], [fourthOptionView,thirdOptionView]:
+                stackAddOptionArray.remove(at: 0)
+            case [thirdOptionView, fourthOptionView]:
+                stackAddOptionArray.remove(at: 1)
+            default:
+                break
+            }
+        }
+    }
 }
 
 // MARK: - Layout
 extension SecondWriteStepView{
-    private func setLayout(){
-        view.addSubViews([background, navigationView, progressView, questionLabel,
-//                         optionStackView
-                         ])
+    func setLayout(){
+        view.addSubViews([background, navigationView, progressView, questionLabel, optionStackView, addButton])
         
         background.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -104,12 +175,19 @@ extension SecondWriteStepView{
             $0.leading.equalToSuperview().offset(16.adjustedW)
         }
         
-//        optionStackView.snp.makeConstraints{
-//            $0.top.equalTo(questionLabel).offset(22.adjustedH)
-//            $0.leading.equalToSuperview().offset(16.adjustedW)
-//            $0.trailing.equalToSuperview().offset(-16.adjustedW)
-//            $0.height.equalTo(240.adjustedH)
-//        }
+        optionStackView.snp.makeConstraints{
+            $0.top.equalTo(questionLabel.snp.bottom).offset(54.adjustedH)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
+            $0.height.equalTo(stackViewheight)
+        }
+        
+        addButton.snp.makeConstraints{
+            $0.top.equalTo(optionStackView.snp.bottom).offset(16.adjustedH)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
+            $0.height.equalTo(48.adjustedH)
+        }
     }
 }
 
