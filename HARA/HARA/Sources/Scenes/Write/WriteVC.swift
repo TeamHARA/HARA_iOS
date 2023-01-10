@@ -36,11 +36,11 @@ class WriteVC: UIViewController {
     lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     /// pageView에 사용될 5개 VC 선언
-    lazy var vc1 = FirstWriteStepView()
-    lazy var vc2 = SecondWriteStepView()
-    lazy var vc3 = ThirdWriteStepView()
-    lazy var vc4 = FourthWriteStepView()
-    lazy var vc5 = FifthWriteStepView()
+    lazy var vc1 = FirstWriteStepVC()
+    lazy var vc2 = SecondWriteStepVC()
+    lazy var vc3 = ThirdWriteStepVC()
+    lazy var vc4 = FourthWriteStepVC()
+    lazy var vc5 = FifthWriteStepVC()
     
     lazy var viewList: [UIViewController] = {
         return [vc1, vc2, vc3, vc4, vc5]
@@ -78,6 +78,7 @@ class WriteVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .clear
         vc5.delegate = self
+        vc2.titledelegate = vc3
         disableArrowButton()
         setLayout()
         setPress()
@@ -108,6 +109,7 @@ class WriteVC: UIViewController {
             /// 버튼눌렸을 때 페이지 변경 애니메이션 적용
             self.disableArrowButton()
             self.makeProgressBarAnimate()
+            self.vc3.prosConsCV.reloadData()
         }
         uploadButton.press {
             self.dismiss(animated: true, completion: nil)
@@ -233,6 +235,7 @@ extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate 
         if nextIndex == viewList.count {
             return nil
         }
+        self.vc3.prosConsCV.reloadData()
         return viewList[nextIndex]
     }
     
@@ -282,6 +285,13 @@ extension WriteVC: SendIsclickedDelegate{
         }
     }
 }
+
+//extension WriteVC: optionTitleDelegate{
+//    func sendOptionTitle(optionTitleArray: [String]){
+//        print("1")
+//    }
+//}
+
 
 
 

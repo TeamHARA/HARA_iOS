@@ -19,3 +19,13 @@ func + (left: NSAttributedString, right: NSAttributedString) -> NSAttributedStri
   result.append(right)
   return result
 }
+
+extension NSObject {
+  
+    static var classIdentifier: String {
+        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
+    }
+     var classIdentifier: String {
+        NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
+    }
+}

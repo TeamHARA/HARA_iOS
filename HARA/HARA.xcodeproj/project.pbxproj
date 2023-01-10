@@ -18,11 +18,12 @@
 		8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A779296BE14D00402E91 /* BaseOptionView.swift */; };
 		8532A77C296BE15300402E91 /* AddOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A77B296BE15300402E91 /* AddOptionView.swift */; };
 		8532A77F296BEFEF00402E91 /* AddOptionBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A77E296BEFEF00402E91 /* AddOptionBtnView.swift */; };
-		85E0A44929646E280007C3CA /* FirstWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstWriteStepView.swift */; };
-		85E0A44B29646E300007C3CA /* SecondWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondWriteStepView.swift */; };
-		85E0A44D29646E390007C3CA /* ThirdWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */; };
-		85E0A44F29646E440007C3CA /* FourthWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */; };
-		85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */; };
+		8532A786296C251200402E91 /* ProsConsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A785296C251200402E91 /* ProsConsCVC.swift */; };
+		85E0A44929646E280007C3CA /* FirstWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */; };
+		85E0A44B29646E300007C3CA /* SecondWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */; };
+		85E0A44D29646E390007C3CA /* ThirdWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */; };
+		85E0A44F29646E440007C3CA /* FourthWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthWriteStepVC.swift */; };
+		85E0A45129646E4B0007C3CA /* FifthWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthWriteStepVC.swift */; };
 		E74C874F296A97AF00BFAD31 /* VotedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C874E296A97AF00BFAD31 /* VotedCVC.swift */; };
 		E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BE8295AC8A900848B72 /* AppDelegate.swift */; };
 		E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */; };
@@ -93,12 +94,13 @@
 		8532A779296BE14D00402E91 /* BaseOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOptionView.swift; sourceTree = "<group>"; };
 		8532A77B296BE15300402E91 /* AddOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionView.swift; sourceTree = "<group>"; };
 		8532A77E296BEFEF00402E91 /* AddOptionBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionBtnView.swift; sourceTree = "<group>"; };
-		85E0A44829646E280007C3CA /* FirstWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A44A29646E300007C3CA /* SecondWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthWriteStepView.swift; sourceTree = "<group>"; };
 		E74C874E296A97AF00BFAD31 /* VotedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedCVC.swift; sourceTree = "<group>"; };
+		8532A785296C251200402E91 /* ProsConsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProsConsCVC.swift; sourceTree = "<group>"; };
+		85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A44E29646E440007C3CA /* FourthWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A45029646E4B0007C3CA /* FifthWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthWriteStepVC.swift; sourceTree = "<group>"; };
 		E7C69BE5295AC8A900848B72 /* HARA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C69BE8295AC8A900848B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,17 +191,58 @@
 			path = OptionView;
 			sourceTree = "<group>";
 		};
-		85E0A44729646DB30007C3CA /* WriteStepView */ = {
+		8532A780296C247600402E91 /* FirstWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */,
+			);
+			path = FirstWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A781296C248600402E91 /* SecondWriteStepVC */ = {
 			isa = PBXGroup;
 			children = (
 				8532A778296BE13E00402E91 /* OptionView */,
-				85E0A44829646E280007C3CA /* FirstWriteStepView.swift */,
-				85E0A44A29646E300007C3CA /* SecondWriteStepView.swift */,
-				85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */,
-				85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */,
-				85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */,
+				85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */,
 			);
-			path = WriteStepView;
+			path = SecondWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A782296C249500402E91 /* ThirdWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				8532A785296C251200402E91 /* ProsConsCVC.swift */,
+				85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */,
+			);
+			path = ThirdWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A783296C24A300402E91 /* FourthWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				85E0A44E29646E440007C3CA /* FourthWriteStepVC.swift */,
+			);
+			path = FourthWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A784296C24AA00402E91 /* FifthWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				85E0A45029646E4B0007C3CA /* FifthWriteStepVC.swift */,
+			);
+			path = FifthWriteStepVC;
+			sourceTree = "<group>";
+		};
+		85E0A44729646DB30007C3CA /* WriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				8532A780296C247600402E91 /* FirstWriteStepVC */,
+				8532A781296C248600402E91 /* SecondWriteStepVC */,
+				8532A782296C249500402E91 /* ThirdWriteStepVC */,
+				8532A783296C24A300402E91 /* FourthWriteStepVC */,
+				8532A784296C24AA00402E91 /* FifthWriteStepVC */,
+			);
+			path = WriteStepVC;
 			sourceTree = "<group>";
 		};
 		E7C69BDC295AC8A900848B72 = {
@@ -424,7 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C69CBF296203CA00848B72 /* WriteVC.swift */,
-				85E0A44729646DB30007C3CA /* WriteStepView */,
+				85E0A44729646DB30007C3CA /* WriteStepVC */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -531,8 +574,8 @@
 				67DA6D2D296C92B9006F4C5C /* AloneWorriedModel.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
-				85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */,
-				85E0A44D29646E390007C3CA /* ThirdWriteStepView.swift in Sources */,
+				85E0A45129646E4B0007C3CA /* FifthWriteStepVC.swift in Sources */,
+				85E0A44D29646E390007C3CA /* ThirdWriteStepVC.swift in Sources */,
 				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
 				E7C69CDE296555A600848B72 /* WriteService.swift in Sources */,
 				E7C69CD2296554D700848B72 /* NetworkConstant.swift in Sources */,
@@ -552,26 +595,27 @@
 				8532A77C296BE15300402E91 /* AddOptionView.swift in Sources */,
 				E7C69C18295AD71C00848B72 /* WriteAPI.swift in Sources */,
 				E7C69CCC29647C9700848B72 /* CategoryCVC.swift in Sources */,
-				85E0A44B29646E300007C3CA /* SecondWriteStepView.swift in Sources */,
+				85E0A44B29646E300007C3CA /* SecondWriteStepVC.swift in Sources */,
 				E7C69C9D29613F2700848B72 /* UIStackView+.swift in Sources */,
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
 				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */,
+				8532A786296C251200402E91 /* ProsConsCVC.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
 				E7C69CCE29649EA900848B72 /* UICollectionVIew+.swift in Sources */,
 				E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */,
 				E7C69CD6296554F800848B72 /* GeneralResponse.swift in Sources */,
 				E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */,
+				85E0A44929646E280007C3CA /* FirstWriteStepVC.swift in Sources */,
 				E74C874F296A97AF00BFAD31 /* VotedCVC.swift in Sources */,
-				85E0A44929646E280007C3CA /* FirstWriteStepView.swift in Sources */,
 				E7C69CA52961407500848B72 /* String+.swift in Sources */,
 				E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */,
 				E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */,
 				67DA6D22296C9242006F4C5C /* AloneWorriedVC.swift in Sources */,
 				67DA6D26296C9259006F4C5C /* AloneWorriedCVC.swift in Sources */,
 				E7C69C9729613A1400848B72 /* UIFont+.swift in Sources */,
+				85E0A44F29646E440007C3CA /* FourthWriteStepVC.swift in Sources */,
 				67DA6D2E296C92B9006F4C5C /* TogetherWorriedModel.swift in Sources */,
-				85E0A44F29646E440007C3CA /* FourthWriteStepView.swift in Sources */,
 				E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */,
 				E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */,
 				67DA6D28296C925F006F4C5C /* TogetherWorriedCVC.swift in Sources */,

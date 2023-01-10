@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class FirstWriteStepView: UIViewController{
+class FirstWriteStepVC: UIViewController{
     
     // MARK: - Properties
     private let background = UIImageView().then {
@@ -124,7 +124,7 @@ class FirstWriteStepView: UIViewController{
 }
 
 // MARK: - Layout
-extension FirstWriteStepView{
+extension FirstWriteStepVC{
     private func setLayout(){
         view.addSubViews([background, navigationView, progressView, questionLabel, titleletterNumLabel, titleTextField, editImage, titleUnderLine,
                           infoTextView, detailletterNumLabel])
@@ -193,7 +193,7 @@ extension FirstWriteStepView{
 }
 
 // MARK: - UITextFieldDelegate
-extension FirstWriteStepView: UITextFieldDelegate {
+extension FirstWriteStepVC: UITextFieldDelegate {
 //    /// ✅ textField 에서 편집을 시작한 후
 //    func textFieldDidBeginEditing(_ textField: UITextField) {
 //        /// 키보드 업
@@ -230,7 +230,7 @@ extension FirstWriteStepView: UITextFieldDelegate {
 }
 
 // MARK: - UITextViewDelegate
-extension FirstWriteStepView: UITextViewDelegate {
+extension FirstWriteStepVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         /// 플레이스홀더
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
