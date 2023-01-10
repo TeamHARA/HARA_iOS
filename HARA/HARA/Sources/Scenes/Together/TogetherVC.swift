@@ -152,9 +152,13 @@ extension TogetherVC: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension TogetherVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DetailWorryCardVC()
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true)
+        if collectionView == categoryCV {
+            
+        }else if collectionView == worryCardCV {
+            let vc = DetailWorryCardVC()
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
+        }
     }
 }
 

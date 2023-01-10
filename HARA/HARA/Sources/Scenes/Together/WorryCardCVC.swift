@@ -92,6 +92,7 @@ final class WorryCardCVC: UICollectionViewCell {
     
     private var optionNums = 2
     
+    ///선택지가 클릭이 된 상태인지를 알려주는 변수
     private var isOptionSelected = false
     
     // MARK: - View Life Cycle
