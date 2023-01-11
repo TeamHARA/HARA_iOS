@@ -1,31 +1,26 @@
 //
-//  voteOptionCVC.swift
+//  FinalChoiceCVC.swift
 //  HARA
 //
-//  Created by 김담인 on 2023/01/04.
+//  Created by 김담인 on 2023/01/11.
 //
 
 import UIKit
 import SnapKit
 import Then
 
-class VoteOptionCVC: UICollectionViewCell {
+class FinalChoiceCVC: UICollectionViewCell {
     
     // MARK: - Properties
-    private let checkButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named:"together_checked_icon"), for: .selected)
-        $0.setBackgroundImage(UIImage(named:"together_unChecked_icon"), for: .normal)
-        $0.isUserInteractionEnabled = false
-    }
     
-    private let optionLabel = UILabel().then {
+    private let optionTitle = UILabel().then {
         $0.textColor = .hBlack
         $0.font = .haraB3R14
         $0.text = "선택지 글자수 제한은 공백 포함 20"
     }
     
     private var alreadySelected = false
-        
+    
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -34,20 +29,25 @@ class VoteOptionCVC: UICollectionViewCell {
                     alreadySelected = false
                     isSelected = false
                 }else {
-                    optionLabel.textColor = .hBlue1
-                    contentView.layer.borderColor = UIColor.hBlue2.cgColor
-                    contentView.layer.borderWidth = 1
-                    self.checkButton.isSelected = true
+                    optionTitle.textColor = .hWhite
                     alreadySelected = true
+                    contentView.backgroundColor = .hBlue1
                 }
             } else {
-                optionLabel.textColor = .hBlack
+                optionTitle.textColor = .hGray2
                 contentView.backgroundColor = .hWhite
-                contentView.layer.borderColor = UIColor.hGray4.cgColor
+                contentView.layer.borderColor = UIColor.hBlue3.cgColor
                 contentView.layer.borderWidth = 1
-                self.checkButton.isSelected = false
             }
         }
+    }
+    
+    private var percent = 30
+    
+    private let percentLabel = UILabel().then {
+        $0.textColor = .hGray2
+        $0.font = .haraH2M16
+        $0.text = "30%"
     }
     
     // MARK: - View Life Cycle
@@ -64,28 +64,26 @@ class VoteOptionCVC: UICollectionViewCell {
     // MARK: - UI
     private func setUI() {
         contentView.makeRounded(cornerRadius: 8)
-        contentView.backgroundColor = .hWhite
-        contentView.layer.borderColor = UIColor.hGray4.cgColor
+        contentView.backgroundColor = .hOrange1
+        contentView.layer.borderColor = UIColor.hBlue3.cgColor
         contentView.layer.borderWidth = 1
-        optionLabel.textColor = .hBlack
+        optionTitle.textColor = .hBlack
     }
     
     // MARK: - Layout
     private func setLayout() {
-        contentView.addSubviews([checkButton, optionLabel])
-        
-        checkButton.snp.makeConstraints {
+        contentView.addSubviews([optionTitle, percentLabel])
+
+        optionTitle.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(14)
-            $0.top.equalToSuperview().offset(9)
-            $0.width.equalTo(18.adjustedW)
-            $0.height.equalTo(18.adjustedH)
+            $0.centerY.equalToSuperview()
         }
         
-        optionLabel.snp.makeConstraints {
-            $0.leading.equalTo(checkButton.snp.trailing).offset(6)
-            $0.top.equalToSuperview().offset(9)
+        percentLabel.snp.makeConstraints {
+//            $0.top.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().inset(14)
+            $0.centerY.equalToSuperview()
         }
     }
+    
 }
-
-

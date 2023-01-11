@@ -31,6 +31,9 @@
 		E74585CB296DEE5800597168 /* WorryDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */; };
 		E74585CD296E01E100597168 /* DetailWorryCommentCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */; };
 		E74585CF296E092D00597168 /* CommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CE296E092D00597168 /* CommentHeaderView.swift */; };
+		E74585D5296EA2B500597168 /* FinalChoiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585D4296EA2B500597168 /* FinalChoiceVC.swift */; };
+		E74585D7296EB63B00597168 /* FinalChoiceCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585D6296EB63B00597168 /* FinalChoiceCVC.swift */; };
+		E74585D9296EC4C500597168 /* Cafe24Ssurround.otf in Resources */ = {isa = PBXBuildFile; fileRef = E74585D8296EC4C500597168 /* Cafe24Ssurround.otf */; };
 		E74C874F296A97AF00BFAD31 /* VotedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C874E296A97AF00BFAD31 /* VotedCVC.swift */; };
 		E74C8751296ABB2300BFAD31 /* DetailWorryCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */; };
 		E74C8753296C128F00BFAD31 /* DetailWorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */; };
@@ -65,7 +68,6 @@
 		E7C69CB52961E80E00848B72 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */; };
 		E7C69CB62961E80E00848B72 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */; };
 		E7C69CB72961E80E00848B72 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */; };
-		E7C69CB92961E84600848B72 /* Cafe24Ssurround-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */; };
 		E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBA2962017F00848B72 /* BaseNC.swift */; };
 		E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CBF296203CA00848B72 /* WriteVC.swift */; };
 		E7C69CC22962099600848B72 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CC12962099500848B72 /* UIViewController+.swift */; };
@@ -115,6 +117,9 @@
 		E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryDetailFooterView.swift; sourceTree = "<group>"; };
 		E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCommentCVC.swift; sourceTree = "<group>"; };
 		E74585CE296E092D00597168 /* CommentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderView.swift; sourceTree = "<group>"; };
+		E74585D4296EA2B500597168 /* FinalChoiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChoiceVC.swift; sourceTree = "<group>"; };
+		E74585D6296EB63B00597168 /* FinalChoiceCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalChoiceCVC.swift; sourceTree = "<group>"; };
+		E74585D8296EC4C500597168 /* Cafe24Ssurround.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cafe24Ssurround.otf; sourceTree = "<group>"; };
 		E74C874E296A97AF00BFAD31 /* VotedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedCVC.swift; sourceTree = "<group>"; };
 		E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCardVC.swift; sourceTree = "<group>"; };
 		E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCVC.swift; sourceTree = "<group>"; };
@@ -149,7 +154,6 @@
 		E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		E7C69CB32961E80E00848B72 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cafe24Ssurround-Bold.ttf"; sourceTree = "<group>"; };
 		E7C69CBA2962017F00848B72 /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
 		E7C69CBF296203CA00848B72 /* WriteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteVC.swift; sourceTree = "<group>"; };
 		E7C69CC12962099500848B72 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
@@ -282,6 +286,28 @@
 				8593366E296EAE4000ECA674 /* ToastMessageVC.swift */,
 			);
 			path = WriteStepVC;
+			sourceTree = "<group>";
+		};
+		E74585D2296EA1E900597168 /* WorryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */,
+				E74585CE296E092D00597168 /* CommentHeaderView.swift */,
+				E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */,
+				E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */,
+				E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */,
+				E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */,
+			);
+			path = WorryDetail;
+			sourceTree = "<group>";
+		};
+		E74585D3296EA25600597168 /* FinalChoice */ = {
+			isa = PBXGroup;
+			children = (
+				E74585D4296EA2B500597168 /* FinalChoiceVC.swift */,
+				E74585D6296EB63B00597168 /* FinalChoiceCVC.swift */,
+			);
+			path = FinalChoice;
 			sourceTree = "<group>";
 		};
 		E7C69BDC295AC8A900848B72 = {
@@ -437,7 +463,7 @@
 		E7C69C1E295AD7A900848B72 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69CB82961E84600848B72 /* Cafe24Ssurround-Bold.ttf */,
+				E74585D8296EC4C500597168 /* Cafe24Ssurround.otf */,
 				E7C69CB02961E80E00848B72 /* Pretendard-Bold.otf */,
 				E7C69CB22961E80E00848B72 /* Pretendard-Medium.otf */,
 				E7C69CB12961E80E00848B72 /* Pretendard-Regular.otf */,
@@ -484,12 +510,8 @@
 				E7C69CEC29660AB500848B72 /* WorryCardCVC.swift */,
 				E7C69CEA29658BF900848B72 /* VoteOptionCVC.swift */,
 				E74C874E296A97AF00BFAD31 /* VotedCVC.swift */,
-				E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */,
-				E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */,
-				E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */,
-				E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */,
-				E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */,
-				E74585CE296E092D00597168 /* CommentHeaderView.swift */,
+				E74585D2296EA1E900597168 /* WorryDetail */,
+				E74585D3296EA25600597168 /* FinalChoice */,
 			);
 			path = Together;
 			sourceTree = "<group>";
@@ -597,10 +619,10 @@
 				E7C69C21295AD7CA00848B72 /* ColorSets.xcassets in Resources */,
 				E7C69CB52961E80E00848B72 /* Pretendard-Regular.otf in Resources */,
 				E7C69CB72961E80E00848B72 /* Pretendard-SemiBold.otf in Resources */,
-				E7C69CB92961E84600848B72 /* Cafe24Ssurround-Bold.ttf in Resources */,
 				E7C69CB42961E80E00848B72 /* Pretendard-Bold.otf in Resources */,
 				E7C69BF5295AC8AA00848B72 /* LaunchScreen.storyboard in Resources */,
 				E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */,
+				E74585D9296EC4C500597168 /* Cafe24Ssurround.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +667,7 @@
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
 				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */,
+				E74585D5296EA2B500597168 /* FinalChoiceVC.swift in Sources */,
 				E74585CD296E01E100597168 /* DetailWorryCommentCVC.swift in Sources */,
 				8532A786296C251200402E91 /* ProsConsCVC.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
@@ -673,6 +696,7 @@
 				E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */,
 				E7C69CC22962099600848B72 /* UIViewController+.swift in Sources */,
 				E7C69CE32965566C00848B72 /* TogetherResponse.swift in Sources */,
+				E74585D7296EB63B00597168 /* FinalChoiceCVC.swift in Sources */,
 				E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */,
 				E7C69C9F29613F4800848B72 /* Adjusted+.swift in Sources */,
 				E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */,
