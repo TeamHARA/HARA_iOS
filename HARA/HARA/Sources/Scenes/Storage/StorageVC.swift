@@ -32,6 +32,7 @@ class StorageVC: UIViewController {
         gradient.locations = [0, 1]
         return gradient
     }()
+    
     private let haraIcon = UIButton().then {
         $0.setImage(UIImage(named: "storage_logo"), for: .normal)
     }
@@ -121,7 +122,7 @@ extension StorageVC {
             $0.trailing.equalTo(44.adjustedW).inset(18.5)
         }
         segmentedLineField.snp.makeConstraints{
-            $0.top.equalTo(oneclickButton.snp.bottom).offset(55)
+            $0.top.equalTo(oneclickButton.snp.bottom).offset(54)
             $0.trailing.equalTo(2.adjustedW).inset(20)
             $0.leading.equalTo(2.adjustedW).inset(20)
             $0.height.equalTo(3)

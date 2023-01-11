@@ -29,18 +29,6 @@ class AloneWorriedVC: UIViewController {
         $0.setImage(UIImage(named: "storage_check_off"), for: .normal)
     }
     
-//    private lazy var aloneCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
-//        //UICollectionViewFlowLayout의 인스턴스를 생성
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        $0.backgroundColor = .clear
-//        $0.isScrollEnabled = true
-//        $0.showsVerticalScrollIndicator = false
-//        $0.delegate = self
-//        $0.dataSource = self
-//
-//    }
-    
     private lazy var aloneCollectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -63,7 +51,6 @@ class AloneWorriedVC: UIViewController {
     ///여기부분 다시 보기 / section별, item별로 부여할 여백 상수로 저장
     final let aloneLineSpacing: CGFloat = 10
     final let aloneItemSpacing: CGFloat = 19
-    final let aloneCellHeight: CGFloat = 100
     
     var aloneList: [AloneWorriedModel] = [
         AloneWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
@@ -106,11 +93,6 @@ extension AloneWorriedVC {
         aloneCollectionView.register(
             AloneWorriedCVC.self, forCellWithReuseIdentifier: AloneWorriedCVC.identifier)
     }
-    
-//    private func calculateCellHeight() -> CGFloat{
-//        let counting = CGFloat(AloneSampleList.count)
-//        return counting * aloneCellHeight
-//    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

@@ -15,13 +15,17 @@ class TogetherWorriedVC: UIViewController {
     // MARK: - Properties 변수 선언
     private let worriedAllButton = UIButton().then {
         $0.setImage(UIImage(named: "storage_ing_all"), for: .normal)
+        $0.setImage(UIImage(named: "storage_complete_all"), for: .selected)
     }
+    
     private let editButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
         $0.setTitleColor(.hBlack, for: .normal)
+        $0.setTitle("완료", for: .selected)
         $0.titleLabel?.font = .haraB2M14
     }
-    private lazy var aloneCollectionView : UICollectionView  = {
+    
+    private lazy var togetherCollectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -30,6 +34,7 @@ class TogetherWorriedVC: UIViewController {
         collectionView.allowsMultipleSelection = true
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.contentInset.bottom = 60
         return collectionView
     }()
     
@@ -40,7 +45,6 @@ class TogetherWorriedVC: UIViewController {
     ///여기부분 다시 보기 / section별, item별로 부여할 여백 상수로 저장
     final let aloneLineSpacing: CGFloat = 10
     final let aloneItemSpacing: CGFloat = 19
-    final let aloneCellHeight: CGFloat = 100
     
     var togetherList: [TogetherWorriedModel] = [
         TogetherWorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "중요한 건 꺾이지 않는 마음", date: "2022.12.25"),
@@ -59,6 +63,17 @@ class TogetherWorriedVC: UIViewController {
         setLayout()
         cellView()
         register()
+        setPress()
+    }
+    
+    // MARK: - Function
+    private func setPress() {
+        worriedAllButton.press {
+            self.worriedAllButton.isSelected.toggle()
+        }
+        editButton.press {
+            self.editButton.isSelected.toggle()
+        }
     }
 }
 
@@ -67,24 +82,16 @@ extension TogetherWorriedVC {
     /// 수직 스크롤이라는 가정 하에, rowCount는 몇개의 행을 사용할지를 저장한 변수
     private func cellView() {
         view.backgroundColor = .clear
-        view.addSubview(aloneCollectionView)
-        aloneCollectionView.snp.makeConstraints{
-            $0.top.equalTo(40.adjustedH)
+        view.addSubview(togetherCollectionView)
+        togetherCollectionView.snp.makeConstraints{
+            $0.top.equalToSuperview().inset(40.adjustedH)
             $0.trailing.equalTo(2.adjustedW).inset(7)
             $0.leading.equalTo(2.adjustedW).inset(3)
-            $0.height.equalTo(calculateCellHeight())
         }
     }
     private func register() {
-        aloneCollectionView.register(
+        togetherCollectionView.register(
             TogetherWorriedCVC.self, forCellWithReuseIdentifier: TogetherWorriedCVC.identifier2)
-    }
-    
-    private func calculateCellHeight() -> CGFloat{
-        let counting = CGFloat(togetherList.count)
-//        let heightCount = counting / 3 + counting.truncatingRemainder(dividingBy: 3)
-//        return counting * aloneCellHeight + (counting - 1) * aloneLineSpacing + aloneInset.top + aloneInset.bottom
-        return counting * aloneCellHeight
     }
 
 }
@@ -98,15 +105,6 @@ extension TogetherWorriedVC: UICollectionViewDelegateFlowLayout{
         let itemCellWidth = screenWidth - aloneInset.left - aloneInset.right - aloneItemSpacing
         return CGSize(width: itemCellWidth, height: 90)
     }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return aloneItemSpacing
-//    }
-//    private func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInterLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return aloneLineSpacing
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return aloneInset
-//    }
 }
 
 // MARK: -UICollectionViewDataSource
@@ -125,7 +123,7 @@ extension TogetherWorriedVC {
     
     // MARK: - Layout
     private func setLayout() {
-        view.addSubview(aloneCollectionView)
+        view.addSubview(togetherCollectionView)
         [worriedAllButton, editButton].forEach {
             view.addSubview($0)
         }
@@ -136,6 +134,15 @@ extension TogetherWorriedVC {
         editButton.snp.makeConstraints{
             $0.top.equalToSuperview().inset(10.adjustedH)
             $0.trailing.equalTo(2.adjustedW).inset(12)
+        }
+        
+        togetherCollectionView.snp.makeConstraints{
+            $0.top.equalToSuperview().offset(40.adjustedH)
+            $0.trailing.equalTo(2.adjustedW).inset(7)
+            $0.leading.equalTo(2.adjustedW).inset(3)
+//            $0.height.equalTo(calculateCellHeight())
+            $0.bottom.equalToSuperview()
+            
         }
     }
 }

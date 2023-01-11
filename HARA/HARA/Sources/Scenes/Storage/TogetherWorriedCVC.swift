@@ -57,21 +57,21 @@ extension TogetherWorriedCVC {
         }
         worringIcon.snp.makeConstraints{
             $0.top.equalToSuperview().offset(10)
-            $0.leading.equalTo(2.adjustedW).inset(13)
+            $0.leading.equalTo(2).inset(13)
         }
         titleLabel.snp.makeConstraints{
-            $0.top.equalTo(7.adjustedH)
-            $0.leading.equalTo(10.adjustedH).inset(73)
+            $0.top.equalToSuperview().inset(3)
+            $0.leading.equalToSuperview().inset(73)
             $0.bottom.equalToSuperview().inset(52)
             $0.height.equalTo(60.adjustedH)
         }
         mainLabel.snp.makeConstraints{
-            $0.top.equalTo(40.adjustedH)
+            $0.top.equalToSuperview().inset(40.adjustedH)
             $0.leading.equalTo(2.adjustedH).inset(18)
         }
         date.snp.makeConstraints{
-            $0.top.equalTo(65.adjustedH)
-            $0.trailing.equalTo(2.adjustedW).inset(10)
+            $0.top.equalToSuperview().inset(65.adjustedH)
+            $0.trailing.equalTo(2).inset(10)
         }
     }
     func dataBind(model: TogetherWorriedModel){
