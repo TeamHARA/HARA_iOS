@@ -18,6 +18,8 @@
 		85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */; };
 		E74585C9296D435C00597168 /* WorryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */; };
 		E74585CB296DEE5800597168 /* WorryDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */; };
+		E74585CD296E01E100597168 /* DetailWorryCommentCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */; };
+		E74585CF296E092D00597168 /* CommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CE296E092D00597168 /* CommentHeaderView.swift */; };
 		E74C874F296A97AF00BFAD31 /* VotedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C874E296A97AF00BFAD31 /* VotedCVC.swift */; };
 		E74C8751296ABB2300BFAD31 /* DetailWorryCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */; };
 		E74C8753296C128F00BFAD31 /* DetailWorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */; };
@@ -90,6 +92,8 @@
 		85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthWriteStepView.swift; sourceTree = "<group>"; };
 		E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryDetailHeaderView.swift; sourceTree = "<group>"; };
 		E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryDetailFooterView.swift; sourceTree = "<group>"; };
+		E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCommentCVC.swift; sourceTree = "<group>"; };
+		E74585CE296E092D00597168 /* CommentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderView.swift; sourceTree = "<group>"; };
 		E74C874E296A97AF00BFAD31 /* VotedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedCVC.swift; sourceTree = "<group>"; };
 		E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCardVC.swift; sourceTree = "<group>"; };
 		E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCVC.swift; sourceTree = "<group>"; };
@@ -390,6 +394,8 @@
 				E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */,
 				E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */,
 				E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */,
+				E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */,
+				E74585CE296E092D00597168 /* CommentHeaderView.swift */,
 			);
 			path = Together;
 			sourceTree = "<group>";
@@ -522,6 +528,7 @@
 				E74585CB296DEE5800597168 /* WorryDetailFooterView.swift in Sources */,
 				E7C69CE0296555B400848B72 /* StorageService.swift in Sources */,
 				E7C69CD82965550500848B72 /* NetworkResult.swift in Sources */,
+				E74585CF296E092D00597168 /* CommentHeaderView.swift in Sources */,
 				E7C69CD0296554C000848B72 /* APIConstant.swift in Sources */,
 				E7C69CED29660AB500848B72 /* WorryCardCVC.swift in Sources */,
 				E7C69CDC2965552700848B72 /* TogetherService.swift in Sources */,
@@ -539,6 +546,7 @@
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
 				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */,
+				E74585CD296E01E100597168 /* DetailWorryCommentCVC.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
 				E7C69CCE29649EA900848B72 /* UICollectionVIew+.swift in Sources */,
 				E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */,

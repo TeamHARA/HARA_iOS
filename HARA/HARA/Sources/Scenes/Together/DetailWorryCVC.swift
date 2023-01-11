@@ -14,7 +14,6 @@ final class DetailWorryCVC: UICollectionViewCell {
     // MARK: - Properties
     private let optionDetailStackView = UIStackView().then {
         $0.spacing = 6
-        $0.backgroundColor = .systemCyan
         $0.distribution = .fillProportionally
         $0.axis = .vertical
     }
@@ -61,8 +60,6 @@ final class DetailWorryCVC: UICollectionViewCell {
     // MARK: - View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        //임시 배경색 설정
-        self.contentView.backgroundColor = .blue
         setLayout()
         setUI()
     }
@@ -74,7 +71,6 @@ final class DetailWorryCVC: UICollectionViewCell {
     // MARK: - Function
     private func setUI() {
         contentView.makeRounded(cornerRadius: 8)
-        contentView.backgroundColor = .orange
         contentView.layer.borderColor = UIColor.hGray4.cgColor
         contentView.layer.borderWidth = 1
     }

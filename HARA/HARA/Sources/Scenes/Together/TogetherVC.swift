@@ -187,7 +187,7 @@ extension TogetherVC {
         worryCardCV.snp.makeConstraints {
             $0.top.equalTo(categoryCV.snp.bottom).offset(12)
             $0.leading.equalToSuperview().offset(12)
-            $0.trailing.bottom.equalToSuperview().inset(12)
+            $0.trailing.equalToSuperview().inset(12)
             $0.bottom.equalToSuperview()
         }
         
