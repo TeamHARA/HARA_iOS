@@ -70,7 +70,7 @@ class SecondWriteStepVC: UIViewController{
     private lazy var fourthOptionView = AddOptionView().then{
         $0.optionTextField.delegate = self
     }
-    private lazy var addButton = AddOptionBtnView()
+    private lazy var addButtonView = AddOptionBtnView()
     
     /// 더이상 없앨 수 없는 기본 옵션 뷰 2개
     private lazy var stackBaseOptionArray: [BaseOptionView] = [firstOptionView, secondOptionView]
@@ -115,7 +115,7 @@ class SecondWriteStepVC: UIViewController{
     }
     
     private func setPress() {
-        addButton.addOptionButton.press { [self] in
+        addButtonView.addOptionButton.press { [self] in
             /// 버튼이 클릭됨과 동시에 다음 탭으로 가는 버튼이 활성화되지 않음
             isButtonClicked = false
             checkVc2Delegate?.checkText(checkBaseOption: checkBaseOption, checkAddOption: checkAddOption, isButtonClicked: isButtonClicked)
@@ -133,11 +133,11 @@ class SecondWriteStepVC: UIViewController{
             case [thirdOptionView]:
                 optionStackView.addArrangedSubview(fourthOptionView)
                 stackAddOptionArray.append(fourthOptionView)
-                addButton.isHidden = true
+                addButtonView.isHidden = true
             case [fourthOptionView]:
                 optionStackView.addArrangedSubview(thirdOptionView)
                 stackAddOptionArray.append(thirdOptionView)
-                addButton.isHidden = true
+                addButtonView.isHidden = true
             default:
                 break
             }
@@ -152,7 +152,7 @@ class SecondWriteStepVC: UIViewController{
             thirdOptionView.optionTextField.text = ""
             optionStackView.removeArrangedSubview(thirdOptionView)
             thirdOptionView.removeFromSuperview()
-            addButton.isHidden = false
+            addButtonView.isHidden = false
             switch stackAddOptionArray{
             case [thirdOptionView], [thirdOptionView,fourthOptionView]:
                 stackAddOptionArray.remove(at: 0)
@@ -173,7 +173,7 @@ class SecondWriteStepVC: UIViewController{
             fourthOptionView.optionTextField.text = ""
             optionStackView.removeArrangedSubview(fourthOptionView)
             fourthOptionView.removeFromSuperview()
-            addButton.isHidden = false
+            addButtonView.isHidden = false
             /// 배열의 순서에 따라 값을 remove 위치를 다르게 설정
             switch stackAddOptionArray{
             case [fourthOptionView], [fourthOptionView,thirdOptionView]:
@@ -190,7 +190,7 @@ class SecondWriteStepVC: UIViewController{
 // MARK: - Layout
 extension SecondWriteStepVC{
     func setLayout(){
-        view.addSubViews([background, navigationView, progressView, questionLabel, optionStackView, addButton])
+        view.addSubViews([background, navigationView, progressView, questionLabel, optionStackView, addButtonView])
         
         background.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -222,7 +222,7 @@ extension SecondWriteStepVC{
             $0.height.equalTo(stackViewheight)
         }
         
-        addButton.snp.makeConstraints{
+        addButtonView.snp.makeConstraints{
             $0.top.equalTo(optionStackView.snp.bottom).offset(16.adjustedH)
             $0.leading.equalToSuperview().offset(16.adjustedW)
             $0.trailing.equalToSuperview().offset(-16.adjustedW)
