@@ -53,7 +53,7 @@ extension UIFont {
         return UIFont(name: "Pretendard-Regular", size: 12.0)!
     }
     
-//    class var haraH1B20: UIFont {
-//        return UIFont(name: "Cafe24Ssurround-Bold", size: 20.0)!
-//    }
+    class var haraH1B20: UIFont {
+        return UIFont(name: "Cafe24Ssurround", size: 20.0)!
+    }
 }
