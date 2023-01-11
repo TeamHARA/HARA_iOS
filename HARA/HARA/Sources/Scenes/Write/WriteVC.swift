@@ -127,9 +127,11 @@ class WriteVC: UIViewController {
         if currentPage == 0 {
             prevButton.isHidden = true
             nextButton.isEnabled = false
-        } else if currentPage == 4 {
+        }else if currentPage == 1{
+            nextButton.isEnabled = false
+        }else if currentPage == 4 {
             nextButton.isHidden = true
-        } else {
+        }else {
             prevButton.isHidden = false
             nextButton.isHidden = false
             nextButton.isEnabled = true
@@ -156,6 +158,7 @@ class WriteVC: UIViewController {
     
     private func configNextButtonLogic() {
         vc1.checkVc1Delegate = self
+        vc2.checkVc2Delegate = self
     }
 }
 
@@ -310,10 +313,24 @@ extension WriteVC: SendIsclickedDelegate{
 }
 
 // MARK: - checkVc1Delegate
-extension WriteVC: checkVc1Delegate{
+extension WriteVC: CheckVc1Delegate{
     func checkText(checkTextfield: Bool, checkTextView: Bool) {
         if currentPage == 0 {
             if checkTextfield == true && checkTextView == true{
+                nextButton.isEnabled = true
+            }
+            else {
+                nextButton.isEnabled = false
+            }
+        }
+    }
+}
+
+// MARK: - checkVc2Delegate
+extension WriteVC: CheckVc2Delegate{
+    func checkText(checkBaseOption: Bool, checkAddOption: Bool, isButtonClicked: Bool) {
+        if currentPage == 1 {
+            if checkBaseOption == true && checkAddOption == true && isButtonClicked == true{
                 nextButton.isEnabled = true
             }
             else {

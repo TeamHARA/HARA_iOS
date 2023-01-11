@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 // MARK: - Protocols
-protocol checkVc1Delegate: AnyObject{
+protocol CheckVc1Delegate: AnyObject{
     func checkText(checkTextfield: Bool, checkTextView: Bool)
 }
 
@@ -75,7 +75,7 @@ class FirstWriteStepVC: UIViewController{
         $0.backgroundColor = .hBlue2
     }
     
-    weak var checkVc1Delegate: checkVc1Delegate?
+    weak var checkVc1Delegate: CheckVc1Delegate?
     
     let placeholder = "고민에 대해 더 자세히 적어주세요."
     
