@@ -134,6 +134,7 @@ extension StorageVC {
         segmentedLineField.snp.makeConstraints{
             $0.top.equalTo(oneclickButton.snp.bottom).offset(54)
             $0.trailing.equalTo(2.adjustedW).inset(20)
+            $0.trailing.equalToSuperview().offset(2).inset(20)
             $0.leading.equalTo(2.adjustedW).inset(20)
             $0.height.equalTo(3)
         }
@@ -150,8 +151,7 @@ extension StorageVC {
         pageViewController.view.snp.makeConstraints{
             $0.top.equalTo(segmentedControl.snp.bottom)
             $0.bottom.equalToSuperview().offset(-50)
-            $0.trailing.equalTo(1.adjustedW).inset(9)
-            $0.leading.equalTo(1.adjustedW).inset(9)
+            $0.trailing.leading.equalToSuperview()
         }
     }
     
