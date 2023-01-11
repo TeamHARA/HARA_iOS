@@ -60,9 +60,6 @@ class FirstWriteStepVC: UIViewController{
         $0.placeholder = "고민의 제목을 입력해주세요."
         $0.font = .haraM2M18
         $0.textColor = .hGray3
-//        let paddingView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 20.0, height: 33.adjustedH))
-//        $0.leftView = paddingView
-//        $0.leftViewMode = .always
     }
     
     private let editImage = UIImageView().then {
@@ -106,7 +103,6 @@ class FirstWriteStepVC: UIViewController{
         setLayout()
         setKeyboardLocation()
         setupTextView()
-        //textFieldShouldReturn(titleTextField)
     }
     
     // MARK: - Function
@@ -204,14 +200,6 @@ extension FirstWriteStepVC{
 
 // MARK: - UITextFieldDelegate
 extension FirstWriteStepVC: UITextFieldDelegate {
-    //    /// ✅ textField 에서 편집을 시작한 후
-    //    func textFieldDidBeginEditing(_ textField: UITextField) {
-    //        /// 키보드 업
-    //        textField.becomeFirstResponder()
-    //        /// 입력 시 textField 를 강조하기 위한 테두리 설정
-    //        textField.layer.borderWidth = 1
-    //        textField.layer.borderColor = UIColor.red.cgColor
-    //    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.becomeFirstResponder()
@@ -288,6 +276,7 @@ extension FirstWriteStepVC: UITextViewDelegate {
         else{
             checkTextView = true
         }
+        /// 텍스트 필드 및 텍스트 뷰 확인 후에 WriteVC로 데이터 전달
         checkVc1Delegate?.checkText(checkTextfield: checkTextfield, checkTextView: checkTextView)
     }
 }
