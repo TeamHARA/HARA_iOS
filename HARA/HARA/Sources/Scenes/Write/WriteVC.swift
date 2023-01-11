@@ -51,6 +51,8 @@ class WriteVC: UIViewController {
             return viewList.firstIndex(of: vc) ?? 0
     }
     
+    lazy var toastMessage = ToastMessageVC()
+    
     private let prevButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "prevBtn"), for: .normal)
         $0.contentMode = .scaleAspectFit
@@ -112,8 +114,15 @@ class WriteVC: UIViewController {
             self.makeProgressBarAnimate()
             self.vc3.prosConsCV.reloadData()
         }
-        uploadButton.press {
-            self.dismiss(animated: true, completion: nil)
+        uploadButton.press {[self] in
+            toastMessage.modalPresentationStyle = .overFullScreen
+            self.present(toastMessage, animated: true, completion:nil)
+        }
+        toastMessage.cancelButton.press {
+            self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
+        }
+        toastMessage.acceptButton.press {
+            self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
         }
     }
     
