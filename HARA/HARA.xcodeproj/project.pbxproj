@@ -310,6 +310,30 @@
 			path = FinalChoice;
 			sourceTree = "<group>";
 		};
+		E7B47C2B296F0E37009987E1 /* Together */ = {
+			isa = PBXGroup;
+			children = (
+				E7C69CE22965566C00848B72 /* TogetherResponse.swift */,
+			);
+			path = Together;
+			sourceTree = "<group>";
+		};
+		E7B47C2C296F0E5B009987E1 /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				E7C69CE42965567800848B72 /* WriteResponse.swift */,
+			);
+			path = Write;
+			sourceTree = "<group>";
+		};
+		E7B47C2D296F0E69009987E1 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				E7C69CE62965569100848B72 /* StorageResponse.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		E7C69BDC295AC8A900848B72 = {
 			isa = PBXGroup;
 			children = (
@@ -539,9 +563,9 @@
 		E7C69CE12965564A00848B72 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69CE22965566C00848B72 /* TogetherResponse.swift */,
-				E7C69CE42965567800848B72 /* WriteResponse.swift */,
-				E7C69CE62965569100848B72 /* StorageResponse.swift */,
+				E7B47C2B296F0E37009987E1 /* Together */,
+				E7B47C2C296F0E5B009987E1 /* Write */,
+				E7B47C2D296F0E69009987E1 /* Storage */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
