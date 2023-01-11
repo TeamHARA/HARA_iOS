@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - Protocols
+protocol checkVc1Delegate: AnyObject{
+    func checkText(checkTextfield: Bool, checkTextView: Bool)
+}
+
 class FirstWriteStepVC: UIViewController{
     
     // MARK: - Properties
@@ -25,6 +30,9 @@ class FirstWriteStepVC: UIViewController{
     lazy var progressView = UIView().then{
         $0.backgroundColor = .hBlue1
     }
+    
+    private var checkTextfield: Bool = false
+    private var checkTextView: Bool = false
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
@@ -66,6 +74,8 @@ class FirstWriteStepVC: UIViewController{
     private let titleUnderLine = UIView().then{
         $0.backgroundColor = .hBlue2
     }
+    
+    weak var checkVc1Delegate: checkVc1Delegate?
     
     let placeholder = "고민에 대해 더 자세히 적어주세요."
     
@@ -194,14 +204,14 @@ extension FirstWriteStepVC{
 
 // MARK: - UITextFieldDelegate
 extension FirstWriteStepVC: UITextFieldDelegate {
-//    /// ✅ textField 에서 편집을 시작한 후
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        /// 키보드 업
-//        textField.becomeFirstResponder()
-//        /// 입력 시 textField 를 강조하기 위한 테두리 설정
-//        textField.layer.borderWidth = 1
-//        textField.layer.borderColor = UIColor.red.cgColor
-//    }
+    //    /// ✅ textField 에서 편집을 시작한 후
+    //    func textFieldDidBeginEditing(_ textField: UITextField) {
+    //        /// 키보드 업
+    //        textField.becomeFirstResponder()
+    //        /// 입력 시 textField 를 강조하기 위한 테두리 설정
+    //        textField.layer.borderWidth = 1
+    //        textField.layer.borderColor = UIColor.red.cgColor
+    //    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.becomeFirstResponder()
@@ -226,6 +236,15 @@ extension FirstWriteStepVC: UITextFieldDelegate {
         let attributedString = NSMutableAttributedString(string: "\(titleTextField.text!.count)/25")
         attributedString.addAttribute(.foregroundColor, value: UIColor.hBlue1, range: ("\(titleTextField.text!.count)/25" as NSString).range(of:"\(titleTextField.text!.count)"))
         titleletterNumLabel.attributedText = attributedString
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text!.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || textField.text == placeholder {
+            checkTextfield = false
+        }else{
+            checkTextfield = true
+        }
+        checkVc1Delegate?.checkText(checkTextfield: checkTextfield, checkTextView: checkTextView)
     }
 }
 
@@ -264,7 +283,12 @@ extension FirstWriteStepVC: UITextViewDelegate {
             infoTextView.text = placeholder
             detailletterNumLabel.textColor = .hGray3 /// 텍스트 개수가 0일 경우에는 글자 수 표시 색상이 모두 gray 색이게 설정
             detailletterNumLabel.text = "0/300"
+            checkTextView = false
         }
+        else{
+            checkTextView = true
+        }
+        checkVc1Delegate?.checkText(checkTextfield: checkTextfield, checkTextView: checkTextView)
     }
 }
 

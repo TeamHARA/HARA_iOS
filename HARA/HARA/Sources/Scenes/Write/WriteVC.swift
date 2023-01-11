@@ -62,7 +62,7 @@ class WriteVC: UIViewController {
     }
     
     private let uploadButton = UIButton().then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .hBlue4
         $0.layer.cornerRadius = 25
         $0.layer.borderWidth = 1.0
         $0.layer.borderColor = UIColor.hBlue3.cgColor
@@ -84,6 +84,7 @@ class WriteVC: UIViewController {
         setPress()
         setupDelegate()
         setFirstPageView()
+        configNextButtonLogic()
     }
     
     // MARK: - Function
@@ -125,6 +126,7 @@ class WriteVC: UIViewController {
     private func disableArrowButton() {
         if currentPage == 0 {
             prevButton.isHidden = true
+            nextButton.isEnabled = false
         } else if currentPage == 4 {
             nextButton.isHidden = true
         } else {
@@ -150,6 +152,10 @@ class WriteVC: UIViewController {
         if let firstVC = viewList.first {
             pageViewController.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+    }
+    
+    private func configNextButtonLogic() {
+        vc1.checkVc1Delegate = self
     }
 }
 
@@ -263,6 +269,23 @@ extension WriteVC: UITextFieldDelegate {
     }
 }
 
+// MARK: - UITextViewDelegate
+extension WriteVC: UITextViewDelegate {
+    /// ✅ textField 에서 편집을 시작한 후
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        /// 키보드 업
+        textView.becomeFirstResponder()
+        /// 입력 시 textField 를 강조하기 위한 테두리 설정
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func textViewShouldReturn(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+}
+
 // MARK: - SendIsclickedDelegate
 /// 5번째 페이지에서 버튼이 선택되었을 때 업로드 버튼 활성화
 extension WriteVC: SendIsclickedDelegate{
@@ -286,11 +309,19 @@ extension WriteVC: SendIsclickedDelegate{
     }
 }
 
-//extension WriteVC: optionTitleDelegate{
-//    func sendOptionTitle(optionTitleArray: [String]){
-//        print("1")
-//    }
-//}
+// MARK: - checkVc1Delegate
+extension WriteVC: checkVc1Delegate{
+    func checkText(checkTextfield: Bool, checkTextView: Bool) {
+        if currentPage == 0 {
+            if checkTextfield == true && checkTextView == true{
+                nextButton.isEnabled = true
+            }
+            else {
+                nextButton.isEnabled = false
+            }
+        }
+    }
+}
 
 
 
