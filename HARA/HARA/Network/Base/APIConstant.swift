@@ -13,9 +13,8 @@ struct APIConstant {
     static let baseURL = "http://3.37.47.67:3000"
     
     //MARK: - Together
-    //TODO: 카테고리별 분기 처리
     static let worryVote = "worry"
-
+    /// 카테고리별 파라미터 :categoryId
     static let worryCategory = "worry"
     
     static let worryFinalAlone = "worry/worryAlone"
@@ -33,7 +32,6 @@ struct APIConstant {
     static let worryWith = "worry/with"
     
     // MARK: - Storage
-    
     /// 목록조회 파라미터 :ifSolved
     static let worryWithList = "worry/with/list"
     
