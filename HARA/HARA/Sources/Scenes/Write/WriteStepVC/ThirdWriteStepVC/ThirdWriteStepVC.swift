@@ -62,7 +62,6 @@ class ThirdWriteStepVC: UIViewController{
         $0.delegate = self
         $0.dataSource = self
         $0.showsVerticalScrollIndicator = false
-
     }
     
     private var prosConsTitleArray: [String] = []
@@ -142,7 +141,6 @@ extension ThirdWriteStepVC{
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-
 extension ThirdWriteStepVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 343.adjustedW, height: 153.adjustedH)
@@ -158,7 +156,6 @@ extension ThirdWriteStepVC: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - UICollectionViewDataSource
-
 extension ThirdWriteStepVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cvcCount
