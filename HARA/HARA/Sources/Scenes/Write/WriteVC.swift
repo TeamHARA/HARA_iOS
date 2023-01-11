@@ -127,15 +127,19 @@ class WriteVC: UIViewController {
         if currentPage == 0 {
             prevButton.isHidden = true
             nextButton.isEnabled = false
-        }else if currentPage == 1{
+        }else if currentPage == 1 {
             nextButton.isEnabled = false
+            prevButton.isHidden = false
+        }else if currentPage == 3 {
+            nextButton.isEnabled = false
+            prevButton.isHidden = false
         }else if currentPage == 4 {
             nextButton.isHidden = true
         }else {
             prevButton.isHidden = false
             nextButton.isHidden = false
-            nextButton.isEnabled = true
-            prevButton.isEnabled = true
+//            nextButton.isEnabled = true
+//            prevButton.isEnabled = true
         }
     }
     
@@ -159,6 +163,7 @@ class WriteVC: UIViewController {
     private func configNextButtonLogic() {
         vc1.checkVc1Delegate = self
         vc2.checkVc2Delegate = self
+        vc4.checkVc4Delegate = self
     }
 }
 
@@ -203,7 +208,7 @@ extension WriteVC{
         
         prevButton.snp.makeConstraints{
             $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(35.adjustedW)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-60.adjustedH)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-24.adjustedH)
             $0.width.equalTo(10.adjustedW)
             $0.height.equalTo(20.adjustedH)
         }
@@ -217,7 +222,7 @@ extension WriteVC{
         
         nextButton.snp.makeConstraints{
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-35.adjustedW)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-60.adjustedH)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-24.adjustedH)
             $0.width.equalTo(10.adjustedW)
             $0.height.equalTo(20.adjustedH)
         }
@@ -314,6 +319,7 @@ extension WriteVC: SendIsclickedDelegate{
 
 // MARK: - checkVc1Delegate
 extension WriteVC: CheckVc1Delegate{
+    /// 첫번째 stepView에서 textfield 및 textView가 채워져 있어야지만 다음 버튼 활성화
     func checkText(checkTextfield: Bool, checkTextView: Bool) {
         if currentPage == 0 {
             if checkTextfield == true && checkTextView == true{
@@ -328,6 +334,7 @@ extension WriteVC: CheckVc1Delegate{
 
 // MARK: - checkVc2Delegate
 extension WriteVC: CheckVc2Delegate{
+    /// 두번째 stepView에서 각 옵션별 textfield가 채워져 있어야지만 다음 버튼 활성화
     func checkText(checkBaseOption: Bool, checkAddOption: Bool, isButtonClicked: Bool) {
         if currentPage == 1 {
             if checkBaseOption == true && checkAddOption == true && isButtonClicked == true{
@@ -335,6 +342,23 @@ extension WriteVC: CheckVc2Delegate{
             }
             else {
                 nextButton.isEnabled = false
+            }
+        }
+    }
+}
+
+// MARK: - checkVc4Delegate
+extension WriteVC: CheckVc4Delegate{
+    /// 네번째 stepView에서 카테고리가 선택되어야지만 다음 버튼 활성화
+    func checkCategory(checkTextfield: Bool) {
+        if currentPage == 3 {
+            if checkTextfield == true {
+                nextButton.isEnabled = true
+                print(checkTextfield)
+            }
+            else {
+                nextButton.isEnabled = false
+                print(checkTextfield)
             }
         }
     }
