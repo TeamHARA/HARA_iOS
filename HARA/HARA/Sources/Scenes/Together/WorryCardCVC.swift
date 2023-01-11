@@ -9,9 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
-class WorryCardCVC: UICollectionViewCell {
+final class WorryCardCVC: UICollectionViewCell {
     
     // MARK: - Properties
+    var isVoted = false
+    
     private let worryCategoryLabel = UILabel().then {
         $0.textColor = .hBlue1
         $0.font = .haraSub1Sb12
@@ -43,32 +45,34 @@ class WorryCardCVC: UICollectionViewCell {
         view.backgroundColor = .yellow
         view.showsHorizontalScrollIndicator = false
         view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         return view
     }()
     
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-//        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
-//        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        //        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
+        //        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
-//            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
-//            group.interItemSpacing = .flexible(-16)
+//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, repeatingSubitem: item, count: 1)
+        //            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        //            group.interItemSpacing = .flexible(-16)
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 10
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         
         return UICollectionViewCompositionalLayout(section: section)
     }()
     
-    private let voteButton = UIButton().then {
+    private var voteButton = UIButton().then {
         $0.setTitle("투표하기", for: .normal)
         $0.contentHorizontalAlignment = .center
         $0.setTitleColor(.hOrange1, for: .normal)
-        $0.setBackgroundColor(.hWhite, for: .normal)
-        $0.setBackgroundColor(.hOrange3, for: .selected)
+        $0.isEnabled = false
+        $0.setBackgroundColor(.hWhite, for: .disabled)
+        $0.setBackgroundColor(.hOrange3, for: .normal)
         $0.makeRounded(cornerRadius: 8)
         $0.layer.borderColor = UIColor.hOrange2.cgColor
         $0.layer.borderWidth = 1
@@ -87,7 +91,10 @@ class WorryCardCVC: UICollectionViewCell {
     }
     
     private var optionNums = 2
-
+    
+    ///선택지가 클릭이 된 상태인지를 알려주는 변수
+    private var isOptionSelected = false
+    
     // MARK: - View Life Cycle
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -102,60 +109,82 @@ class WorryCardCVC: UICollectionViewCell {
     }
     
     // MARK: - Function
-    private func setPressAction() {
-        voteButton.press {
-            self.voteButton.backgroundColor = .black
-        }
-    }
-    
     private func setVoteOptionCV() {
         voteOptionCV.dataSource = self
         voteOptionCV.delegate = self
         
         voteOptionCV.register(cell: VoteOptionCVC.self, forCellWithReuseIdentifier: VoteOptionCVC.className)
+        voteOptionCV.register(cell: VotedCVC.self, forCellWithReuseIdentifier: VotedCVC.className)
     }
     
     func setCellNums(optionNums: Int) {
         self.optionNums = optionNums
     }
-        
+    
     func setData(title: String, content: String) {
         self.worryTitleLabel.text = title
         self.worryContentLabel.text = content
         self.worryContentLabel.sizeToFit()
     }
+    
+    private func setPressAction() {
+        voteButton.press {
+            self.isOptionSelected = true
+            self.voteButton.backgroundColor = .hOrange3
+            self.voteButton.layer.borderWidth = 0
+            self.voteButton.setTitle("투표완료!", for: .normal)
+            self.voteButton.setTitleColor(.hWhite, for: .normal)
+            self.voteButton.setBackgroundColor(.hGray3, for: .normal)
+            self.voteButton.isUserInteractionEnabled = false
+            self.voteOptionCV.reloadData()
+        }
+        
+    }
 }
-
 // MARK: - UICollectionViewDataSource
 extension WorryCardCVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(optionNums)
         return optionNums
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //Todo: Cell만들기
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VoteOptionCVC.className, for: indexPath) as! VoteOptionCVC
-        return cell
+        
+        if isOptionSelected {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VotedCVC.className, for: indexPath) as! VotedCVC
+            cell.setPercentage(percentage: 50, isOptionVoted: true)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VoteOptionCVC.className, for: indexPath) as! VoteOptionCVC
+            return cell
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width
         return CGSize(width: width, height: 40.adjustedH)
     }
+    
 }
-
-// MARK: - UICollectionViewDelegateFlowLayout
-extension WorryCardCVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+// MARK: - UICollectionViewDelegate
+extension WorryCardCVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? VoteOptionCVC {
+            if cell.isSelected == false {
+                // deselectItem을 안해주면 본 didSelectItemAt 함수가 종료될때 cell의 isSelect가 다시 true로 동작함
+                collectionView.deselectItem(at: indexPath, animated: false)
+                self.voteButton.isEnabled = false
+            }else {
+                self.voteButton.isEnabled = true
+            }
+        }
     }
 }
 
 // MARK: - Layout
 extension WorryCardCVC {
     private func setLayout() {
-        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel,voteOptionCV,voteButton, chatButton])
+        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel,voteOptionCV, voteButton, chatButton])
         
         worryCategoryLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(14)
@@ -175,19 +204,19 @@ extension WorryCardCVC {
             $0.trailing.equalToSuperview().inset(14)
             $0.height.equalTo(19.adjustedH)
         }
-
+        
         worryContentLabel.snp.makeConstraints {
             $0.top.equalTo(worryTitleLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview().offset(14)
             $0.trailing.equalToSuperview().inset(14)
-//            $0.height.equalTo(66.adjustedH)
+            //            $0.height.equalTo(66.adjustedH)
         }
         
         voteOptionCV.snp.makeConstraints {
             $0.top.equalTo(worryContentLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(11)
             $0.trailing.equalToSuperview().inset(11)
-//            $0.bottom.equalTo(voteButton.snp.top).inset(10)
+            $0.bottom.equalTo(voteButton.snp.top)
         }
         
         voteButton.snp.makeConstraints {
@@ -197,10 +226,10 @@ extension WorryCardCVC {
             $0.top.equalTo(voteOptionCV.snp.bottom)
             $0.height.equalTo(40.adjustedH)
         }
-
+        
         chatButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(15)
-            $0.top.equalTo(voteButton.snp.bottom).offset(12)
+            $0.bottom.equalToSuperview().inset(16)
             $0.width.equalTo(39.adjustedW)
             $0.height.equalTo(24.adjustedH)
         }

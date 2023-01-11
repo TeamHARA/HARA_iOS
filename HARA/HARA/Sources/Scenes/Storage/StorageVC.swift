@@ -70,6 +70,16 @@ class StorageVC: UIViewController {
         view.layer.addSublayer(gradient)
         setSegmentedControl()
         setLayout()
+        setPress()
+    }
+    
+    // MARK: - Functions
+    private func setPress() {
+        let oneSecGameVC = OneSecGameVC()
+        oneSecGameVC.modalPresentationStyle = .overFullScreen
+        oneclickButton.press {
+            self.navigationController?.present(oneSecGameVC, animated: true)
+        }
     }
 }
 

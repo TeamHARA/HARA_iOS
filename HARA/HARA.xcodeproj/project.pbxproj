@@ -17,11 +17,24 @@
 		67DA6D2E296C92B9006F4C5C /* TogetherWorriedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D2C296C92B9006F4C5C /* TogetherWorriedModel.swift */; };
 		8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A779296BE14D00402E91 /* BaseOptionView.swift */; };
 		8532A77C296BE15300402E91 /* AddOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A77B296BE15300402E91 /* AddOptionView.swift */; };
-		85E0A44929646E280007C3CA /* FirstWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstWriteStepView.swift */; };
-		85E0A44B29646E300007C3CA /* SecondWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondWriteStepView.swift */; };
-		85E0A44D29646E390007C3CA /* ThirdWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */; };
-		85E0A44F29646E440007C3CA /* FourthWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */; };
-		85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */; };
+		8532A77F296BEFEF00402E91 /* AddOptionBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A77E296BEFEF00402E91 /* AddOptionBtnView.swift */; };
+		8532A786296C251200402E91 /* ProsConsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A785296C251200402E91 /* ProsConsCVC.swift */; };
+		8532A78C296DCE9300402E91 /* OneSecGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A78B296DCE9300402E91 /* OneSecGameVC.swift */; };
+		8532A795296DE60700402E91 /* RecentWorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A794296DE60700402E91 /* RecentWorryCVC.swift */; };
+		8532A797296DE7FC00402E91 /* RecentWorryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A796296DE7FC00402E91 /* RecentWorryModel.swift */; };
+		8593366F296EAE4000ECA674 /* ToastMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593366E296EAE4000ECA674 /* ToastMessageVC.swift */; };
+		85E0A44929646E280007C3CA /* FirstWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */; };
+		85E0A44B29646E300007C3CA /* SecondWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */; };
+		85E0A44D29646E390007C3CA /* ThirdWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */; };
+		85E0A44F29646E440007C3CA /* FourthWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44E29646E440007C3CA /* FourthWriteStepVC.swift */; };
+		85E0A45129646E4B0007C3CA /* FifthWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A45029646E4B0007C3CA /* FifthWriteStepVC.swift */; };
+		E74585CF296E092D00597168 /* CommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CE296E092D00597168 /* CommentHeaderView.swift */; };
+		E74585CD296E01E100597168 /* DetailWorryCommentCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */; };
+		E74585C9296D435C00597168 /* WorryDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */; };
+		E74585CB296DEE5800597168 /* WorryDetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */; };
+		E74C874F296A97AF00BFAD31 /* VotedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C874E296A97AF00BFAD31 /* VotedCVC.swift */; };
+		E74C8751296ABB2300BFAD31 /* DetailWorryCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */; };
+		E74C8753296C128F00BFAD31 /* DetailWorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */; };
 		E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BE8295AC8A900848B72 /* AppDelegate.swift */; };
 		E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */; };
 		E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69BF1295AC8AA00848B72 /* Assets.xcassets */; };
@@ -31,7 +44,6 @@
 		E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C08295AD68100848B72 /* ToastMessageColorType.swift */; };
 		E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C0A295AD68E00848B72 /* UserInfo.swift */; };
 		E7C69C18295AD71C00848B72 /* WriteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C17295AD71C00848B72 /* WriteAPI.swift */; };
-		E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C19295AD72F00848B72 /* StorageAPI.swift */; };
 		E7C69C21295AD7CA00848B72 /* ColorSets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69C20295AD7CA00848B72 /* ColorSets.xcassets */; };
 		E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C25295AD81600848B72 /* HaraTabBarController.swift */; };
 		E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C29295AD84300848B72 /* SomeTemplate.swift */; };
@@ -90,11 +102,24 @@
 		67DA6D2C296C92B9006F4C5C /* TogetherWorriedModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TogetherWorriedModel.swift; sourceTree = "<group>"; };
 		8532A779296BE14D00402E91 /* BaseOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOptionView.swift; sourceTree = "<group>"; };
 		8532A77B296BE15300402E91 /* AddOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionView.swift; sourceTree = "<group>"; };
-		85E0A44829646E280007C3CA /* FirstWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A44A29646E300007C3CA /* SecondWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthWriteStepView.swift; sourceTree = "<group>"; };
-		85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthWriteStepView.swift; sourceTree = "<group>"; };
+		8532A77E296BEFEF00402E91 /* AddOptionBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionBtnView.swift; sourceTree = "<group>"; };
+		8532A785296C251200402E91 /* ProsConsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProsConsCVC.swift; sourceTree = "<group>"; };
+		8532A78B296DCE9300402E91 /* OneSecGameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneSecGameVC.swift; sourceTree = "<group>"; };
+		8532A794296DE60700402E91 /* RecentWorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorryCVC.swift; sourceTree = "<group>"; };
+		8532A796296DE7FC00402E91 /* RecentWorryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorryModel.swift; sourceTree = "<group>"; };
+		8593366E296EAE4000ECA674 /* ToastMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageVC.swift; sourceTree = "<group>"; };
+		85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A44E29646E440007C3CA /* FourthWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthWriteStepVC.swift; sourceTree = "<group>"; };
+		85E0A45029646E4B0007C3CA /* FifthWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthWriteStepVC.swift; sourceTree = "<group>"; };
+		E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCVC.swift; sourceTree = "<group>"; };
+		E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCardVC.swift; sourceTree = "<group>"; };
+		E74585CE296E092D00597168 /* CommentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderView.swift; sourceTree = "<group>"; };
+		E74C874E296A97AF00BFAD31 /* VotedCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedCVC.swift; sourceTree = "<group>"; };
+		E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCommentCVC.swift; sourceTree = "<group>"; };
+		E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryDetailHeaderView.swift; sourceTree = "<group>"; };
+		E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryDetailFooterView.swift; sourceTree = "<group>"; };
 		E7C69BE5295AC8A900848B72 /* HARA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C69BE8295AC8A900848B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +196,7 @@
 			children = (
 				67DA6D2C296C92B9006F4C5C /* TogetherWorriedModel.swift */,
 				67DA6D2B296C92B9006F4C5C /* AloneWorriedModel.swift */,
+				8532A796296DE7FC00402E91 /* RecentWorryModel.swift */,
 			);
 			path = StorageModel;
 			sourceTree = "<group>";
@@ -180,21 +206,85 @@
 			children = (
 				8532A779296BE14D00402E91 /* BaseOptionView.swift */,
 				8532A77B296BE15300402E91 /* AddOptionView.swift */,
+				8532A77E296BEFEF00402E91 /* AddOptionBtnView.swift */,
 			);
 			path = OptionView;
 			sourceTree = "<group>";
 		};
-		85E0A44729646DB30007C3CA /* WriteStepView */ = {
+		8532A780296C247600402E91 /* FirstWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */,
+			);
+			path = FirstWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A781296C248600402E91 /* SecondWriteStepVC */ = {
 			isa = PBXGroup;
 			children = (
 				8532A778296BE13E00402E91 /* OptionView */,
-				85E0A44829646E280007C3CA /* FirstWriteStepView.swift */,
-				85E0A44A29646E300007C3CA /* SecondWriteStepView.swift */,
-				85E0A44C29646E390007C3CA /* ThirdWriteStepView.swift */,
-				85E0A44E29646E440007C3CA /* FourthWriteStepView.swift */,
-				85E0A45029646E4B0007C3CA /* FifthWriteStepView.swift */,
+				85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */,
 			);
-			path = WriteStepView;
+			path = SecondWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A782296C249500402E91 /* ThirdWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				8532A785296C251200402E91 /* ProsConsCVC.swift */,
+				85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */,
+			);
+			path = ThirdWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A783296C24A300402E91 /* FourthWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				85E0A44E29646E440007C3CA /* FourthWriteStepVC.swift */,
+			);
+			path = FourthWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A784296C24AA00402E91 /* FifthWriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				85E0A45029646E4B0007C3CA /* FifthWriteStepVC.swift */,
+			);
+			path = FifthWriteStepVC;
+			sourceTree = "<group>";
+		};
+		8532A789296DCDFD00402E91 /* AloneTogetherTab */ = {
+			isa = PBXGroup;
+			children = (
+				673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */,
+				67DA6D21296C9242006F4C5C /* AloneWorriedVC.swift */,
+				67DA6D23296C924C006F4C5C /* TogetherWorriedVC.swift */,
+				67DA6D25296C9259006F4C5C /* AloneWorriedCVC.swift */,
+				67DA6D27296C925F006F4C5C /* TogetherWorriedCVC.swift */,
+			);
+			path = AloneTogetherTab;
+			sourceTree = "<group>";
+		};
+		8532A78A296DCE3600402E91 /* OneSecondPage */ = {
+			isa = PBXGroup;
+			children = (
+				8532A78B296DCE9300402E91 /* OneSecGameVC.swift */,
+				8532A794296DE60700402E91 /* RecentWorryCVC.swift */,
+			);
+			path = OneSecondPage;
+			sourceTree = "<group>";
+		};
+		85E0A44729646DB30007C3CA /* WriteStepVC */ = {
+			isa = PBXGroup;
+			children = (
+				8532A780296C247600402E91 /* FirstWriteStepVC */,
+				8532A781296C248600402E91 /* SecondWriteStepVC */,
+				8532A782296C249500402E91 /* ThirdWriteStepVC */,
+				8532A783296C24A300402E91 /* FourthWriteStepVC */,
+				8532A784296C24AA00402E91 /* FifthWriteStepVC */,
+				8593366E296EAE4000ECA674 /* ToastMessageVC.swift */,
+			);
+			path = WriteStepVC;
 			sourceTree = "<group>";
 		};
 		E7C69BDC295AC8A900848B72 = {
@@ -396,6 +486,13 @@
 				E7C69CCB29647C9700848B72 /* CategoryCVC.swift */,
 				E7C69CEC29660AB500848B72 /* WorryCardCVC.swift */,
 				E7C69CEA29658BF900848B72 /* VoteOptionCVC.swift */,
+				E74C874E296A97AF00BFAD31 /* VotedCVC.swift */,
+				E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */,
+				E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */,
+				E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */,
+				E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */,
+				E74585CC296E01E100597168 /* DetailWorryCommentCVC.swift */,
+				E74585CE296E092D00597168 /* CommentHeaderView.swift */,
 			);
 			path = Together;
 			sourceTree = "<group>";
@@ -403,13 +500,10 @@
 		E7C69C2C295AD86000848B72 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				67DA6D2F296C92BE006F4C5C /* StorageModel */,
-				67DA6D27296C925F006F4C5C /* TogetherWorriedCVC.swift */,
-				67DA6D25296C9259006F4C5C /* AloneWorriedCVC.swift */,
-				673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */,
 				673315F02966D1AC00398AA5 /* StorageVC.swift */,
-				67DA6D21296C9242006F4C5C /* AloneWorriedVC.swift */,
-				67DA6D23296C924C006F4C5C /* TogetherWorriedVC.swift */,
+				67DA6D2F296C92BE006F4C5C /* StorageModel */,
+				8532A789296DCDFD00402E91 /* AloneTogetherTab */,
+				8532A78A296DCE3600402E91 /* OneSecondPage */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -418,7 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C69CBF296203CA00848B72 /* WriteVC.swift */,
-				85E0A44729646DB30007C3CA /* WriteStepView */,
+				85E0A44729646DB30007C3CA /* WriteStepVC */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -523,16 +617,18 @@
 				E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				67DA6D2D296C92B9006F4C5C /* AloneWorriedModel.swift in Sources */,
+				85E0A44D29646E390007C3CA /* ThirdWriteStepVC.swift in Sources */,
+				85E0A45129646E4B0007C3CA /* FifthWriteStepVC.swift in Sources */,
 				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
-				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
-				85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */,
-				85E0A44D29646E390007C3CA /* ThirdWriteStepView.swift in Sources */,
 				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
 				E7C69CDE296555A600848B72 /* WriteService.swift in Sources */,
 				E7C69CD2296554D700848B72 /* NetworkConstant.swift in Sources */,
 				E7C69CEB29658BF900848B72 /* VoteOptionCVC.swift in Sources */,
+				E74585CB296DEE5800597168 /* WorryDetailFooterView.swift in Sources */,
+				8532A77F296BEFEF00402E91 /* AddOptionBtnView.swift in Sources */,
 				E7C69CE0296555B400848B72 /* StorageService.swift in Sources */,
 				E7C69CD82965550500848B72 /* NetworkResult.swift in Sources */,
+				E74585CF296E092D00597168 /* CommentHeaderView.swift in Sources */,
 				E7C69CD0296554C000848B72 /* APIConstant.swift in Sources */,
 				E7C69CED29660AB500848B72 /* WorryCardCVC.swift in Sources */,
 				67DA6D24296C924C006F4C5C /* TogetherWorriedVC.swift in Sources */,
@@ -544,30 +640,40 @@
 				E7C69CDA2965551400848B72 /* BaseTargetType.swift in Sources */,
 				8532A77C296BE15300402E91 /* AddOptionView.swift in Sources */,
 				E7C69C18295AD71C00848B72 /* WriteAPI.swift in Sources */,
+				8532A795296DE60700402E91 /* RecentWorryCVC.swift in Sources */,
 				E7C69CCC29647C9700848B72 /* CategoryCVC.swift in Sources */,
-				85E0A44B29646E300007C3CA /* SecondWriteStepView.swift in Sources */,
+				E74585C9296D435C00597168 /* WorryDetailHeaderView.swift in Sources */,
+				85E0A44B29646E300007C3CA /* SecondWriteStepVC.swift in Sources */,
+				8532A78C296DCE9300402E91 /* OneSecGameVC.swift in Sources */,
 				E7C69C9D29613F2700848B72 /* UIStackView+.swift in Sources */,
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
 				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */,
+				E74585CD296E01E100597168 /* DetailWorryCommentCVC.swift in Sources */,
+				8532A786296C251200402E91 /* ProsConsCVC.swift in Sources */,
 				E7C69C9929613A4300848B72 /* UIButton+.swift in Sources */,
 				E7C69CCE29649EA900848B72 /* UICollectionVIew+.swift in Sources */,
 				E7C69C03295AD64C00848B72 /* UIColor+.swift in Sources */,
+				E74C8751296ABB2300BFAD31 /* DetailWorryCardVC.swift in Sources */,
 				E7C69CD6296554F800848B72 /* GeneralResponse.swift in Sources */,
+				E74C8753296C128F00BFAD31 /* DetailWorryCVC.swift in Sources */,
 				E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */,
-				85E0A44929646E280007C3CA /* FirstWriteStepView.swift in Sources */,
+				85E0A44929646E280007C3CA /* FirstWriteStepVC.swift in Sources */,
+				E74C874F296A97AF00BFAD31 /* VotedCVC.swift in Sources */,
 				E7C69CA52961407500848B72 /* String+.swift in Sources */,
 				E7C69C32295ADCAE00848B72 /* TogetherVC.swift in Sources */,
 				E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */,
 				67DA6D22296C9242006F4C5C /* AloneWorriedVC.swift in Sources */,
 				67DA6D26296C9259006F4C5C /* AloneWorriedCVC.swift in Sources */,
 				E7C69C9729613A1400848B72 /* UIFont+.swift in Sources */,
+				85E0A44F29646E440007C3CA /* FourthWriteStepVC.swift in Sources */,
 				67DA6D2E296C92B9006F4C5C /* TogetherWorriedModel.swift in Sources */,
-				85E0A44F29646E440007C3CA /* FourthWriteStepView.swift in Sources */,
 				E7C69CC0296203CA00848B72 /* WriteVC.swift in Sources */,
+				8532A797296DE7FC00402E91 /* RecentWorryModel.swift in Sources */,
 				E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */,
 				67DA6D28296C925F006F4C5C /* TogetherWorriedCVC.swift in Sources */,
 				E7C69CBB2962017F00848B72 /* BaseNC.swift in Sources */,
+				8593366F296EAE4000ECA674 /* ToastMessageVC.swift in Sources */,
 				E7C69CA329613FAA00848B72 /* UILabel+.swift in Sources */,
 				E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */,
 				E7C69CC22962099600848B72 /* UIViewController+.swift in Sources */,
@@ -717,7 +823,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AFS6YUQ2Y4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HARA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -730,7 +836,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = damin.HARA;
+				PRODUCT_BUNDLE_IDENTIFIER = damin.HARA.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -745,7 +851,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = AFS6YUQ2Y4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HARA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -758,7 +864,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = damin.HARA;
+				PRODUCT_BUNDLE_IDENTIFIER = damin.HARA.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

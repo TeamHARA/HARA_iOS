@@ -36,11 +36,11 @@ class WriteVC: UIViewController {
     lazy var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     
     /// pageView에 사용될 5개 VC 선언
-    lazy var vc1 = FirstWriteStepView()
-    lazy var vc2 = SecondWriteStepView()
-    lazy var vc3 = ThirdWriteStepView()
-    lazy var vc4 = FourthWriteStepView()
-    lazy var vc5 = FifthWriteStepView()
+    lazy var vc1 = FirstWriteStepVC()
+    lazy var vc2 = SecondWriteStepVC()
+    lazy var vc3 = ThirdWriteStepVC()
+    lazy var vc4 = FourthWriteStepVC()
+    lazy var vc5 = FifthWriteStepVC()
     
     lazy var viewList: [UIViewController] = {
         return [vc1, vc2, vc3, vc4, vc5]
@@ -50,6 +50,8 @@ class WriteVC: UIViewController {
         guard let vc = pageViewController.viewControllers?.first else { return 0 }
             return viewList.firstIndex(of: vc) ?? 0
     }
+    
+    lazy var toastMessage = ToastMessageVC()
     
     private let prevButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "prevBtn"), for: .normal)
@@ -62,7 +64,7 @@ class WriteVC: UIViewController {
     }
     
     private let uploadButton = UIButton().then {
-        $0.backgroundColor = .clear
+        $0.backgroundColor = .hBlue4
         $0.layer.cornerRadius = 25
         $0.layer.borderWidth = 1.0
         $0.layer.borderColor = UIColor.hBlue3.cgColor
@@ -78,11 +80,13 @@ class WriteVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .clear
         vc5.delegate = self
+        vc2.titledelegate = vc3
         disableArrowButton()
         setLayout()
         setPress()
         setupDelegate()
         setFirstPageView()
+        configNextButtonLogic()
     }
     
     // MARK: - Function
@@ -108,9 +112,17 @@ class WriteVC: UIViewController {
             /// 버튼눌렸을 때 페이지 변경 애니메이션 적용
             self.disableArrowButton()
             self.makeProgressBarAnimate()
+            self.vc3.prosConsCV.reloadData()
         }
-        uploadButton.press {
-            self.dismiss(animated: true, completion: nil)
+        uploadButton.press {[self] in
+            toastMessage.modalPresentationStyle = .overFullScreen
+            self.present(toastMessage, animated: true, completion:nil)
+        }
+        toastMessage.cancelButton.press {
+            self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
+        }
+        toastMessage.acceptButton.press {
+            self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
         }
     }
     
@@ -123,13 +135,20 @@ class WriteVC: UIViewController {
     private func disableArrowButton() {
         if currentPage == 0 {
             prevButton.isHidden = true
-        } else if currentPage == 4 {
+            nextButton.isEnabled = false
+        }else if currentPage == 1 {
+            nextButton.isEnabled = false
+            prevButton.isHidden = false
+        }else if currentPage == 3 {
+            nextButton.isEnabled = false
+            prevButton.isHidden = false
+        }else if currentPage == 4 {
             nextButton.isHidden = true
-        } else {
+        }else {
             prevButton.isHidden = false
             nextButton.isHidden = false
-            nextButton.isEnabled = true
-            prevButton.isEnabled = true
+//            nextButton.isEnabled = true
+//            prevButton.isEnabled = true
         }
     }
     
@@ -148,6 +167,12 @@ class WriteVC: UIViewController {
         if let firstVC = viewList.first {
             pageViewController.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
+    }
+    
+    private func configNextButtonLogic() {
+        vc1.checkVc1Delegate = self
+        vc2.checkVc2Delegate = self
+        vc4.checkVc4Delegate = self
     }
 }
 
@@ -192,7 +217,7 @@ extension WriteVC{
         
         prevButton.snp.makeConstraints{
             $0.leading.equalTo(self.view.safeAreaLayoutGuide).offset(35.adjustedW)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-60.adjustedH)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-24.adjustedH)
             $0.width.equalTo(10.adjustedW)
             $0.height.equalTo(20.adjustedH)
         }
@@ -206,7 +231,7 @@ extension WriteVC{
         
         nextButton.snp.makeConstraints{
             $0.trailing.equalTo(self.view.safeAreaLayoutGuide).offset(-35.adjustedW)
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-60.adjustedH)
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).offset(-24.adjustedH)
             $0.width.equalTo(10.adjustedW)
             $0.height.equalTo(20.adjustedH)
         }
@@ -233,6 +258,7 @@ extension WriteVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate 
         if nextIndex == viewList.count {
             return nil
         }
+        self.vc3.prosConsCV.reloadData()
         return viewList[nextIndex]
     }
     
@@ -260,6 +286,23 @@ extension WriteVC: UITextFieldDelegate {
     }
 }
 
+// MARK: - UITextViewDelegate
+extension WriteVC: UITextViewDelegate {
+    /// ✅ textField 에서 편집을 시작한 후
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        /// 키보드 업
+        textView.becomeFirstResponder()
+        /// 입력 시 textField 를 강조하기 위한 테두리 설정
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func textViewShouldReturn(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
+}
+
 // MARK: - SendIsclickedDelegate
 /// 5번째 페이지에서 버튼이 선택되었을 때 업로드 버튼 활성화
 extension WriteVC: SendIsclickedDelegate{
@@ -282,6 +325,54 @@ extension WriteVC: SendIsclickedDelegate{
         }
     }
 }
+
+// MARK: - checkVc1Delegate
+extension WriteVC: CheckVc1Delegate{
+    /// 첫번째 stepView에서 textfield 및 textView가 채워져 있어야지만 다음 버튼 활성화
+    func checkText(checkTextfield: Bool, checkTextView: Bool) {
+        if currentPage == 0 {
+            if checkTextfield == true && checkTextView == true{
+                nextButton.isEnabled = true
+            }
+            else {
+                nextButton.isEnabled = false
+            }
+        }
+    }
+}
+
+// MARK: - checkVc2Delegate
+extension WriteVC: CheckVc2Delegate{
+    /// 두번째 stepView에서 각 옵션별 textfield가 채워져 있어야지만 다음 버튼 활성화
+    func checkText(checkBaseOption: Bool, checkAddOption: Bool, isButtonClicked: Bool) {
+        if currentPage == 1 {
+            if checkBaseOption == true && checkAddOption == true && isButtonClicked == true{
+                nextButton.isEnabled = true
+            }
+            else {
+                nextButton.isEnabled = false
+            }
+        }
+    }
+}
+
+// MARK: - checkVc4Delegate
+extension WriteVC: CheckVc4Delegate{
+    /// 네번째 stepView에서 카테고리가 선택되어야지만 다음 버튼 활성화
+    func checkCategory(checkTextfield: Bool) {
+        if currentPage == 3 {
+            if checkTextfield == true {
+                nextButton.isEnabled = true
+                print(checkTextfield)
+            }
+            else {
+                nextButton.isEnabled = false
+                print(checkTextfield)
+            }
+        }
+    }
+}
+
 
 
 
