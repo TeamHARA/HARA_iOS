@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-class FourthWriteStepView: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     // MARK: - Properties
     private let background = UIImageView().then {
@@ -28,14 +28,14 @@ class FourthWriteStepView: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
-        let NormalString1 = NSAttributedString(string: "고민의 ", attributes: [
+        let normalString1 = NSAttributedString(string: "고민의 ", attributes: [
             .font: UIFont.haraM1M24])
-        let BoldString = NSAttributedString(string: "카테고리", attributes: [
+        let boldString = NSAttributedString(string: "카테고리", attributes: [
             .font: UIFont.haraM1B24])
-        let NormalString2 = NSAttributedString(string: "를\n정해주세요.", attributes: [
+        let normalString2 = NSAttributedString(string: "를\n정해주세요.", attributes: [
             .font: UIFont.haraM1M24])
         
-        let title = NormalString1 + BoldString + NormalString2
+        let title = normalString1 + boldString + normalString2
         $0.attributedText = title
     }
     
@@ -84,10 +84,17 @@ class FourthWriteStepView: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.sizeToFit()
-        let btnSelect = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(onPickDone))
-        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let btnCancel = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(onPickCancel))
-        toolBar.setItems([btnCancel, space, btnSelect], animated: true)
+        let btnSelect = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(onPickDone))
+        let spaceLeft = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let categoryLabel = UILabel().then{
+            $0.text = "카테고리"
+            $0.font = .haraM2M18
+            $0.textColor = .hBlack
+        }
+        let barTitle = UIBarButtonItem(customView: categoryLabel)
+        let spaceRight = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let btnCancel = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(onPickCancel))
+        toolBar.setItems([btnCancel, spaceLeft, barTitle, spaceRight, btnSelect], animated: true)
         toolBar.isUserInteractionEnabled = true
         categoryTextField.inputView = pickerView
         categoryTextField.inputAccessoryView = toolBar
@@ -123,11 +130,12 @@ class FourthWriteStepView: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = categories[row]
         categoryTextField.textAlignment = .center
+        categoryTextField.textColor = .black
         selectedItem = categories[row]
     }
 }
 
-extension FourthWriteStepView{
+extension FourthWriteStepVC{
     private func setLayout(){
         view.addSubViews([background, navigationView, progressView, questionLabel,
                          categoryTextField, categoryTextLine, pickerImage])
