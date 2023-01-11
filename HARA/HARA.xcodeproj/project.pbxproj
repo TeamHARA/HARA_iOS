@@ -78,7 +78,7 @@
 		E7C69CCE29649EA900848B72 /* UICollectionVIew+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CCD29649EA900848B72 /* UICollectionVIew+.swift */; };
 		E7C69CD0296554C000848B72 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CCF296554C000848B72 /* APIConstant.swift */; };
 		E7C69CD2296554D700848B72 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CD1296554D700848B72 /* NetworkConstant.swift */; };
-		E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CD3296554E600848B72 /* MoyLoggingPlugin.swift */; };
+		E7C69CD4296554E600848B72 /* MoyaLoggingPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CD3296554E600848B72 /* MoyaLoggingPlugin.swift */; };
 		E7C69CD6296554F800848B72 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CD5296554F800848B72 /* GeneralResponse.swift */; };
 		E7C69CD82965550500848B72 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CD72965550500848B72 /* NetworkResult.swift */; };
 		E7C69CDA2965551400848B72 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CD92965551400848B72 /* BaseTargetType.swift */; };
@@ -164,7 +164,7 @@
 		E7C69CCD29649EA900848B72 /* UICollectionVIew+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionVIew+.swift"; sourceTree = "<group>"; };
 		E7C69CCF296554C000848B72 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		E7C69CD1296554D700848B72 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
-		E7C69CD3296554E600848B72 /* MoyLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyLoggingPlugin.swift; sourceTree = "<group>"; };
+		E7C69CD3296554E600848B72 /* MoyaLoggingPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaLoggingPlugin.swift; sourceTree = "<group>"; };
 		E7C69CD5296554F800848B72 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		E7C69CD72965550500848B72 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		E7C69CD92965551400848B72 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
@@ -446,7 +446,7 @@
 				E7C69CC5296213EB00848B72 /* ImageCacheManager.swift */,
 				E7C69CCF296554C000848B72 /* APIConstant.swift */,
 				E7C69CD1296554D700848B72 /* NetworkConstant.swift */,
-				E7C69CD3296554E600848B72 /* MoyLoggingPlugin.swift */,
+				E7C69CD3296554E600848B72 /* MoyaLoggingPlugin.swift */,
 				E7C69CD5296554F800848B72 /* GeneralResponse.swift */,
 				E7C69CD72965550500848B72 /* NetworkResult.swift */,
 				E7C69CD92965551400848B72 /* BaseTargetType.swift */,
@@ -657,7 +657,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */,
+				E7C69CD4296554E600848B72 /* MoyaLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				67DA6D2D296C92B9006F4C5C /* WorriedModel.swift in Sources */,
 				85E0A44D29646E390007C3CA /* ThirdWriteStepVC.swift in Sources */,
