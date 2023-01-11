@@ -62,24 +62,6 @@ class VoteOptionCVC: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Function
-//    func setPressAction() {
-//        self.checkButton.press {
-//            if self.isSelected == true{
-//                self.isSelected = false
-//            }else {
-//                self.isSelected = true
-//            }
-//
-//        }
-//    }
-    
-    func setData(isSelected: Bool) {
-        optionLabel.textColor = isSelected ? .hBlue1 : .hBlack
-        checkButton.isSelected = isSelected
-//        contentView.backgroundColor = isSelected ? .hBlue1 : .hGray4
-    }
-    
     // MARK: - UI
     private func setUI() {
         contentView.makeRounded(cornerRadius: 8)

@@ -55,8 +55,8 @@ final class WorryCardCVC: UICollectionViewCell {
         //        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
         //        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+//        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, repeatingSubitem: item, count: 1)
         //            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         //            group.interItemSpacing = .flexible(-16)
         let section = NSCollectionLayoutSection(group: group)
@@ -78,7 +78,6 @@ final class WorryCardCVC: UICollectionViewCell {
         $0.layer.borderWidth = 1
     }
     
-    
     private let chatButton = UIButton().then {
         $0.setImage(UIImage(named: "together_chat_icon"), for: .normal)
         var config = UIButton.Configuration.plain()
@@ -93,6 +92,7 @@ final class WorryCardCVC: UICollectionViewCell {
     
     private var optionNums = 2
     
+    ///선택지가 클릭이 된 상태인지를 알려주는 변수
     private var isOptionSelected = false
     
     // MARK: - View Life Cycle
@@ -132,6 +132,10 @@ final class WorryCardCVC: UICollectionViewCell {
             self.isOptionSelected = true
             self.voteButton.backgroundColor = .hOrange3
             self.voteButton.layer.borderWidth = 0
+            self.voteButton.setTitle("투표완료!", for: .normal)
+            self.voteButton.setTitleColor(.hWhite, for: .normal)
+            self.voteButton.setBackgroundColor(.hGray3, for: .normal)
+            self.voteButton.isUserInteractionEnabled = false
             self.voteOptionCV.reloadData()
         }
         
@@ -175,9 +179,6 @@ extension WorryCardCVC: UICollectionViewDelegate {
             }
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-    }
 }
 
 // MARK: - Layout
@@ -215,7 +216,7 @@ extension WorryCardCVC {
             $0.top.equalTo(worryContentLabel.snp.bottom).offset(10)
             $0.leading.equalToSuperview().offset(11)
             $0.trailing.equalToSuperview().inset(11)
-            //            $0.bottom.equalToSuperview().inset(52)
+            $0.bottom.equalTo(voteButton.snp.top)
         }
         
         voteButton.snp.makeConstraints {
