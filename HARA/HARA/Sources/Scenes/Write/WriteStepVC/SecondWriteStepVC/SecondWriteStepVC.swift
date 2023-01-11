@@ -11,7 +11,12 @@ import Then
 
 // MARK: - Protocols
 protocol optionTitleDelegate: AnyObject{
-    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool, isZero: [Bool])
+    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool)
+}
+
+// MARK: - Protocols
+protocol CheckVc2Delegate: AnyObject{
+    func checkText(checkBaseOption: Bool, checkAddOption: Bool, isButtonClicked: Bool)
 }
 
 class SecondWriteStepVC: UIViewController{
@@ -28,8 +33,6 @@ class SecondWriteStepVC: UIViewController{
     
     /// stackView의 순서를 맞게 반환하는지 확인하기 위한 Bool 변수
     private var orderReversed: Bool = false
-    
-    var optionNum: Int = 2
     
     lazy var navigationView = UIView().then{
         $0.backgroundColor = .hBlue4
@@ -49,6 +52,10 @@ class SecondWriteStepVC: UIViewController{
         let title = boldString + normalString
         $0.attributedText = title
     }
+    
+    private var checkBaseOption: Bool = false
+    private var checkAddOption: Bool = false
+    private var isButtonClicked: Bool = true
 
     /// stackView의 추가할 뷰들 구현
     private lazy var firstOptionView = BaseOptionView().then{
@@ -63,7 +70,7 @@ class SecondWriteStepVC: UIViewController{
     private lazy var fourthOptionView = AddOptionView().then{
         $0.optionTextField.delegate = self
     }
-    private lazy var addButton = AddOptionBtnView()
+    private lazy var addButtonView = AddOptionBtnView()
     
     /// 더이상 없앨 수 없는 기본 옵션 뷰 2개
     private lazy var stackBaseOptionArray: [BaseOptionView] = [firstOptionView, secondOptionView]
@@ -72,9 +79,6 @@ class SecondWriteStepVC: UIViewController{
     
     /// ThirdWriteStepView로 넘겨주기 위해 각 옵션의 제목을 저장해줄 Array
     var prosConsTitleArray = [String](repeating: "", count: 4)
-    
-    /// 각 옵션의 제목에 값이 입력 되어있는지를 확인해주는 Array
-    var checkZeroInArray = [Bool](repeating: true, count: 4)
 
     private lazy var optionStackView = UIStackView(arrangedSubviews: [firstOptionView, secondOptionView]).then {
         $0.axis = .vertical // default
@@ -84,6 +88,7 @@ class SecondWriteStepVC: UIViewController{
     }
     
     weak var titledelegate: optionTitleDelegate?
+    weak var checkVc2Delegate: CheckVc2Delegate?
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -110,7 +115,10 @@ class SecondWriteStepVC: UIViewController{
     }
     
     private func setPress() {
-        addButton.addOptionButton.press { [self] in
+        addButtonView.addOptionButton.press { [self] in
+            /// 버튼이 클릭됨과 동시에 다음 탭으로 가는 버튼이 활성화되지 않음
+            isButtonClicked = false
+            checkVc2Delegate?.checkText(checkBaseOption: checkBaseOption, checkAddOption: checkAddOption, isButtonClicked: isButtonClicked)
             /// 선택지의 height 만큼 stackview의 높이를 조정해줌
             stackViewheight += Int(64.adjustedH)
             self.optionStackView.snp.updateConstraints {
@@ -125,11 +133,11 @@ class SecondWriteStepVC: UIViewController{
             case [thirdOptionView]:
                 optionStackView.addArrangedSubview(fourthOptionView)
                 stackAddOptionArray.append(fourthOptionView)
-                addButton.isHidden = true
+                addButtonView.isHidden = true
             case [fourthOptionView]:
                 optionStackView.addArrangedSubview(thirdOptionView)
                 stackAddOptionArray.append(thirdOptionView)
-                addButton.isHidden = true
+                addButtonView.isHidden = true
             default:
                 break
             }
@@ -144,7 +152,7 @@ class SecondWriteStepVC: UIViewController{
             thirdOptionView.optionTextField.text = ""
             optionStackView.removeArrangedSubview(thirdOptionView)
             thirdOptionView.removeFromSuperview()
-            addButton.isHidden = false
+            addButtonView.isHidden = false
             switch stackAddOptionArray{
             case [thirdOptionView], [thirdOptionView,fourthOptionView]:
                 stackAddOptionArray.remove(at: 0)
@@ -165,7 +173,7 @@ class SecondWriteStepVC: UIViewController{
             fourthOptionView.optionTextField.text = ""
             optionStackView.removeArrangedSubview(fourthOptionView)
             fourthOptionView.removeFromSuperview()
-            addButton.isHidden = false
+            addButtonView.isHidden = false
             /// 배열의 순서에 따라 값을 remove 위치를 다르게 설정
             switch stackAddOptionArray{
             case [fourthOptionView], [fourthOptionView,thirdOptionView]:
@@ -182,7 +190,7 @@ class SecondWriteStepVC: UIViewController{
 // MARK: - Layout
 extension SecondWriteStepVC{
     func setLayout(){
-        view.addSubViews([background, navigationView, progressView, questionLabel, optionStackView, addButton])
+        view.addSubViews([background, navigationView, progressView, questionLabel, optionStackView, addButtonView])
         
         background.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -214,7 +222,7 @@ extension SecondWriteStepVC{
             $0.height.equalTo(stackViewheight)
         }
         
-        addButton.snp.makeConstraints{
+        addButtonView.snp.makeConstraints{
             $0.top.equalTo(optionStackView.snp.bottom).offset(16.adjustedH)
             $0.leading.equalToSuperview().offset(16.adjustedW)
             $0.trailing.equalToSuperview().offset(-16.adjustedW)
@@ -225,14 +233,6 @@ extension SecondWriteStepVC{
 
 // MARK: - UITextFieldDelegate
 extension SecondWriteStepVC: UITextFieldDelegate {
-//    ✅ textField 에서 편집을 시작한 후
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        /// 키보드 업
-//        textField.becomeFirstResponder()
-//        /// 입력 시 textField 를 강조하기 위한 테두리 설정
-//        textField.layer.borderWidth = 1
-//        textField.layer.borderColor = UIColor.red.cgColor
-//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.becomeFirstResponder()
@@ -244,40 +244,12 @@ extension SecondWriteStepVC: UITextFieldDelegate {
         switch textField{
         case firstOptionView.optionTextField:
             prosConsTitleArray[0] = firstOptionView.optionTextField.text!
-            if prosConsTitleArray[0] == ""{
-                checkZeroInArray[0] = true
-            }else{
-                checkZeroInArray[0] = false
-            }
-            //print("0 확인 배열\(checkZeroInArray)")
-            //print("값 배열\(prosConsTitleArray)")
         case secondOptionView.optionTextField:
             prosConsTitleArray[1] = secondOptionView.optionTextField.text!
-            if prosConsTitleArray[1] == ""{
-                checkZeroInArray[1] = true
-            }else{
-                checkZeroInArray[1] = false
-            }
-            //print("0 확인 배열\(checkZeroInArray)")
-            //print("값 배열\(prosConsTitleArray)")
         case thirdOptionView.optionTextField:
             prosConsTitleArray[2] = thirdOptionView.optionTextField.text!
-            if prosConsTitleArray[2] == ""{
-                checkZeroInArray[2] = true
-            }else{
-                checkZeroInArray[2] = false
-            }
-            //print("0 확인 배열\(checkZeroInArray)")
-            //print("값 배열\(prosConsTitleArray)")
         case fourthOptionView.optionTextField:
             prosConsTitleArray[3] = fourthOptionView.optionTextField.text!
-            if prosConsTitleArray[3] == ""{
-                checkZeroInArray[3] = true
-            }else{
-                checkZeroInArray[3] = false
-            }
-           // print("0 확인 배열\(checkZeroInArray)")
-            //print("값 배열\(prosConsTitleArray)")
         default:
             break
         }
@@ -288,6 +260,51 @@ extension SecondWriteStepVC: UITextFieldDelegate {
             orderReversed = false
         }
         /// 옵션 제목이 변경될때마다 titledelgate를 통해 세번째 stepView로 값을 보내준다
-        titledelegate?.sendOptionTitle(optionTitleArray: prosConsTitleArray, arrayOrder: orderReversed, isZero: checkZeroInArray)
+        titledelegate?.sendOptionTitle(optionTitleArray: prosConsTitleArray, arrayOrder: orderReversed)
+        
+        /// 각 옵션의 텍스트필드를 감지하여 모두 채워져 있어야만 버튼이 활성화 되게끔 해줌
+        if prosConsTitleArray[0] != "" && prosConsTitleArray[1] != "" {
+            checkBaseOption = true
+        }
+        else {
+            checkBaseOption = false
+        }
+        switch stackAddOptionArray {
+        case []:
+            checkAddOption = true
+            isButtonClicked = true
+        case [thirdOptionView]:
+            isButtonClicked = false
+            if prosConsTitleArray[2] != "" {
+                checkAddOption = true
+                isButtonClicked = true
+            }
+            else {
+                checkAddOption = false
+            }
+            print(isButtonClicked)
+        case [fourthOptionView]:
+            isButtonClicked = false
+            if prosConsTitleArray[3] != "" {
+                checkAddOption = true
+                isButtonClicked = true
+            }
+            else {
+                checkAddOption = false
+            }
+        case [thirdOptionView, fourthOptionView], [fourthOptionView, thirdOptionView]:
+            isButtonClicked = false
+            if prosConsTitleArray[2] != "" && prosConsTitleArray[3] != "" {
+                checkAddOption = true
+                isButtonClicked = true
+            }
+            else {
+                checkAddOption = false
+            }
+        default:
+            break
+        }
+        /// 텍스트 필드의 값의 유무를 계속 체크해서 값이 있을 경우에만 다음 페이지로 넘겨줌
+        checkVc2Delegate?.checkText(checkBaseOption: checkBaseOption, checkAddOption: checkAddOption, isButtonClicked: isButtonClicked)
     }
 }

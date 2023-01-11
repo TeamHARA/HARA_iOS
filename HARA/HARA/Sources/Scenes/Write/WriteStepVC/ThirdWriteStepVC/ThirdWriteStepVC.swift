@@ -176,19 +176,14 @@ extension ThirdWriteStepVC: UICollectionViewDataSource {
 /// 세번째 VC의 배열에 secondStepView에서 넣어둔 데이터들을 받아서 뿌려준다.
 // MARK: - optionTitleDelegate
 extension ThirdWriteStepVC: optionTitleDelegate{
-    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool, isZero: [Bool]){
+    func sendOptionTitle(optionTitleArray: [String], arrayOrder: Bool){
         prosConsTitleArray = optionTitleArray
-        zeroCheckArray = isZero
         cvcCount = 0
         
         if arrayOrder == true{
             changeValue = prosConsTitleArray[2]
             prosConsTitleArray[2] = prosConsTitleArray[3]
             prosConsTitleArray[3] = changeValue
-            
-            changeBool = zeroCheckArray[2]
-            zeroCheckArray[2] = zeroCheckArray[3]
-            zeroCheckArray[3] = changeBool
         }
         /// 빈칸 확인해주는 함수 나중에 구현 예정
         for x in 0...3{

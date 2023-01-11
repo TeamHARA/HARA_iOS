@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - Protocols
+protocol CheckVc4Delegate: AnyObject{
+    func checkCategory(checkTextfield: Bool)
+}
+
 class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     // MARK: - Properties
@@ -61,13 +66,18 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         $0.backgroundColor = .clear
     }
     
+    private var checkTextfield: Bool = false
+    
     /// category 결정해주는 pickerView
     private let pickerView = UIPickerView().then{
         $0.backgroundColor = .hWhite
     }
     private let categories = ["일상", "연애", "패션/뷰티", "커리어", "운동", "여행", "기타"]
-    var selectedItem = ""
+    var selectedItem = "일상"
     
+    weak var checkVc4Delegate: CheckVc4Delegate?
+    
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
@@ -107,6 +117,9 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         categoryTextField.textColor = .black
         categoryTextField.resignFirstResponder()
         selectedItem = ""
+        /// 피커뷰에서 item을 select 했을 시에만 다음 페이지로 가는 버튼이 활성화 됨
+        checkTextfield = true
+        checkVc4Delegate?.checkCategory(checkTextfield: checkTextfield)
     }
     
     /// 피커뷰 > 취소 클릭
