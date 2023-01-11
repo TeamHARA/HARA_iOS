@@ -55,7 +55,6 @@ class FinalChoiceCVC: UICollectionViewCell {
         super.init(frame: .zero)
         setUI()
         setLayout()
-        //        setPressAction()
     }
     
     required init?(coder: NSCoder) {
@@ -64,8 +63,8 @@ class FinalChoiceCVC: UICollectionViewCell {
     
     // MARK: - UI
     private func setUI() {
-        contentView.makeRounded(cornerRadius: 30)
-        contentView.backgroundColor = .hWhite
+        contentView.makeRounded(cornerRadius: 8)
+        contentView.backgroundColor = .hOrange1
         contentView.layer.borderColor = UIColor.hBlue3.cgColor
         contentView.layer.borderWidth = 1
         optionTitle.textColor = .hBlack
@@ -77,12 +76,13 @@ class FinalChoiceCVC: UICollectionViewCell {
 
         optionTitle.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(14)
-            $0.top.equalToSuperview().offset(13)
+            $0.centerY.equalToSuperview()
         }
         
         percentLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().offset(14)
+//            $0.top.equalToSuperview().offset(14)
+            $0.trailing.equalToSuperview().inset(14)
+            $0.centerY.equalToSuperview()
         }
     }
     

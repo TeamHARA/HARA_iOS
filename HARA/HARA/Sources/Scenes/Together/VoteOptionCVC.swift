@@ -55,7 +55,6 @@ class VoteOptionCVC: UICollectionViewCell {
         super.init(frame: .zero)
         setUI()
         setLayout()
-//        setPressAction()
     }
     
     required init?(coder: NSCoder) {

@@ -82,7 +82,10 @@ class FinalChoiceVC: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFinalOptionCV()
+        registerCell()
         setLayout()
+        setPressAction()
     }
     
     // MARK: - Function
@@ -161,12 +164,12 @@ extension FinalChoiceVC {
         }
         
         finalChoiceTitle.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(53)
+            $0.centerX.equalToSuperview()
             $0.top.equalToSuperview().offset(160)
         }
         
         finalSubTitle.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(16)
+            $0.centerX.equalToSuperview()
             $0.top.equalTo(finalChoiceTitle.snp.bottom).offset(26)
         }
         
@@ -174,11 +177,13 @@ extension FinalChoiceVC {
             $0.top.equalTo(finalSubTitle.snp.bottom).offset(70)
             $0.leading.equalToSuperview().offset(17)
             $0.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(268)
         }
         
         solveWorryButton.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(50)
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(20)
         }
     }
