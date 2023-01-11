@@ -1,16 +1,16 @@
 //
-//  WorriedTogetherModel.swift
+//  WorriedAloneModel.swift
 //  HARA
 //
-//  Created by 누리링 on 2023/01/07.
+//  Created by 누리링 on 2023/01/06.
 //
 
 import Foundation
 import UIKit
 
-struct TogetherWorriedModel {
+struct WorriedModel {
     let worring : String
     let categoryTitle : String
     let mainText : String
-    let date : String 
+    let date : String
 }

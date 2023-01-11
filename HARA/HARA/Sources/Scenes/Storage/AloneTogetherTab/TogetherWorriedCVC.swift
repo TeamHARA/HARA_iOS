@@ -14,32 +14,33 @@ import Then
 class TogetherWorriedCVC: UICollectionViewCell {
     
     // MARK: - Properties
-    static let identifier2 = "TogetherWorriedCVC"
-    
-    //private let aloneContainerView = UIView()
     private let worringIcon = UIImageView()
     private let titleLabel = UILabel().then {
         $0.textColor = .hBlue1
         $0.font = .haraB2M14
     }
+    
     private let mainLabel = UILabel().then {
         $0.textColor = .hBlack
         $0.font = .haraB3R14
     }
+    
     private let date = UILabel().then {
         $0.textColor = .hGray2
         $0.font = .haraSub2M12
     }
+    
+    // MARK: - Life Cycles
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layout()
+        setLayout()
         setCellUI()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
-extension TogetherWorriedCVC {
+    
+    // MARK: - Functions
     private func setCellUI() {
         self.contentView.layer.borderColor = UIColor.hBlue2.cgColor
         self.contentView.layer.borderWidth = 1
@@ -47,34 +48,41 @@ extension TogetherWorriedCVC {
         self.contentView.layer.cornerRadius = 10
         self.contentView.backgroundColor = .hWhite
     }
+}
+
+extension TogetherWorriedCVC {
     
     // MARK: - Layout
-    private func layout() {
+    private func setLayout() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        [worringIcon, titleLabel, mainLabel, date].forEach{
-            contentView.addSubview($0)
-        }
+        contentView.addSubviews([worringIcon, titleLabel, mainLabel, date])
+        
         worringIcon.snp.makeConstraints{
-            $0.top.equalToSuperview().offset(10)
-            $0.leading.equalTo(2.adjustedW).inset(13)
+            $0.top.equalToSuperview().offset(12.adjustedH)
+            $0.leading.equalTo(12.adjustedW)
+            $0.height.equalTo(22.adjustedH)
+            $0.width.equalTo(54.adjustedW)
         }
+        
         titleLabel.snp.makeConstraints{
-            $0.top.equalTo(7.adjustedH)
-            $0.leading.equalTo(10.adjustedH).inset(73)
-            $0.bottom.equalToSuperview().inset(52)
-            $0.height.equalTo(60.adjustedH)
+            $0.top.equalToSuperview().offset(12.adjustedH)
+            $0.leading.equalTo(worringIcon.snp.trailing).offset(6.adjustedW)
+            $0.width.equalTo(25.adjustedW)
+            $0.height.equalTo(22.adjustedH)
         }
+        
         mainLabel.snp.makeConstraints{
-            $0.top.equalTo(40.adjustedH)
-            $0.leading.equalTo(2.adjustedH).inset(18)
+            $0.top.equalTo(worringIcon.snp.bottom).offset(8.adjustedH)
+            $0.leading.equalToSuperview().offset(12.adjustedW)
         }
         date.snp.makeConstraints{
-            $0.top.equalTo(65.adjustedH)
-            $0.trailing.equalTo(2.adjustedW).inset(10)
+            $0.bottom.equalToSuperview().inset(12.adjustedH)
+            $0.trailing.equalToSuperview().inset(12.adjustedW)
         }
     }
-    func dataBind(model: TogetherWorriedModel){
+    
+    func dataBind(model: WorriedModel){
         worringIcon.image = UIImage(named: model.worring)
         titleLabel.text = model.categoryTitle
         mainLabel.text = model.mainText
