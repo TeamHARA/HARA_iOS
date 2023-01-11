@@ -32,7 +32,6 @@
 		E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C08295AD68100848B72 /* ToastMessageColorType.swift */; };
 		E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C0A295AD68E00848B72 /* UserInfo.swift */; };
 		E7C69C18295AD71C00848B72 /* WriteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C17295AD71C00848B72 /* WriteAPI.swift */; };
-		E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C19295AD72F00848B72 /* StorageAPI.swift */; };
 		E7C69C21295AD7CA00848B72 /* ColorSets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69C20295AD7CA00848B72 /* ColorSets.xcassets */; };
 		E7C69C26295AD81600848B72 /* HaraTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C25295AD81600848B72 /* HaraTabBarController.swift */; };
 		E7C69C2A295AD84300848B72 /* SomeTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C29295AD84300848B72 /* SomeTemplate.swift */; };
@@ -517,8 +516,6 @@
 			files = (
 				E7C69CD4296554E600848B72 /* MoyLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
-				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
-				E7C69C1A295AD72F00848B72 /* StorageAPI.swift in Sources */,
 				85E0A45129646E4B0007C3CA /* FifthWriteStepView.swift in Sources */,
 				85E0A44D29646E390007C3CA /* ThirdWriteStepView.swift in Sources */,
 				E7C69C09295AD68100848B72 /* ToastMessageColorType.swift in Sources */,
