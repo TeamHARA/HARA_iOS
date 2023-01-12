@@ -89,6 +89,7 @@ class WriteVC: UIViewController {
         vc2.titledelegate = vc3
         
         /// 서버 연결 관련 delegate
+        vc1.serverVc1Delegate = self
         
         /// private Func
         disableArrowButton()
@@ -97,7 +98,6 @@ class WriteVC: UIViewController {
         setupDelegate()
         setFirstPageView()
         configNextButtonLogic()
-        postWriteAloneList(worryData: writeRequest)
     }
     
     // MARK: - Function
@@ -130,10 +130,11 @@ class WriteVC: UIViewController {
             self.present(toastMessage, animated: true, completion:nil)
         }
         toastMessage.cancelButton.press {
-            self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
+            self.toastMessage.dismiss(animated: true, completion: nil)
         }
         toastMessage.acceptButton.press {
             self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
+            self.postWriteAloneList(worryData: self.writeRequest)
         }
     }
     
@@ -381,6 +382,15 @@ extension WriteVC: CheckVc4Delegate{
                 print(checkTextfield)
             }
         }
+    }
+}
+
+// MARK: - ServerVc1Delegate
+extension WriteVC: ServerVc1Delegate{
+    /// 첫번째 writeStepVC에서 데이터 전달받는 delegate
+    func saveVc1Data(title: String, content: String){
+        writeRequest.title = title
+        writeRequest.content = content
     }
 }
 
