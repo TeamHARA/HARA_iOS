@@ -22,6 +22,7 @@
 		8532A795296DE60700402E91 /* RecentWorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A794296DE60700402E91 /* RecentWorryCVC.swift */; };
 		8532A797296DE7FC00402E91 /* RecentWorryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532A796296DE7FC00402E91 /* RecentWorryModel.swift */; };
 		8593366F296EAE4000ECA674 /* ToastMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593366E296EAE4000ECA674 /* ToastMessageVC.swift */; };
+		85933677296FE32A00ECA674 /* WriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85933676296FE32A00ECA674 /* WriteRequest.swift */; };
 		85E0A44929646E280007C3CA /* FirstWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */; };
 		85E0A44B29646E300007C3CA /* SecondWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */; };
 		85E0A44D29646E390007C3CA /* ThirdWriteStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */; };
@@ -108,6 +109,7 @@
 		8532A794296DE60700402E91 /* RecentWorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorryCVC.swift; sourceTree = "<group>"; };
 		8532A796296DE7FC00402E91 /* RecentWorryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWorryModel.swift; sourceTree = "<group>"; };
 		8593366E296EAE4000ECA674 /* ToastMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageVC.swift; sourceTree = "<group>"; };
+		85933676296FE32A00ECA674 /* WriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRequest.swift; sourceTree = "<group>"; };
 		85E0A44829646E280007C3CA /* FirstWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstWriteStepVC.swift; sourceTree = "<group>"; };
 		85E0A44A29646E300007C3CA /* SecondWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondWriteStepVC.swift; sourceTree = "<group>"; };
 		85E0A44C29646E390007C3CA /* ThirdWriteStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdWriteStepVC.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				E7C69CE42965567800848B72 /* WriteResponse.swift */,
+				85933676296FE32A00ECA674 /* WriteRequest.swift */,
 			);
 			path = Write;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				E7C69CE32965566C00848B72 /* TogetherResponse.swift in Sources */,
 				E74585D7296EB63B00597168 /* FinalChoiceCVC.swift in Sources */,
 				E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */,
+				85933677296FE32A00ECA674 /* WriteRequest.swift in Sources */,
 				E7C69C9F29613F4800848B72 /* Adjusted+.swift in Sources */,
 				E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */,
 				E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */,

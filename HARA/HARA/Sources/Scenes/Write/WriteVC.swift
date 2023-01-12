@@ -74,19 +74,30 @@ class WriteVC: UIViewController {
         $0.isUserInteractionEnabled = false
     }
     
+    private lazy var writeRequest: WriteRequest = WriteRequest(title: "안녕?", content: "힘들지 코딩", categoryId: 2, options: options)
+    
+    private lazy var options: [WriteRequest.Option] = [WriteRequest.Option(title: "1번 선택지", advantage: "pros", disadvantage: "cons", image: "", hasImage: false), WriteRequest.Option(title: "2번 선택지", advantage: "pros", disadvantage: "cons", image: "", hasImage: false)]
+//    options.append(WriteRequest.Option(title: "1번 선택지", advantage: "", disadvantage: "", image: "", hasImage: false)])[
+    
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .clear
+        /// 버튼 동작 관련 delegate
         vc5.delegate = self
         vc2.titledelegate = vc3
+        
+        /// 서버 연결 관련 delegate
+        
+        /// private Func
         disableArrowButton()
         setLayout()
         setPress()
         setupDelegate()
         setFirstPageView()
         configNextButtonLogic()
+        postWriteAloneList(worryData: writeRequest)
     }
     
     // MARK: - Function
@@ -372,6 +383,17 @@ extension WriteVC: CheckVc4Delegate{
         }
     }
 }
+
+// MARK: - Network
+extension WriteVC {
+    func postWriteAloneList(worryData: WriteRequest) {
+        WriteAPI.shared.postWriteAloneList(param: worryData) { result in
+//            guard let a = res.data?[0].id else {return}
+            print("결과\(worryData)")
+        }
+    }
+}
+
 
 
 
