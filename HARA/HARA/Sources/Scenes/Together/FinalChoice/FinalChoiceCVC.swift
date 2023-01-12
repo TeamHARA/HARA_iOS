@@ -15,7 +15,7 @@ class FinalChoiceCVC: UICollectionViewCell {
     
     private let optionTitle = UILabel().then {
         $0.textColor = .hBlack
-        $0.font = .haraB3R14
+        $0.font = .haraM2M18
         $0.text = "선택지 글자수 제한은 공백 포함 20"
     }
     
@@ -32,23 +32,26 @@ class FinalChoiceCVC: UICollectionViewCell {
                     optionTitle.textColor = .hWhite
                     alreadySelected = true
                     contentView.backgroundColor = .hBlue1
+                    contentView.layer.borderWidth = 0
+                    optionTitle.textColor = .hWhite
                 }
             } else {
-                optionTitle.textColor = .hGray2
                 contentView.backgroundColor = .hWhite
-                contentView.layer.borderColor = UIColor.hBlue3.cgColor
                 contentView.layer.borderWidth = 1
+                optionTitle.textColor = .hGray2
             }
         }
     }
     
-    private var percent = 30
+//    private var percent = 30 {
+//        didSet {
+//            self.percentLabel.setLabel(text: "\(percent)%", font: .haraH2M16)
+//        }
+//    }
     
-    private let percentLabel = UILabel().then {
-        $0.textColor = .hGray2
-        $0.font = .haraH2M16
-        $0.text = "30%"
-    }
+//    private let percentLabel = UILabel().then {
+//        $0.textColor = .hGray2
+//    }
     
     // MARK: - View Life Cycle
     override init(frame: CGRect) {
@@ -61,29 +64,37 @@ class FinalChoiceCVC: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Function
+    func sendOptionTitle() -> String {
+        return self.optionTitle.text ?? ""
+    }
+    
+//    func getPercentage(percent: Int) {
+//        self.percent = percent
+//    }
+    
     // MARK: - UI
     private func setUI() {
         contentView.makeRounded(cornerRadius: 8)
-        contentView.backgroundColor = .hOrange1
+        contentView.backgroundColor = .hWhite
         contentView.layer.borderColor = UIColor.hBlue3.cgColor
         contentView.layer.borderWidth = 1
-        optionTitle.textColor = .hBlack
+        optionTitle.textColor = .hGray2
     }
     
     // MARK: - Layout
     private func setLayout() {
-        contentView.addSubviews([optionTitle, percentLabel])
+        contentView.addSubviews([optionTitle])
 
         optionTitle.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(14)
             $0.centerY.equalToSuperview()
         }
         
-        percentLabel.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(14)
-            $0.trailing.equalToSuperview().inset(14)
-            $0.centerY.equalToSuperview()
-        }
+//        percentLabel.snp.makeConstraints {
+//            $0.trailing.equalToSuperview().inset(14)
+//            $0.centerY.equalToSuperview()
+//        }
     }
     
 }
