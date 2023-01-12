@@ -9,13 +9,13 @@ import UIKit
 import SnapKit
 import Then
 import Moya
+import SwiftUI
 
 class TogetherWorriedVC: UIViewController {
 
     // MARK: - Properties
     private let worriedAllButton = UIButton().then {
         $0.setImage(UIImage(named: "storage_ing_all"), for: .normal)
-        $0.setImage(UIImage(named: "storage_complete_all"), for: .selected)
     }
     private let editButton = UIButton().then {
         $0.setTitle("편집", for: .normal)
@@ -23,6 +23,8 @@ class TogetherWorriedVC: UIViewController {
         $0.titleLabel?.font = .haraB2M14
         $0.setTitle("완료", for: .selected)
     }
+    
+    var isWorring: Bool?
     
     private let clickButton = UIButton().then {
         $0.setImage(UIImage(named: "storage_check_off"), for: .normal)
@@ -45,17 +47,9 @@ class TogetherWorriedVC: UIViewController {
     
     ///여기부분 다시 보기 / section별, item별로 부여할 여백 상수로 저장
     final let togetherLineSpacing: CGFloat = 10
-    
-    var togetherList: [WorriedModel] = [
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
-    ]
+    var togetherData: [StorageResponse] = []
 
+    let categoryList: Array<String> = ["전체", "일상", "연애", "패션/뷰티", "커리어", "운동", "여행", "기타"]
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -63,12 +57,30 @@ class TogetherWorriedVC: UIViewController {
         setLayout()
         registerCVC()
         setPress()
+        isWorring = true
     }
     
-    // MARK: - Function
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isWorring == true {
+            self.getWithWorry(ifSolved: 0)
+        } else {
+            self.getWithWorry(ifSolved: 1)
+        }
+    }
+    
+    // MARK: - Functions
     private func setPress() {
         worriedAllButton.press {
-            self.worriedAllButton.isSelected.toggle()
+            self.isWorring?.toggle()
+            if self.isWorring == true {
+                self.worriedAllButton.setImage(UIImage(named: "storage_ing_all"), for: .normal)
+                self.getWithWorry(ifSolved: 0)
+
+            }else{
+                self.worriedAllButton.setImage(UIImage(named: "storage_complete_all"), for: .normal)
+                self.getWithWorry(ifSolved: 1)
+            }
         }
         editButton.press {
             self.editButton.isSelected.toggle()
@@ -91,12 +103,13 @@ extension TogetherWorriedVC: UICollectionViewDelegateFlowLayout{
 // MARK: - UICollectionViewDataSource
 extension TogetherWorriedVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return togetherList.count
+        return togetherData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let togetherCell = collectionView.dequeueReusableCell(withReuseIdentifier: TogetherWorriedCVC.className, for: indexPath) as? TogetherWorriedCVC else { return UICollectionViewCell() }
-        togetherCell.dataBind(model: togetherList[indexPath.item])
+        togetherCell.dataBind(model: togetherData[indexPath.row])
+        ///indexPath.row
         return togetherCell
     }
 }
@@ -131,4 +144,17 @@ extension TogetherWorriedVC {
     }
 }
 
-
+// MARK: - Network
+extension TogetherWorriedVC {
+    func getWithWorry(ifSolved: Int){
+        StorageAPI.shared.getStorageWithList(param11: ifSolved) { [weak self] result in
+            guard let res = result else { return }
+            let count = (res.data?.count)!
+            guard let dataModel = res.data else {return}
+            self?.togetherData = dataModel
+            self?.togetherCollectionView.reloadData()
+            print("배열의 길이입니다\(count)")
+        }
+    }
+    
+}

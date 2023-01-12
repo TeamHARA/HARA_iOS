@@ -28,6 +28,7 @@ class AloneWorriedVC: UIViewController {
         $0.setImage(UIImage(named: "storage_check_off"), for: .normal)
     }
     
+    var isWorring: Bool?
     private lazy var aloneCollectionView : UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -43,49 +44,56 @@ class AloneWorriedVC: UIViewController {
         return collectionView
     }()
     
-    ///여기부분 다시 보기 / section별, item별로 부여할 여백 상수로 저장
     final let aloneLineSpacing: CGFloat = 10
+    var aloneData: [StorageResponse] = []
     
-    var aloneList: [WorriedModel] = [
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 멍멍", date: "2022.12.25"),
-        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
-    ]
+    let categoryList: [String] = ["전체", "일상", "연애", "패션/뷰티", "커리어", "운동", "여행", "기타"]
     
-    //var aloneDataSource: [DataModel] = DataModel.AloneSampleList
-
+///    var aloneList: [WorriedModel] = [
+///        WorriedModel(worring: "storage_ing", categoryTitle: "일상", mainText: "난 이제 지쳤어요 땡벌", date: "2022.12.25"),
+///    ]
     
-    // MARK: - View Life Cycle
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setLayout()
         registerCVC()
         setPress()
+        isWorring = true
     }
     
-    // MARK: - Function
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isWorring == true {
+            self.getAloneWorry(ifSolved: 0)
+        } else {
+            self.getAloneWorry(ifSolved: 1)
+        }
+    }
+    
+    // MARK: - Functions
     private func setPress() {
         worriedAllButton.press {
-            self.worriedAllButton.isSelected.toggle()
+            self.isWorring?.toggle()
+            if self.isWorring == true {
+                self.worriedAllButton.setImage(UIImage(named: "storage_ing_all"), for: .normal)
+                self.getAloneWorry(ifSolved: 0)
+            }else{
+                self.worriedAllButton.setImage(UIImage(named: "storage_complete_all"), for: .normal)
+                self.getAloneWorry(ifSolved: 1)
+            }
         }
         editButton.press {
             self.editButton.isSelected.toggle()
         }
     }
-}
-
-extension AloneWorriedVC {
     /// 수직 스크롤이라는 가정 하에, rowCount는 몇개의 행을 사용할지를 저장한 변수
-
     private func registerCVC() {
         aloneCollectionView.register(
             AloneWorriedCVC.self, forCellWithReuseIdentifier: AloneWorriedCVC.className)
     }
 }
+
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension AloneWorriedVC: UICollectionViewDelegateFlowLayout{
@@ -97,12 +105,12 @@ extension AloneWorriedVC: UICollectionViewDelegateFlowLayout{
 // MARK: - UICollectionViewDataSource
 extension AloneWorriedVC : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return aloneList.count
+        return aloneData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let aloneCell = collectionView.dequeueReusableCell(withReuseIdentifier: AloneWorriedCVC.className, for: indexPath) as? AloneWorriedCVC else { return UICollectionViewCell() }
-        aloneCell.dataBind(model: aloneList[indexPath.item])
+        aloneCell.dataBind(model: aloneData[indexPath.row])
         return aloneCell
     }
 }
@@ -133,6 +141,21 @@ extension AloneWorriedVC {
             $0.leading.equalToSuperview().offset(16.adjustedW)
             $0.trailing.equalToSuperview().inset(16.adjustedW)
             $0.bottom.equalToSuperview()
+        }
+    }
+}
+
+// MARK: - Network
+extension AloneWorriedVC {
+    func getAloneWorry(ifSolved: Int) {
+        StorageAPI.shared.getStorageAloneList(param123: ifSolved) { [weak self] result in
+            guard let res = result else {return}
+            let count = (res.data?.count)!
+            ///구조체로 들어오는 데이터 모델을 dataModel에 입력
+            ///aloneList 역할을 대신 함, 서버 받으면 바로바로 셀에 띄워줄 준비 완료
+            guard let dataModel = res.data else {return}
+            self?.aloneData = dataModel
+            self?.aloneCollectionView.reloadData()
         }
     }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 struct WorriedModel {
     let worring : String
-    let categoryTitle : String
-    let mainText : String
-    let date : String
+    var categoryTitle : String
+    var mainText : String
+    var date : String
 }

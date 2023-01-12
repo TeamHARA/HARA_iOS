@@ -11,6 +11,7 @@ import UIKit
 
 final class UnderlineSegmentedControl: UISegmentedControl {
     
+    // MARK: - Properties
     private lazy var underlineView: UIView = {
         let width = self.bounds.size.width / CGFloat(self.numberOfSegments)
         let height = 15.0
@@ -38,6 +39,7 @@ final class UnderlineSegmentedControl: UISegmentedControl {
           fatalError()
     }
 
+    // MARK: - Functions
     private func removeBackgroundAndDivider() {
         let image = UIImage()
         self.setBackgroundImage(image, for: .normal, barMetrics: .default)
@@ -48,7 +50,6 @@ final class UnderlineSegmentedControl: UISegmentedControl {
         self.setDividerImage(image, forLeftSegmentState: .selected, rightSegmentState: .normal, barMetrics: .default)
     }
         
-    // MARK: - segmentedControl의 underlineView의 애니메이션을 지정해줌
     override func layoutSubviews() {
         super.layoutSubviews()
         let underlineFinalXPosition = (self.bounds.width / CGFloat(self.numberOfSegments)) * CGFloat(self.selectedSegmentIndex)
