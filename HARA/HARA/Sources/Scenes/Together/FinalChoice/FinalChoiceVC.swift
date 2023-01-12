@@ -110,6 +110,9 @@ class FinalChoiceVC: UIViewController {
             doneVC.getOptionTitle(optionTitle: self.optionTitle)
             doneVC.modalPresentationStyle = .overFullScreen
             doneVC.modalTransitionStyle = .flipHorizontal
+            
+            /// 이미지가 필요없을때 실행
+            doneVC.removeImage()
             self.present(doneVC, animated: true)
         }
         

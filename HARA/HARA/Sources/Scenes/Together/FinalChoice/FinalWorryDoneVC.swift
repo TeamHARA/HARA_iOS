@@ -65,7 +65,6 @@ class FinalWorryDoneVC: UIViewController {
         super.viewDidLoad()
         setLayout()
         setPress()
-        removeImage()
     }
     
     // MARK: - Function
