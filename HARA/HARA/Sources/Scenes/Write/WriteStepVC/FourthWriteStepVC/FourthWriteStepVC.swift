@@ -14,6 +14,10 @@ protocol CheckVc4Delegate: AnyObject{
     func checkCategory(checkTextfield: Bool)
 }
 
+protocol ServerVc4Delegate: AnyObject{
+    func saveVc4Data(categoryId: Int)
+}
+
 class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
     
     // MARK: - Properties
@@ -75,7 +79,10 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     private let categories = ["일상", "연애", "패션/뷰티", "커리어", "운동", "여행", "기타"]
     var selectedItem = "일상"
     
+    private var categoryId: Int = 0
+    
     weak var checkVc4Delegate: CheckVc4Delegate?
+    weak var serverVc4Delegate: ServerVc4Delegate?
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -116,10 +123,18 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         categoryTextField.textAlignment = .center
         categoryTextField.textColor = .black
         categoryTextField.resignFirstResponder()
-        selectedItem = ""
+        //selectedItem = ""
         /// 피커뷰에서 item을 select 했을 시에만 다음 페이지로 가는 버튼이 활성화 됨
         checkTextfield = true
         checkVc4Delegate?.checkCategory(checkTextfield: checkTextfield)
+        
+        for x in 0..<categories.count{
+            if categories[x] == selectedItem{
+                categoryId = x
+                print(categoryId)
+            }
+        }
+        serverVc4Delegate?.saveVc4Data(categoryId: categoryId)
     }
     
     /// 피커뷰 > 취소 클릭
