@@ -38,6 +38,7 @@
 		E74C8751296ABB2300BFAD31 /* DetailWorryCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */; };
 		E74C8753296C128F00BFAD31 /* DetailWorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */; };
 		E7B47C2F296FE3EF009987E1 /* FinalWorryDoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B47C2E296FE3EF009987E1 /* FinalWorryDoneVC.swift */; };
+		E7B47C36297145E2009987E1 /* VotedDetailWorryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B47C35297145E2009987E1 /* VotedDetailWorryCVC.swift */; };
 		E7C69BE9295AC8A900848B72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BE8295AC8A900848B72 /* AppDelegate.swift */; };
 		E7C69BEB295AC8A900848B72 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */; };
 		E7C69BF2295AC8AA00848B72 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7C69BF1295AC8AA00848B72 /* Assets.xcassets */; };
@@ -125,6 +126,7 @@
 		E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCardVC.swift; sourceTree = "<group>"; };
 		E74C8752296C128F00BFAD31 /* DetailWorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWorryCVC.swift; sourceTree = "<group>"; };
 		E7B47C2E296FE3EF009987E1 /* FinalWorryDoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalWorryDoneVC.swift; sourceTree = "<group>"; };
+		E7B47C35297145E2009987E1 /* VotedDetailWorryCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotedDetailWorryCVC.swift; sourceTree = "<group>"; };
 		E7C69BE5295AC8A900848B72 /* HARA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HARA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C69BE8295AC8A900848B72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7C69BEA295AC8A900848B72 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				E74585C8296D435C00597168 /* WorryDetailHeaderView.swift */,
 				E74585CA296DEE5800597168 /* WorryDetailFooterView.swift */,
 				E74C8750296ABB2300BFAD31 /* DetailWorryCardVC.swift */,
+				E7B47C35297145E2009987E1 /* VotedDetailWorryCVC.swift */,
 			);
 			path = WorryDetail;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */,
 				E7C69C9F29613F4800848B72 /* Adjusted+.swift in Sources */,
 				E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */,
+				E7B47C36297145E2009987E1 /* VotedDetailWorryCVC.swift in Sources */,
 				E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */,
 				E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */,
 				673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */,

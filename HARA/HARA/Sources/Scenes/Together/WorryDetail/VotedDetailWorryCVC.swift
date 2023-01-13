@@ -1,17 +1,39 @@
 //
-//  DetailWorryCVC.swift
+//  VotedDetailWorryCVC.swift
 //  HARA
 //
-//  Created by 김담인 on 2023/01/09.
+//  Created by 김담인 on 2023/01/13.
 //
 
 import UIKit
 import SnapKit
 import Then
 
-final class DetailWorryCVC: UICollectionViewCell {
+final class VotedDetailWorryCVC: UICollectionViewCell {
     
     // MARK: - Properties
+    private let checkView = UIImageView().then {
+        $0.image = UIImage(named: "together_check_icon")
+    }
+    
+    private let optionLabel = UILabel().then {
+        $0.textColor = .hBlack
+        $0.font = .haraB3R14
+        $0.text = "선택지 글자수 제한은 공백 포함 20"
+    }
+    
+    private let percentageView = UIView().then {
+        $0.makeRounded(cornerRadius: 8)
+    }
+    
+    private let percentageValue = UILabel().then {
+        $0.font = .haraB2M14
+        $0.text = "00%"
+    }
+    
+    private var percentageWidth: CGFloat = 30
+    
+    
     private let optionDetailStackView = UIStackView().then {
         $0.spacing = 6
         $0.distribution = .fillProportionally
@@ -21,20 +43,6 @@ final class DetailWorryCVC: UICollectionViewCell {
         $0.layer.borderColor = UIColor.hGray4.cgColor
         $0.layer.borderWidth = 1
         $0.layer.cornerRadius = 8
-    }
-    
-    private let checkButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named:"together_checked_icon"), for: .selected)
-        $0.setBackgroundImage(UIImage(named:"together_unChecked_icon"), for: .normal)
-        $0.isUserInteractionEnabled = false
-    }
-    
-    private let optionLabel = UILabel().then {
-        $0.textColor = .hBlack
-        $0.font = .haraB3R14
-        $0.text = "청춘은 얼마나 영락과 주며, 말이다."
-        $0.sizeToFit()
-        $0.numberOfLines = 1
     }
     
     private let advantageLabel = UILabel().then{
@@ -57,32 +65,6 @@ final class DetailWorryCVC: UICollectionViewCell {
         $0.attributedText = content
     }
     
-    private var alreadySelected = false
-
-    
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                /// 셀을 클릭할 때 cell 의 isSelect가 바로 true로 되기 때문에 alreadySlected를 통해 이미 선택된 상태면 isSelect를 false로 바꿈
-                if alreadySelected {
-                    alreadySelected = false
-                    isSelected = false
-                }else {
-                    optionLabel.textColor = .hBlue1
-                    contentView.layer.borderColor = UIColor.hBlue2.cgColor
-                    contentView.layer.borderWidth = 1
-                    self.checkButton.isSelected = true
-                    alreadySelected = true
-                }
-            } else {
-                optionLabel.textColor = .hBlack
-                contentView.backgroundColor = .hWhite
-                contentView.layer.borderColor = UIColor.hGray4.cgColor
-                contentView.layer.borderWidth = 1
-                self.checkButton.isSelected = false
-            }
-        }
-    }
     
     // MARK: - View Life Cycle
     override init(frame: CGRect) {
@@ -96,21 +78,45 @@ final class DetailWorryCVC: UICollectionViewCell {
     }
     
     // MARK: - Function
+    func setPercentage(percentage: CGFloat, isOptionVoted: Bool) {
+        self.percentageWidth = self.contentView.frame.width * (percentage/100)
+        self.percentageValue.text = "\(percentage)%"
+        
+        if isOptionVoted {
+            optionLabel.textColor = .hBlue1
+            contentView.layer.borderColor = UIColor.hBlue2.cgColor
+            contentView.layer.borderWidth = 1
+            
+            percentageView.backgroundColor = .hBlue3
+            percentageValue.textColor = .hBlue1
+        } else {
+            optionLabel.textColor = .hBlack
+            contentView.layer.borderColor = UIColor.hGray4.cgColor
+            contentView.layer.borderWidth = 1
+            
+            percentageView.backgroundColor = .hGray2
+            percentageValue.textColor = .hGray2
+        }
+        self.percentageView.snp.updateConstraints {
+            $0.width.equalTo(self.percentageWidth)
+        }
+
+    }
+    
     private func setUI() {
         contentView.makeRounded(cornerRadius: 8)
         contentView.layer.borderColor = UIColor.hGray4.cgColor
         contentView.layer.borderWidth = 1
     }
-
 }
 
 // MARK: - Layout
-extension DetailWorryCVC {
+extension VotedDetailWorryCVC {
     private func setLayout() {
         
         contentView.addSubviews([voteOptionView, optionDetailStackView])
 
-        voteOptionView.addSubviews([checkButton, optionLabel])
+        voteOptionView.addSubviews([percentageView, checkView, percentageValue, optionLabel])
         
         optionDetailStackView.addArrangedSubviews([advantageLabel, disadvantageLabel])
         
@@ -121,16 +127,25 @@ extension DetailWorryCVC {
             $0.height.equalTo(40.adjustedH)
         }
         
-        checkButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(14)
-            $0.top.equalToSuperview().offset(9)
-            $0.width.equalTo(18.adjustedW)
-            $0.height.equalTo(18.adjustedH)
+        checkView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(13)
+            $0.leading.equalToSuperview().offset(12)
         }
         
         optionLabel.snp.makeConstraints {
-            $0.leading.equalTo(checkButton.snp.trailing).offset(6)
-            $0.top.equalToSuperview().inset(9)
+            $0.top.equalToSuperview().offset(9)
+            $0.leading.equalTo(checkView.snp.trailing).offset(6)
+        }
+        
+        percentageValue.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(9)
+            $0.trailing.equalToSuperview().inset(14)
+        }
+        
+        percentageView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.width.equalTo(percentageWidth)
+            $0.height.equalToSuperview()
         }
         
         optionDetailStackView.snp.makeConstraints {

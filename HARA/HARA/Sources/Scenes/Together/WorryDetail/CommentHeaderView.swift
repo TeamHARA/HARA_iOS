@@ -13,13 +13,13 @@ class CommentHeaderView: UICollectionReusableView {
     
     // MARK: - Properties
     private let borderLine = UIView().then {
-        $0.backgroundColor = .hBlack
+        $0.backgroundColor = .hGray5
     }
     
     private var commentLabel = UILabel().then {
-        let comments = 0
+        let comments = 10
         $0.font = .haraSub3R12
-        $0.text = "댓글\(comments)"
+        $0.text = "댓글 \(comments)"
         $0.textColor = .hBlack
     }
     
@@ -31,6 +31,10 @@ class CommentHeaderView: UICollectionReusableView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setCommentNums(num: Int) {
+        self.commentLabel.text = "댓글 \(num)%"
     }
     
     private func setLayout() {
@@ -45,7 +49,6 @@ class CommentHeaderView: UICollectionReusableView {
         commentLabel.snp.makeConstraints {
             $0.top.equalTo(borderLine.snp.bottom).offset(10)
             $0.leading.equalTo(borderLine).offset(16)
-            $0.width.equalTo(36)
             $0.height.equalTo(14)
         }
     }

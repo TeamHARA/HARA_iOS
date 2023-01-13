@@ -42,7 +42,6 @@ final class WorryCardCVC: UICollectionViewCell {
     private lazy var voteOptionCV: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.compositionalLayout)
         view.isScrollEnabled = false
-        view.backgroundColor = .yellow
         view.showsHorizontalScrollIndicator = false
         view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
@@ -101,7 +100,7 @@ final class WorryCardCVC: UICollectionViewCell {
         setVoteOptionCV()
         setLayout()
         setPressAction()
-        self.contentView.backgroundColor = .green
+        setUI()
     }
     
     required init?(coder: NSCoder) {
@@ -115,6 +114,12 @@ final class WorryCardCVC: UICollectionViewCell {
         
         voteOptionCV.register(cell: VoteOptionCVC.self, forCellWithReuseIdentifier: VoteOptionCVC.className)
         voteOptionCV.register(cell: VotedCVC.self, forCellWithReuseIdentifier: VotedCVC.className)
+    }
+    
+    private func setUI() {
+        contentView.layer.borderColor = UIColor.hBlue3.cgColor
+        contentView.layer.borderWidth = 1
+        contentView.layer.cornerRadius = 8
     }
     
     func setCellNums(optionNums: Int) {
@@ -171,6 +176,7 @@ extension WorryCardCVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? VoteOptionCVC {
             if cell.isSelected == false {
+                voteOptionCV.reloadData()
                 // deselectItem을 안해주면 본 didSelectItemAt 함수가 종료될때 cell의 isSelect가 다시 true로 동작함
                 collectionView.deselectItem(at: indexPath, animated: false)
                 self.voteButton.isEnabled = false
