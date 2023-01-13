@@ -282,7 +282,6 @@ extension SecondWriteStepVC: UITextFieldDelegate {
             else {
                 checkAddOption = false
             }
-            print(isButtonClicked)
         case [fourthOptionView]:
             isButtonClicked = false
             if prosConsTitleArray[3] != "" {

@@ -63,9 +63,8 @@ class AloneWorriedCVC: UICollectionViewCell {
     }
 }
 
+// MARK: - Layout
 extension AloneWorriedCVC {
-    
-    // MARK: - Layout
     private func layout() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear

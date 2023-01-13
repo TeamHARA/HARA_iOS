@@ -10,6 +10,7 @@ import SnapKit
 import Then
 
 class OneSecGameVC: UIViewController {
+    
     // MARK: - Properties
     private let background = UIImageView().then {
         $0.image = UIImage(named: "background")

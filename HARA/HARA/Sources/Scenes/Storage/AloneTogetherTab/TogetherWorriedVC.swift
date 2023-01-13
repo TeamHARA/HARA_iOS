@@ -114,9 +114,8 @@ extension TogetherWorriedVC : UICollectionViewDataSource {
     }
 }
 
+// MARK: - Layout
 extension TogetherWorriedVC {
-    
-    // MARK: - Layout
     private func setLayout() {
         view.backgroundColor = .clear
         view.addSubViews([togetherCollectionView, worriedAllButton, editButton])
@@ -153,7 +152,6 @@ extension TogetherWorriedVC {
             guard let dataModel = res.data else {return}
             self?.togetherData = dataModel
             self?.togetherCollectionView.reloadData()
-            print("배열의 길이입니다\(count)")
         }
     }
     

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct WorriedModel {
     let worring : String

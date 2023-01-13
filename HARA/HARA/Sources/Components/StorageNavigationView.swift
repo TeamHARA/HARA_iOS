@@ -1,15 +1,15 @@
 //
-//  DefaultNavigationView.swift
+//  StorageNavigationView.swift
 //  HARA
 //
-//  Created by 김담인 on 2023/01/03.
+//  Created by saint on 2023/01/13.
 //
 
 import UIKit
 import SnapKit
 import Then
 
-final class DefaultNavigationView: UIView {
+final class StorageNavigationView: UIView {
     
     // MARK: - Properties
     private let logoImageView = UIImageView().then {
@@ -21,7 +21,7 @@ final class DefaultNavigationView: UIView {
     }
     
     private let searchButton = UIButton().then {
-        $0.setBackgroundImage(UIImage(named: "search_icon"), for: .normal)
+        $0.setBackgroundImage(UIImage(named: "storage_Bell"), for: .normal)
     }
     
     // MARK: - Initialization

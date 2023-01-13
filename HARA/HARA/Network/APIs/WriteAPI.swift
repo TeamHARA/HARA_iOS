@@ -16,7 +16,6 @@ final class WriteAPI {
     
     public private(set) var writeAloneResponse: VoidType?
     public private(set) var writeWithResponse: VoidType?
-//    public private(set) var loginRequest: LoginRequest?
     
     // MARK: - PostAloneFunction
     func postWriteAloneList(param: WriteRequest, completion: @escaping ((VoidType?) -> ())) {
@@ -27,10 +26,7 @@ final class WriteAPI {
                     print("성공")
                     print(result)
                     self?.writeAloneResponse = try result.map(VoidType?.self)
-//                    print(self?.storageAloneResponse as Any)
-                    print("123\(self?.writeAloneResponse)")
                     guard let aloneData = self?.writeAloneResponse else {
-                        print("??")
                         return
                     }
                     
@@ -56,10 +52,7 @@ final class WriteAPI {
                     print("성공")
                     print(result)
                     self?.writeWithResponse = try result.map(VoidType?.self)
-//                    print(self?.storageAloneResponse as Any)
-                    print("123\(self?.writeWithResponse)")
                     guard let withData = self?.writeWithResponse else {
-                        print("??")
                         return
                     }
                     completion(withData)

@@ -37,30 +37,25 @@ class CategoryCVC: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setLayout()
-        setUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    // MARK: - Function
+    func setData(data: String) {
+        categoryLabel.text = data
+    }
+    
     // MARK: - Layout
     private func setLayout() {
         contentView.addSubview(categoryLabel)
+        contentView.backgroundColor = .hWhite
+        contentView.makeRounded(cornerRadius: 8)
         
         categoryLabel.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-    }
-    
-    // MARK: - UI
-    private func setUI() {
-        contentView.backgroundColor = .hWhite
-        contentView.makeRounded(cornerRadius: 8)
-    }
-    
-    // MARK: - Function
-    func setData(data: String) {
-        categoryLabel.text = data
     }
 }

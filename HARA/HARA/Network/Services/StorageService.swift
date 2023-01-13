@@ -38,7 +38,6 @@ extension StorageService: BaseTargetType {
     var parameters: [String: Any]? {
         switch self {
         case .alone(let param):
-            print("파람")
             return ["ifsolved": param]
         
         case .with(let param):

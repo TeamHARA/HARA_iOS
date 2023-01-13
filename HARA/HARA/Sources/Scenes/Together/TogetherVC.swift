@@ -12,7 +12,7 @@ import Then
 final class TogetherVC: UIViewController {
     
     // MARK: - Properties
-    private let togetherNaviView = DefaultNavigationView()
+    private let togetherNaviView = TogetherNavigationView()
     
     private let categoryCV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.backgroundColor = .clear
@@ -34,8 +34,8 @@ final class TogetherVC: UIViewController {
     
     /// 고민의 개수
     private var worryNums = 10
-    private var worryTitles = ["고민1"]
-    private var worryContents = ["dsdsdf"]
+    private var worryTitles = ["고민 제목"]
+    private var worryContents = ["이런저런게 고민돼요"]
     
     /// 선택지의 개수
     private var optionNums = 2
@@ -171,7 +171,7 @@ extension TogetherVC {
         self.view.addSubviews([togetherNaviView, categoryCV, worryCardCV])
         
         togetherNaviView.snp.makeConstraints {
-            $0.top.equalTo(self.view.safeAreaLayoutGuide)
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(10)
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.height.equalTo(24.adjustedH)
         }

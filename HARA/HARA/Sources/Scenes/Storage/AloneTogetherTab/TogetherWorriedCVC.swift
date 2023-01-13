@@ -64,10 +64,8 @@ class TogetherWorriedCVC: UICollectionViewCell {
     }
 }
 
-
+// MARK: - Layout
 extension TogetherWorriedCVC {
-    
-    // MARK: - Layout
     private func setLayout() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear

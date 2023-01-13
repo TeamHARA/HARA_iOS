@@ -115,9 +115,8 @@ extension AloneWorriedVC : UICollectionViewDataSource {
     }
 }
 
+// MARK: - Layout
 extension AloneWorriedVC {
-    
-    // MARK: - Layout
     private func setLayout() {
         view.backgroundColor = .clear
         view.addSubViews([aloneCollectionView, worriedAllButton, editButton])

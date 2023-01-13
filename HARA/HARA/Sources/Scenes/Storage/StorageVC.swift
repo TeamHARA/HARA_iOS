@@ -15,13 +15,13 @@ class StorageVC: UIViewController {
     
     // MARK: - Properties
     private let segmentedControl = UnderlineSegmentedControl(items: ["혼자 고민", "함께 고민"])
+    
     private let worriedAloneVC = AloneWorriedVC()
     private let worriedTogetherVC = TogetherWorriedVC()
-    private lazy var segmentedLineField : UITextField = {
-        let textField = UITextField(frame: CGRect(x: 30, y: 428, width: 333, height: 1))
-        textField.backgroundColor = .hBlue3
-        return textField
-    }()
+    
+    private lazy var segmentedLineView = UIView(frame: CGRect(x: 30, y: 428, width: 343, height: 1)).then{
+        $0.backgroundColor = .hBlue3
+    }
     
     private let background = UIImageView().then {
         $0.image = UIImage(named: "background")
@@ -29,17 +29,7 @@ class StorageVC: UIViewController {
         $0.backgroundColor = .clear
     }
     
-    private let haraIcon = UIButton().then {
-        $0.setImage(UIImage(named: "storage_logo"), for: .normal)
-    }
-    
-    private let bellButton = UIButton().then {
-        $0.setImage(UIImage(named: "storage_Bell"), for: .normal)
-    }
-    
-    private let setting = UIButton().then {
-        $0.setImage(UIImage(named: "storage_setting_icon"), for: .normal)
-    }
+    private let storageNavigationView = StorageNavigationView()
     
     private let oneclickButton = UIButton().then {
         $0.setImage(UIImage(named: "strorage_oneclick_btn"), for: .normal)
@@ -58,7 +48,6 @@ class StorageVC: UIViewController {
     
     var currentPage: Int = 0 {
         didSet{
-            print(oldValue, self.currentPage)
             let direction: UIPageViewController.NavigationDirection = oldValue <= self.currentPage ? .forward : .reverse
             self.pageViewController.setViewControllers([dataViewControllers[self.currentPage]], direction: direction, animated: true)
         }
@@ -67,6 +56,7 @@ class StorageVC: UIViewController {
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
 
         setSegmentedControl()
         setLayout()
@@ -116,7 +106,7 @@ class StorageVC: UIViewController {
 }
 
 
-// MARK: - Datasource
+// MARK: - UIPageViewControllerDataSource, UIPageViewControllerDelegate
 extension StorageVC: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = self.dataViewControllers.firstIndex(of: viewController), index - 1 >= 0
@@ -126,49 +116,45 @@ extension StorageVC: UIPageViewControllerDataSource, UIPageViewControllerDelegat
     }
 }
 
+// MARK: - Layout
 extension StorageVC {
-    // MARK: - Layout
     private func setLayout(){
-        [background,haraIcon, bellButton, setting, segmentedLineField, oneclickButton].forEach {
-            view.addSubview($0)
-        }
         
+        view.addSubviews([background, storageNavigationView, segmentedLineView, oneclickButton])
         self.view.addSubview(self.segmentedControl)
         self.view.addSubview(self.pageViewController.view)
+        
         background.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
-        haraIcon.snp.makeConstraints{
-            $0.top.equalTo(55.4.adjustedH)
-            $0.leading.equalTo(45.adjustedW).offset(17)
-            $0.width.equalTo(45.8)
-            $0.height.equalTo(52)
+        
+        storageNavigationView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.height.equalTo(24.adjustedH)
         }
-        bellButton.snp.makeConstraints{
-            $0.top.equalTo(70.adjustedH)
-            $0.trailing.equalTo(44.adjustedW).inset(47)
-        }
-        setting.snp.makeConstraints{
-            $0.top.equalTo(70.adjustedH)
-            $0.trailing.equalTo(44.adjustedW).inset(18.5)
-        }
-        segmentedLineField.snp.makeConstraints{
-            $0.top.equalTo(oneclickButton.snp.bottom).offset(54)
-            $0.trailing.equalTo(2.adjustedW).inset(20)
-            $0.trailing.equalToSuperview().offset(2).inset(20)
-            $0.leading.equalTo(2.adjustedW).inset(20)
-            $0.height.equalTo(3)
-        }
+        
         oneclickButton.snp.makeConstraints{
-            $0.top.equalTo(haraIcon.snp.bottom).offset(10)
-            $0.trailing.equalTo(2.adjustedW).inset(17)
+            $0.top.equalTo(storageNavigationView.snp.bottom).offset(21)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
+            $0.height.equalTo(64.adjustedH)
         }
+        
         segmentedControl.snp.makeConstraints{
-            $0.top.equalTo(oneclickButton.snp.bottom).offset(8)
-            $0.trailing.equalTo(2.adjustedW).inset(17)
-            $0.leading.equalTo(2.adjustedW).inset(17)
+            $0.top.equalTo(oneclickButton.snp.bottom).offset(4)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
             $0.height.equalTo(49)
         }
+        
+        segmentedLineView.snp.makeConstraints{
+            $0.bottom.equalTo(segmentedControl.snp.bottom)
+            $0.leading.equalToSuperview().offset(16.adjustedW)
+            $0.trailing.equalToSuperview().offset(-16.adjustedW)
+            $0.height.equalTo(3)
+        }
+        
         pageViewController.view.snp.makeConstraints{
             $0.top.equalTo(segmentedControl.snp.bottom)
             $0.bottom.equalToSuperview().offset(-50)
