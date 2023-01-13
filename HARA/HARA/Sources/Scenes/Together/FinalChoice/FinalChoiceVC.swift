@@ -55,7 +55,7 @@ class FinalChoiceVC: UIViewController {
         //            group.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         //            group.interItemSpacing = .flexible(-16)
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 10
+        section.interGroupSpacing = 28
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0)
         
         return UICollectionViewCompositionalLayout(section: section)
@@ -64,16 +64,20 @@ class FinalChoiceVC: UIViewController {
     private let solveWorryButton = UIButton().then {
         $0.setTitle("고민 해결하기", for: .normal)
         $0.contentHorizontalAlignment = .center
-        $0.setTitleColor(.hGray2, for: .normal)
+        $0.makeRounded(cornerRadius: 30)
+
         $0.isEnabled = false
         $0.setBackgroundColor(.hWhite, for: .disabled)
-        $0.setBackgroundColor(.hOrange3, for: .normal)
-        $0.makeRounded(cornerRadius: 30)
+        $0.setTitleColor(.hGray2, for: .disabled)
         $0.layer.borderColor = UIColor.hBlue3.cgColor
         $0.layer.borderWidth = 1
+        
+        $0.setBackgroundColor(.hOrange1, for: .normal)
+        $0.setTitleColor(.hWhite, for: .normal)
+
     }
     
-    private var optionNums = 2
+    private var optionNums = 4
     
     private var worryTitles = ["선택지 글자 수 공백포함 20자"]
     //선택지가 클릭이 된 상태인지를 알려주는 변수
@@ -98,16 +102,18 @@ class FinalChoiceVC: UIViewController {
         finalOptionCV.register(cell: FinalChoiceCVC.self, forCellWithReuseIdentifier: FinalChoiceCVC.className)
     }
     
+    private var optionTitle = ""
+    
     private func setPressAction() {
         solveWorryButton.press {
-            self.isOptionSelected = true
-            self.solveWorryButton.backgroundColor = .hOrange3
-            self.solveWorryButton.layer.borderWidth = 0
-            self.solveWorryButton.setTitle("투표완료!", for: .normal)
-            self.solveWorryButton.setTitleColor(.hWhite, for: .normal)
-            self.solveWorryButton.setBackgroundColor(.hGray3, for: .normal)
-            self.solveWorryButton.isUserInteractionEnabled = false
-            self.finalOptionCV.reloadData()
+            let doneVC = FinalWorryDoneVC()
+            doneVC.getOptionTitle(optionTitle: self.optionTitle)
+            doneVC.modalPresentationStyle = .overFullScreen
+            doneVC.modalTransitionStyle = .flipHorizontal
+            
+            /// 이미지가 필요없을때 실행
+            doneVC.removeImage()
+            self.present(doneVC, animated: true)
         }
         
     }
@@ -123,6 +129,8 @@ extension FinalChoiceVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FinalChoiceCVC.className, for: indexPath) as? FinalChoiceCVC else { return UICollectionViewCell() }
+        
+//        cell.getPercentage(percent: 50)
         
         /// VC의 optionNums를 cell의 optionNums에 전달
 //        cell.setCellNums(optionNums: self.optionNums)
@@ -142,6 +150,7 @@ extension FinalChoiceVC: UICollectionViewDelegate {
                 collectionView.deselectItem(at: indexPath, animated: false)
                 self.solveWorryButton.isEnabled = false
             }else {
+                self.optionTitle = cell.sendOptionTitle()
                 self.solveWorryButton.isEnabled = true
             }
         }

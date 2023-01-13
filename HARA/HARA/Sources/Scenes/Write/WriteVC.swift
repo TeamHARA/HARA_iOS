@@ -19,6 +19,8 @@ class WriteVC: UIViewController {
         $0.backgroundColor = .clear
     }
     
+    private var requestData: [WriteRequest.Option] = []
+    
     private let closeButton = UIButton().then {
         $0.setBackgroundImage(UIImage(named: "closeBtn"), for: .normal)
         $0.contentMode = .scaleToFill
@@ -74,19 +76,33 @@ class WriteVC: UIViewController {
         $0.isUserInteractionEnabled = false
     }
     
+    private lazy var writeRequest: WriteRequest = WriteRequest(title: "안녕?", content: "힘들지 코딩", categoryId: 2, options: options)
+    
+    private lazy var options: [WriteRequest.Option] = [WriteRequest.Option(title: "1번 선택지", advantage: "pros", disadvantage: "cons", image: "", hasImage: false), WriteRequest.Option(title: "2번 선택지", advantage: "pros", disadvantage: "cons", image: "", hasImage: false)]
+//    options.append(WriteRequest.Option(title: "1번 선택지", advantage: "", disadvantage: "", image: "", hasImage: false)])[
+    
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .clear
+        /// 버튼 동작 관련 delegate
         vc5.delegate = self
         vc2.titledelegate = vc3
+        
+        /// 서버 연결 관련 delegate
+        vc1.serverVc1Delegate = self
+        vc3.serverVc3Delegate = self
+        vc4.serverVc4Delegate = self
+        
+        /// private Func
         disableArrowButton()
         setLayout()
         setPress()
         setupDelegate()
         setFirstPageView()
         configNextButtonLogic()
+        /// WriteRequest 배열을 슬라이스 해주기 위함
     }
     
     // MARK: - Function
@@ -119,10 +135,17 @@ class WriteVC: UIViewController {
             self.present(toastMessage, animated: true, completion:nil)
         }
         toastMessage.cancelButton.press {
-            self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
+            self.toastMessage.dismiss(animated: true, completion: nil)
         }
         toastMessage.acceptButton.press {
             self.toastMessage.dismiss(animated: true, completion: {self.dismiss(animated: true)})
+            if self.vc5.aloneButton.isSelected == true{
+                self.postWriteAloneList(worryData: self.writeRequest)
+            }
+            if self.vc5.withButton.isSelected == true{
+                self.postWriteWithList(worryData: self.writeRequest)
+            }
+            
         }
     }
     
@@ -372,6 +395,38 @@ extension WriteVC: CheckVc4Delegate{
         }
     }
 }
+
+// MARK: - ServerVc1Delegate
+extension WriteVC: ServerVc1Delegate, ServerVc3Delegate, ServerVc4Delegate{
+    /// 첫번째 writeStepVC에서 데이터 전달받는 delegate
+    func saveVc1Data(title: String, content: String){
+        writeRequest.title = title
+        writeRequest.content = content
+    }
+    func saveVc3Data(options: [WriteRequest.Option]){
+        writeRequest.options = options
+    }
+    func saveVc4Data(categoryId: Int) {
+        writeRequest.categoryId = categoryId
+    }
+    
+}
+
+// MARK: - Network
+extension WriteVC {
+    func postWriteAloneList(worryData: WriteRequest) {
+        WriteAPI.shared.postWriteAloneList(param: worryData) { result in
+//            guard let a = res.data?[0].id else {return}
+        }
+    }
+    
+    func postWriteWithList(worryData: WriteRequest) {
+        WriteAPI.shared.postWriteWithList(param: worryData) { result in
+            
+        }
+    }
+}
+
 
 
 

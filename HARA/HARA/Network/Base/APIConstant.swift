@@ -5,6 +5,13 @@
 //  Created by 김담인 on 2023/01/04.
 //
 
+//
+// APIConstant.swift
+// HARA
+//
+// Created by 김담인 on 2023/01/04.
+//
+
 import Foundation
 
 struct APIConstant {
@@ -17,7 +24,7 @@ struct APIConstant {
     /// 카테고리별 파라미터 :categoryId
     static let worryCategory = "/worry"
     
-    static let worryFinalAlone = "/worry/worryAlone/"
+    static let worryFinalAlone = "/worry/worryAlone"
     
     static let worryFinalWith = "/worry/with"
     
@@ -27,7 +34,7 @@ struct APIConstant {
     static let worryWidthDetail = "/worry/with"
     
     //MARK: - Write
-    static let worryAlone = "/worry/alone/asdfasdfasf"
+    static let worryAlone = "/worry/alone"
     
     static let worryWith = "/worry/with"
     
@@ -44,6 +51,8 @@ struct APIConstant {
     static let worrySearchList = "/worry"
     /// 일단 클라처리
     static let myPastWorry = "/random/list"
+    
+    
 }
 
 

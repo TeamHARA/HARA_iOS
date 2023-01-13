@@ -81,7 +81,7 @@ class FifthWriteStepVC: UIViewController{
         $0.titleLabel?.font = .haraH2M16
     }
     
-    lazy var everyoneButton = UIButton().then{
+    lazy var withButton = UIButton().then{
         $0.layer.borderWidth = 1
         $0.layer.borderColor = UIColor.hGray4.cgColor
         $0.layer.cornerRadius = 8
@@ -113,21 +113,21 @@ class FifthWriteStepVC: UIViewController{
             self.aloneButton.layer.borderColor = UIColor.hBlue1.cgColor
             self.aloneButton.setTitleColor(.hBlue1, for: .normal)
             /// '함께 고민할래요' 버튼을 비활성화 시키고, isSelected를 false로 처리
-            self.everyoneButton.isSelected = false
-            self.everyoneButton.layer.borderColor = UIColor.hGray4.cgColor
-            self.everyoneButton.setTitleColor(.hGray4, for: .normal)
-            self.delegate?.SendIsclicked(alone: self.aloneButton.isSelected, everyone: self.everyoneButton.isSelected)
+            self.withButton.isSelected = false
+            self.withButton.layer.borderColor = UIColor.hGray4.cgColor
+            self.withButton.setTitleColor(.hGray4, for: .normal)
+            self.delegate?.SendIsclicked(alone: self.aloneButton.isSelected, everyone: self.withButton.isSelected)
         }
-        everyoneButton.press {
+        withButton.press {
             /// '함께 고민할래요' 버튼 활성화
-            self.everyoneButton.isSelected = true
-            self.everyoneButton.layer.borderColor = UIColor.hBlue1.cgColor
-            self.everyoneButton.setTitleColor(.hBlue1, for: .normal)
+            self.withButton.isSelected = true
+            self.withButton.layer.borderColor = UIColor.hBlue1.cgColor
+            self.withButton.setTitleColor(.hBlue1, for: .normal)
             /// '혼자 고민할래요' 버튼을 비활성화 시키고, isSelected를 false로 처리
             self.aloneButton.isSelected = false
             self.aloneButton.layer.borderColor = UIColor.hGray4.cgColor
             self.aloneButton.setTitleColor(.hGray4, for: .normal)
-            self.delegate?.SendIsclicked(alone: self.aloneButton.isSelected, everyone: self.everyoneButton.isSelected)
+            self.delegate?.SendIsclicked(alone: self.aloneButton.isSelected, everyone: self.withButton.isSelected)
         }
     }
 }
@@ -136,7 +136,7 @@ class FifthWriteStepVC: UIViewController{
 extension FifthWriteStepVC{
     private func setLayout(){
         view.addSubViews([background, navigationView, progressView, questionLabel,
-                          aloneButton, everyoneButton])
+                          aloneButton, withButton])
         
         background.snp.makeConstraints{
             $0.edges.equalToSuperview()
@@ -169,7 +169,7 @@ extension FifthWriteStepVC{
             $0.height.equalTo(184.adjustedH)
         }
         
-        everyoneButton.snp.makeConstraints{
+        withButton.snp.makeConstraints{
             $0.top.equalTo(aloneButton)
             $0.trailing.equalToSuperview().offset(-16.adjustedW)
             $0.width.equalTo(162.adjustedW)

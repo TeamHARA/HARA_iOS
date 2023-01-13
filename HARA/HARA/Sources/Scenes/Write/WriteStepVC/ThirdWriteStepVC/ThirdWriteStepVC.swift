@@ -9,6 +9,11 @@ import UIKit
 import SnapKit
 import Then
 
+// MARK: - Protocols
+protocol ServerVc3Delegate: AnyObject{
+    func saveVc3Data(options: [WriteRequest.Option])
+}
+
 class ThirdWriteStepVC: UIViewController{
     
     // MARK: - Properties
@@ -32,7 +37,10 @@ class ThirdWriteStepVC: UIViewController{
     private var changeBool: Bool = true
     
     /// 2번째 stepView에서 데이터를 받아올 때, 제목이 있는 Cell 만 탐색해주는 변수
-    private var cvcCount: Int = 4
+    var cvcCount: Int = 4
+    
+    var vc3Data: [WriteRequest.Option] = []
+    private var eachData: WriteRequest.Option = WriteRequest.Option(title: "", advantage: nil, disadvantage: nil, image: nil, hasImage: false)
     
     private let questionLabel = UILabel().then{
         $0.numberOfLines = 2
@@ -69,6 +77,8 @@ class ThirdWriteStepVC: UIViewController{
     
     final let listLineSpacing: CGFloat = 14.adjustedH
     final let listInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 230, right: 0)
+    
+    weak var serverVc3Delegate: ServerVc3Delegate?
     
     // MARK: - Life Cycles
     override func viewDidLoad() {
@@ -169,6 +179,24 @@ extension ThirdWriteStepVC: UICollectionViewDataSource {
         if prosConsTitleArray[indexPath.row] != ""{
             prosConsCell.optionTitle.text = prosConsTitleArray[indexPath.row]
         }
+        
+        prosConsCell.cellIndex = indexPath.row
+        prosConsCell.checkTextViewTouchDelegate = self
+        prosConsCell.optionTitle.text = prosConsTitleArray[indexPath.row]
+        
+        eachData.title = prosConsTitleArray[indexPath.row]
+        if vc3Data.count < 3 {
+            vc3Data.append(eachData)
+        }
+        
+        /// 서버통신을 위한 각 cell의 데이터를 전달
+        print(vc3Data.count)
+        print(vc3Data[indexPath.row])
+        print("dsf")
+
+        serverVc3Delegate?.saveVc3Data(options: vc3Data)
+        
+        eachData = WriteRequest.Option(title: "", advantage: nil, disadvantage: nil, image: "", hasImage: false)
         return prosConsCell
     }
 }
@@ -191,6 +219,13 @@ extension ThirdWriteStepVC: optionTitleDelegate{
                 cvcCount += 1
             }
         }
+    }
+}
+
+extension ThirdWriteStepVC: CheckTextViewTouch {
+    func checkText(index: Int, title: String, advantage: String, disadvantage: String, image: String, hasImage: Bool) {
+        vc3Data[index] = WriteRequest.Option(title: title, advantage: advantage, disadvantage: disadvantage, image: image, hasImage: hasImage)
+        print(vc3Data)
     }
 }
 

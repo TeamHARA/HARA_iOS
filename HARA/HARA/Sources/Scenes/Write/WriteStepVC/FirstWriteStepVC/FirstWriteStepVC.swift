@@ -14,6 +14,10 @@ protocol CheckVc1Delegate: AnyObject{
     func checkText(checkTextfield: Bool, checkTextView: Bool)
 }
 
+protocol ServerVc1Delegate: AnyObject{
+    func saveVc1Data(title: String, content: String)
+}
+
 class FirstWriteStepVC: UIViewController{
     
     // MARK: - Properties
@@ -73,6 +77,7 @@ class FirstWriteStepVC: UIViewController{
     }
     
     weak var checkVc1Delegate: CheckVc1Delegate?
+    weak var serverVc1Delegate: ServerVc1Delegate?
     
     let placeholder = "고민에 대해 더 자세히 적어주세요."
     
@@ -112,9 +117,9 @@ class FirstWriteStepVC: UIViewController{
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillBeHidden(_:)),name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    /// 키보드가 보일때 화면을 위로 160 만큼 올린다.
+    /// 키보드가 보일때 화면을 위로 100 만큼 올린다.
     @objc func keyboardWillShown(_ notificiation: NSNotification) {
-      self.view.frame = CGRect(x: 0, y: -110, width: self.view.frame.size.width, height: self.view.frame.size.height)
+      self.view.frame = CGRect(x: 0, y: -100, width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
      
     /// 키보드가 사라질때 화면을 다시 원복한다.
@@ -232,7 +237,10 @@ extension FirstWriteStepVC: UITextFieldDelegate {
         }else{
             checkTextfield = true
         }
+        /// 텍스트 필드 및 텍스트 뷰 확인 후에 WriteVC로 데이터 전달
         checkVc1Delegate?.checkText(checkTextfield: checkTextfield, checkTextView: checkTextView)
+        /// WriteVC로 변경된 데이터를 전달
+        serverVc1Delegate?.saveVc1Data(title: titleTextField.text!, content: infoTextView.text)
     }
 }
 
@@ -278,6 +286,8 @@ extension FirstWriteStepVC: UITextViewDelegate {
         }
         /// 텍스트 필드 및 텍스트 뷰 확인 후에 WriteVC로 데이터 전달
         checkVc1Delegate?.checkText(checkTextfield: checkTextfield, checkTextView: checkTextView)
+        /// WriteVC로 변경된 데이터를 전달
+        serverVc1Delegate?.saveVc1Data(title: titleTextField.text!, content: infoTextView.text)
     }
 }
 

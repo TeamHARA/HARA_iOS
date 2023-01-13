@@ -25,7 +25,6 @@ final class TogetherVC: UIViewController {
     
     private lazy var worryCardCV: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.compositionalLayout)
-        view.backgroundColor = .blue
         view.showsVerticalScrollIndicator = false
         view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         return view

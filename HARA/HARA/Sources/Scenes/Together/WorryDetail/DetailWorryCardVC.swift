@@ -36,7 +36,7 @@ final class DetailWorryCardVC: UIViewController {
     }()
     
     private var optionNums = 4
-    private var commentNums = 3
+    private var commentNums = 10
     
     func getLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { (section, env) -> NSCollectionLayoutSection? in
@@ -79,7 +79,7 @@ final class DetailWorryCardVC: UIViewController {
                             group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
                 //        group.interItemSpacing = .fixed(10)
                 let section = NSCollectionLayoutSection(group: group)
-                section.interGroupSpacing = 10
+                section.interGroupSpacing = 22
                 section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 10, trailing: 0)
                 
                 let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(41))
@@ -108,15 +108,23 @@ final class DetailWorryCardVC: UIViewController {
         $0.font = .haraSub3R12
     }
     
+    private lazy var commentSendButton = UIButton().then {
+        $0.setBackgroundImage(UIImage(named: "detailWorry_commentSend_icon"), for: .normal)
+    }
+    
     private let commentTextField = UITextField().then {
         $0.borderStyle = .none
         $0.layer.borderColor = UIColor.hGray4.cgColor
         $0.layer.borderWidth = 1
+        $0.layer.cornerRadius = 8
         $0.backgroundColor = .clear
         $0.placeholder = "댓글 내용을 입력해주세요"
         $0.font = .haraB2M14
         $0.textColor = .hGray2
+        $0.addLeftPadding(8)
     }
+    
+    private var isSelected = false
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -137,10 +145,13 @@ final class DetailWorryCardVC: UIViewController {
         voteOptionCV.delegate = self
         
         voteOptionCV.register(cell: DetailWorryCVC.self, forCellWithReuseIdentifier: DetailWorryCVC.className)
+        voteOptionCV.register(cell: VotedDetailWorryCVC.self, forCellWithReuseIdentifier: VotedDetailWorryCVC.className)
         voteOptionCV.register(WorryDetailHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: WorryDetailHeaderView.className)
         voteOptionCV.register(WorryDetailFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: WorryDetailFooterView.className)
         voteOptionCV.register(cell: DetailWorryCommentCVC.self, forCellWithReuseIdentifier: DetailWorryCommentCVC.className)
         voteOptionCV.register(CommentHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CommentHeaderView.className)
+        
+
     }
     
     private func setPressAction() {
@@ -173,6 +184,11 @@ extension DetailWorryCardVC: UICollectionViewDataSource {
         
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailWorryCVC.className, for: indexPath) as! DetailWorryCVC
+            if isSelected{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VotedDetailWorryCVC.className, for: indexPath) as! VotedDetailWorryCVC
+                cell.setPercentage(percentage: 50, isOptionVoted: true)
+                return cell
+            }
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailWorryCommentCVC.className, for: indexPath) as! DetailWorryCommentCVC
@@ -189,6 +205,7 @@ extension DetailWorryCardVC: UICollectionViewDataSource {
                 
             case UICollectionView.elementKindSectionFooter:
                 let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: WorryDetailFooterView.className, for: indexPath) as! WorryDetailFooterView
+                footer.buttonDelegate = self
                 return footer
                 
             default:
@@ -215,14 +232,15 @@ extension DetailWorryCardVC: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension DetailWorryCardVC: UICollectionViewDelegate {
+    
 }
 
 // MARK: - Layout
 extension DetailWorryCardVC {
     private func setLayout() {
-        view.addSubviews([closeDetailButton, worryStateTitle, voteOptionCV, bottomCommentView])
+        view.addSubviews([closeDetailButton, worryStateTitle, voteOptionCV, bottomCommentView, commentSendButton])
         
-        bottomCommentView.addSubviews([unknownCheckButton, unknownLabel, commentTextField])
+        bottomCommentView.addSubviews([unknownCheckButton, unknownLabel, commentTextField, commentSendButton])
         
         closeDetailButton.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide).offset(13)
@@ -266,7 +284,20 @@ extension DetailWorryCardVC {
             $0.leading.equalTo(unknownLabel.snp.trailing).offset(8)
             $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalTo(unknownCheckButton)
+            $0.height.equalTo(34)
         }
         
+        commentSendButton.snp.makeConstraints {
+            $0.trailing.equalTo(commentTextField.snp.trailing).inset(8)
+            $0.centerY.equalTo(commentTextField)
+        }
+        
+    }
+}
+
+extension DetailWorryCardVC: SendButtonAction {
+    func sendData(isSelected: Bool) {
+        self.isSelected = isSelected
+        self.voteOptionCV.reloadData()
     }
 }
