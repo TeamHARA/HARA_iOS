@@ -15,7 +15,8 @@ class TogetherWorriedCVC: UICollectionViewCell {
     
     // MARK: - Properties
     private let worringIcon = UIImageView()
-    private let titleLabel = UILabel().then {
+    
+    private let categoryLabel = UILabel().then {
         $0.textColor = .hBlue1
         $0.font = .haraB2M14
     }
@@ -29,6 +30,8 @@ class TogetherWorriedCVC: UICollectionViewCell {
         $0.textColor = .hGray2
         $0.font = .haraSub2M12
     }
+    
+    private let categoryList: Array<String> = ["전체", "일상", "연애", "패션/뷰티", "커리어", "운동", "여행", "기타"]
     
     // MARK: - Life Cycles
     override init(frame: CGRect) {
@@ -48,7 +51,19 @@ class TogetherWorriedCVC: UICollectionViewCell {
         self.contentView.layer.cornerRadius = 10
         self.contentView.backgroundColor = .hWhite
     }
+    
+    func dataBind(model: StorageResponse){
+        if model.finalOption != nil {
+            worringIcon.image = UIImage(named: "storage_complete")
+        }else {
+            worringIcon.image = UIImage(named: "storage_ing")
+        }
+        categoryLabel.text = categoryList[model.categoryId]
+        mainLabel.text = model.title
+        date.text = model.createdAt
+    }
 }
+
 
 extension TogetherWorriedCVC {
     
@@ -56,7 +71,7 @@ extension TogetherWorriedCVC {
     private func setLayout() {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        contentView.addSubviews([worringIcon, titleLabel, mainLabel, date])
+        contentView.addSubviews([worringIcon, categoryLabel, mainLabel, date])
         
         worringIcon.snp.makeConstraints{
             $0.top.equalToSuperview().offset(12.adjustedH)
@@ -65,10 +80,10 @@ extension TogetherWorriedCVC {
             $0.width.equalTo(54.adjustedW)
         }
         
-        titleLabel.snp.makeConstraints{
+        categoryLabel.snp.makeConstraints{
             $0.top.equalToSuperview().offset(12.adjustedH)
             $0.leading.equalTo(worringIcon.snp.trailing).offset(6.adjustedW)
-            $0.width.equalTo(25.adjustedW)
+            $0.width.equalTo(100.adjustedW)
             $0.height.equalTo(22.adjustedH)
         }
         
@@ -82,10 +97,4 @@ extension TogetherWorriedCVC {
         }
     }
     
-    func dataBind(model: WorriedModel){
-        worringIcon.image = UIImage(named: model.worring)
-        titleLabel.text = model.categoryTitle
-        mainLabel.text = model.mainText
-        date.text = model.date
-    }
 }

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6713491B296F24190093DDAA /* StorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69C19295AD72F00848B72 /* StorageAPI.swift */; };
 		673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */; };
 		673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673315F02966D1AC00398AA5 /* StorageVC.swift */; };
+		6779C7F0296F1F3D0026BE10 /* StorageAloneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6779C7EF296F1F3D0026BE10 /* StorageAloneResponse.swift */; };
 		67DA6D22296C9242006F4C5C /* AloneWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D21296C9242006F4C5C /* AloneWorriedVC.swift */; };
 		67DA6D24296C924C006F4C5C /* TogetherWorriedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D23296C924C006F4C5C /* TogetherWorriedVC.swift */; };
 		67DA6D26296C9259006F4C5C /* AloneWorriedCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DA6D25296C9259006F4C5C /* AloneWorriedCVC.swift */; };
@@ -90,7 +92,6 @@
 		E7C69CE0296555B400848B72 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CDF296555B400848B72 /* StorageService.swift */; };
 		E7C69CE32965566C00848B72 /* TogetherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CE22965566C00848B72 /* TogetherResponse.swift */; };
 		E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CE42965567800848B72 /* WriteResponse.swift */; };
-		E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CE62965569100848B72 /* StorageResponse.swift */; };
 		E7C69CEB29658BF900848B72 /* VoteOptionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CEA29658BF900848B72 /* VoteOptionCVC.swift */; };
 		E7C69CED29660AB500848B72 /* WorryCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C69CEC29660AB500848B72 /* WorryCardCVC.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 /* Begin PBXFileReference section */
 		673315EE2965C1E500398AA5 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		673315F02966D1AC00398AA5 /* StorageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageVC.swift; sourceTree = "<group>"; };
+		6779C7EF296F1F3D0026BE10 /* StorageAloneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageAloneResponse.swift; sourceTree = "<group>"; };
 		67DA6D21296C9242006F4C5C /* AloneWorriedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AloneWorriedVC.swift; sourceTree = "<group>"; };
 		67DA6D23296C924C006F4C5C /* TogetherWorriedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TogetherWorriedVC.swift; sourceTree = "<group>"; };
 		67DA6D25296C9259006F4C5C /* AloneWorriedCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AloneWorriedCVC.swift; sourceTree = "<group>"; };
@@ -179,7 +181,6 @@
 		E7C69CDF296555B400848B72 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		E7C69CE22965566C00848B72 /* TogetherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogetherResponse.swift; sourceTree = "<group>"; };
 		E7C69CE42965567800848B72 /* WriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteResponse.swift; sourceTree = "<group>"; };
-		E7C69CE62965569100848B72 /* StorageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageResponse.swift; sourceTree = "<group>"; };
 		E7C69CEA29658BF900848B72 /* VoteOptionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoteOptionCVC.swift; sourceTree = "<group>"; };
 		E7C69CEC29660AB500848B72 /* WorryCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorryCardCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -338,7 +339,7 @@
 		E7B47C2D296F0E69009987E1 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				E7C69CE62965569100848B72 /* StorageResponse.swift */,
+				6779C7EF296F1F3D0026BE10 /* StorageAloneResponse.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -666,6 +667,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6713491B296F24190093DDAA /* StorageAPI.swift in Sources */,
 				E7C69CD4296554E600848B72 /* MoyaLoggingPlugin.swift in Sources */,
 				E7C69CA72961CD8F00848B72 /* UIImageView+.swift in Sources */,
 				67DA6D2D296C92B9006F4C5C /* WorriedModel.swift in Sources */,
@@ -699,6 +701,7 @@
 				8532A78C296DCE9300402E91 /* OneSecGameVC.swift in Sources */,
 				E7C69C9D29613F2700848B72 /* UIStackView+.swift in Sources */,
 				E7C69CE52965567800848B72 /* WriteResponse.swift in Sources */,
+				6779C7F0296F1F3D0026BE10 /* StorageAloneResponse.swift in Sources */,
 				673315EF2965C1E500398AA5 /* UnderlineSegmentedControl.swift in Sources */,
 				8532A77A296BE14D00402E91 /* BaseOptionView.swift in Sources */,
 				E74585D5296EA2B500597168 /* FinalChoiceVC.swift in Sources */,
@@ -734,8 +737,8 @@
 				E7C69CC429620C5600848B72 /* CALayer+.swift in Sources */,
 				85933677296FE32A00ECA674 /* WriteRequest.swift in Sources */,
 				E7C69C9F29613F4800848B72 /* Adjusted+.swift in Sources */,
-				E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */,
 				E7B47C36297145E2009987E1 /* VotedDetailWorryCVC.swift in Sources */,
+				E7C69CE72965569100848B72 /* StorageResponse.swift in Sources */,
 				E7C69CA92961CDF400848B72 /* UITextField+.swift in Sources */,
 				E7C69C0B295AD68E00848B72 /* UserInfo.swift in Sources */,
 				673315F12966D1AC00398AA5 /* StorageVC.swift in Sources */,
