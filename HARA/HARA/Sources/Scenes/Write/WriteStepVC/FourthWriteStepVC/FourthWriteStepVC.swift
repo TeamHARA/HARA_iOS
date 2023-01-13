@@ -130,7 +130,7 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         for x in 0..<categories.count{
             if categories[x] == selectedItem{
-                categoryId = x
+                categoryId = x + 1
                 print(categoryId)
             }
         }
