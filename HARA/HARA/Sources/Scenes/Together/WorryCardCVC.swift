@@ -49,7 +49,8 @@ final class WorryCardCVC: UICollectionViewCell {
     }()
     
     private lazy var compositionalLayout: UICollectionViewCompositionalLayout = {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        let heightPortion = UIScreen.main.bounds.height / 812
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40 * heightPortion))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         //        item.edgeSpacing = NSCollectionLayoutEdgeSpacing(leading: nil, top: .fixed(10), trailing: nil, bottom: .fixed(10))
         //        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
