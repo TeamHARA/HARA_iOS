@@ -9,6 +9,10 @@ import UIKit
 import SnapKit
 import Then
 
+protocol CheckTextViewTouch: AnyObject{
+    func checkText(index: Int, title: String, advantage: String, disadvantage: String, image: String, hasImage: Bool)
+}
+
 class ProsConsCVC: UICollectionViewCell {
     
     // MARK: - Properties
@@ -70,6 +74,10 @@ class ProsConsCVC: UICollectionViewCell {
         $0.layer.borderWidth = 1
         $0.textContainerInset = UIEdgeInsets(top: 8.adjustedH, left: 39.adjustedW, bottom: 5.adjustedH, right: 8.adjustedW)
     }
+    
+    var cellIndex: Int?
+    
+    weak var checkTextViewTouchDelegate: CheckTextViewTouch?
     
     // MARK: - Life Cycles
     override init(frame: CGRect) {
@@ -221,5 +229,6 @@ extension ProsConsCVC: UITextViewDelegate{
                 break
             }
         }
+        checkTextViewTouchDelegate?.checkText(index: cellIndex!, title: optionTitle.text!, advantage: prosTextView.text, disadvantage: consTextView.text, image: "", hasImage: false)
     }
 }
