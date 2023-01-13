@@ -24,6 +24,7 @@ final class UnderlineSegmentedControl: UISegmentedControl {
         return view
     }()
     
+    // MARK: - Life Cycles
     /// segmentedControl의 각 frame의 속성을 rBAD함수를 통해 효과를 모두 제거
     override init(frame: CGRect) {
         super.init(frame: frame)

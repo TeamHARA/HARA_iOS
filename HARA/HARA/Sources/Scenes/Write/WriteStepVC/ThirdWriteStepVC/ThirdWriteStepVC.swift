@@ -190,10 +190,6 @@ extension ThirdWriteStepVC: UICollectionViewDataSource {
         }
         
         /// 서버통신을 위한 각 cell의 데이터를 전달
-        print(vc3Data.count)
-        print(vc3Data[indexPath.row])
-        print("dsf")
-
         serverVc3Delegate?.saveVc3Data(options: vc3Data)
         
         eachData = WriteRequest.Option(title: "", advantage: nil, disadvantage: nil, image: "", hasImage: false)
@@ -225,7 +221,6 @@ extension ThirdWriteStepVC: optionTitleDelegate{
 extension ThirdWriteStepVC: CheckTextViewTouch {
     func checkText(index: Int, title: String, advantage: String, disadvantage: String, image: String, hasImage: Bool) {
         vc3Data[index] = WriteRequest.Option(title: title, advantage: advantage, disadvantage: disadvantage, image: image, hasImage: hasImage)
-        print(vc3Data)
     }
 }
 

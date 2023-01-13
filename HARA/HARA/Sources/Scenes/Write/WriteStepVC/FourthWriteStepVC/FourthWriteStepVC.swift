@@ -131,7 +131,6 @@ class FourthWriteStepVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         for x in 0..<categories.count{
             if categories[x] == selectedItem{
                 categoryId = x + 1
-                print(categoryId)
             }
         }
         serverVc4Delegate?.saveVc4Data(categoryId: categoryId)

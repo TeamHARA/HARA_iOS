@@ -386,11 +386,9 @@ extension WriteVC: CheckVc4Delegate{
         if currentPage == 3 {
             if checkTextfield == true {
                 nextButton.isEnabled = true
-                print(checkTextfield)
             }
             else {
                 nextButton.isEnabled = false
-                print(checkTextfield)
             }
         }
     }

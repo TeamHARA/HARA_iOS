@@ -56,7 +56,7 @@ final class HaraTabBarController: UITabBarController {
         let storageTab = makeTabVC(vc: BaseNC(rootViewController: StorageVC()), tabBarTitle: "보관함", tabBarImg: "storage_tab_icon", tabBarSelectedImg: "storage_tab_icon")
         storageTab.tabBarItem.tag = 2
 
-        let tabs = [togetherTab, writeTab,storageTab ]
+        let tabs = [togetherTab, writeTab, storageTab]
         self.setViewControllers(tabs, animated: false)
     }
 
@@ -92,7 +92,7 @@ final class HaraTabBarController: UITabBarController {
     
     /// TabBar의 height을 설정하는 메서드
     private func setTabBarHeight() {
-        let height = self.view.safeAreaInsets.bottom + 72
+        let height = self.view.safeAreaInsets.bottom + 72.adjustedH
         
         var tabFrame = self.tabBar.frame
         tabFrame.size.height = height
