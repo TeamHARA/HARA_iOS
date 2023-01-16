@@ -19,6 +19,7 @@ extension WorryDetailService: BaseTargetType {
         switch self {
         case .alone(let param):
             return APIConstant.worryAloneDetail + "/\(param)"
+            /// param은 int형으로 받아온다.
             
         case .with(let param):
             return APIConstant.worryWithDetail + "/\(param)"
