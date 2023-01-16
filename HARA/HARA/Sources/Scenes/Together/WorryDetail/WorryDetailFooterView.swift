@@ -53,21 +53,15 @@ final class WorryDetailFooterView: UICollectionReusableView {
     
     private func setPressAction() {
         voteButton.press {
-//            self.isOptionSelected = true
+            //            self.isOptionSelected = true
             self.voteButton.backgroundColor = .hOrange3
             self.voteButton.layer.borderWidth = 0
             self.voteButton.setTitle("투표완료!", for: .normal)
             self.voteButton.setTitleColor(.hWhite, for: .normal)
             self.voteButton.setBackgroundColor(.hGray3, for: .normal)
             self.voteButton.isUserInteractionEnabled = false
-//            self.voteOptionCV.reloadData()
+            //            self.voteOptionCV.reloadData()
             self.buttonDelegate?.sendData(isSelected: true)
         }
-        
-        
-        
     }
-    
-    
-    
 }

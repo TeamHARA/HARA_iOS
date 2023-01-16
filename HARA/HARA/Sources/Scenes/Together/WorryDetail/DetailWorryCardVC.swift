@@ -133,6 +133,7 @@ final class DetailWorryCardVC: UIViewController {
         setLayout()
         setPressAction()
         setVoteOptionCV()
+        getWorryAloneList(worryId: 3)
     }
     
     override func viewWillLayoutSubviews() {
@@ -299,5 +300,26 @@ extension DetailWorryCardVC: SendButtonAction {
     func sendData(isSelected: Bool) {
         self.isSelected = isSelected
         self.voteOptionCV.reloadData()
+    }
+}
+
+// MARK: - Network
+extension DetailWorryCardVC{
+    func getWorryAloneList(worryId: Int){
+        WorryDetailAPI.shared.getWorryAloneList(param: worryId){ result in
+            guard let res = result else {return}
+            print("값: \(res)")
+            guard let dataModel = res.data else {return}
+            print(dataModel)
+        }
+    }
+    
+    func getWorryWithList(worryId: Int){
+        WorryDetailAPI.shared.getWorryWithList(param: worryId){ result in
+            guard let res = result else {return}
+            print("값\(res)")
+            guard let dataModel = res.data else {return}
+            print(dataModel)
+        }
     }
 }

@@ -191,7 +191,7 @@ extension WorryCardCVC: UICollectionViewDelegate {
 // MARK: - Layout
 extension WorryCardCVC {
     private func setLayout() {
-        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel,voteOptionCV, voteButton, chatButton])
+        contentView.addSubviews([worryCategoryLabel, worryDateLabel, worryTitleLabel, worryContentLabel, voteOptionCV, voteButton, chatButton])
         
         worryCategoryLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(14)

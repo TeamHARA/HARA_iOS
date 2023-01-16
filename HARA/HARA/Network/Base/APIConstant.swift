@@ -31,7 +31,7 @@ struct APIConstant {
     /// 파라미터 :worryId
     static let worryAloneDetail = "/worry/alone"
 
-    static let worryWidthDetail = "/worry/with"
+    static let worryWithDetail = "/worry/with"
     
     //MARK: - Write
     static let worryAlone = "/worry/alone"
